@@ -1,0 +1,41 @@
+{
+    "git.autofetch": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    },
+    "[plist]": {
+      "editor.formatOnSave": true
+    },
+    "[dart]": {
+      "editor.formatOnType": true,
+      "editor.rulers": [
+        80
+      ],
+      "editor.selectionHighlight": false,
+      "editor.suggest.snippetsPreventQuickSuggestions": false,
+      "editor.suggestSelection": "first",
+      "editor.tabCompletion": "onlySnippets",
+      "editor.wordBasedSuggestions": "off"
+    },
+    "dart.flutterSdkPath": ".fvm/versions/3.27.4",
+    "dart.sdkPath": ".fvm/flutter_sdk/bin/dart",
+    "search.exclude": {
+      "**/.fvm": true
+    },
+    "files.watcherExclude": {
+      "**/.fvm": true
+    },
+    "[csv]": {
+      "files.eol": "\r\n"
+    },
+    "flutter-coverage.coverageFileNames": [
+      "lcov.info",
+      "cov.xml",
+      "coverage.xml",
+      "jacoco.xml"
+    ],
+    "terminal.integrated.fontWeight": "normal",
+    "makefile.configureOnOpen": false,
+    "bloc.newBlocTemplate.type": "freezed"
+  }
