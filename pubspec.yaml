@@ -6,6 +6,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   curved_navigation_bar: ^1.0.6
   dartz: ^0.10.1
+  dio: ^5.8.0+1
   firebase_auth: ^5.5.1
   firebase_core: ^3.12.1
   firebase_storage: ^12.4.4
@@ -41,6 +42,7 @@ flutter:
   assets:
     - assets/users.json
     - assets/items.json
+    - assets/item.json
   uses-material-design: true
 name: flutter_application_1
 publish_to: none

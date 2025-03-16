@@ -38,7 +38,7 @@ class AppRouter {
   static const String gigs = '/gigs';
   static const String search = '/search';
   static const String vendor = '/vendor';
-  static const String itemDetail = '/itemDetail?itemID';
+  static const String itemDetail = '/itemDetail';
 
   static List<RouteBase> get routes => [
         GoRoute(
@@ -66,8 +66,6 @@ class AppRouter {
               itemID: state.uri.queryParameters['itemID']!,
             ),
           ),
-          redirect: (context, state) => redirect(
-              '$itemDetail?itemID=${state.uri.queryParameters['itemID']!}'),
         ),
         GoRoute(
           path: orders,
@@ -89,17 +87,6 @@ class AppRouter {
           builder: (context, state) {
             return const ProfilePage(
               id: '',
-            );
-          },
-        ),
-        GoRoute(
-          path: '/product/:index',
-          builder: (context, state) {
-            final index = int.parse(state.pathParameters['index'] ?? '0');
-            final imageUrl = state.extra as String;
-            return ProductDetailPage(
-              imageUrl: imageUrl,
-              index: index,
             );
           },
         ),

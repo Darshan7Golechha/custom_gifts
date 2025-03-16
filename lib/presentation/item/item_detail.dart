@@ -18,7 +18,7 @@ class ItemDetail extends StatefulWidget {
 class _ItemDetailState extends State<ItemDetail> {
   @override
   void initState() {
-    context.read<ItemBloc>().add(ItemEvent.fetchItem(itemID: widget.itemID));
+    // context.read<ItemBloc>().add(ItemEvent.fetchItem(itemID: widget.itemID));
     super.initState();
   }
 

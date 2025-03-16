@@ -15,8 +15,9 @@ class CustomItemGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
+          // context.go('itemDetail/${item.itemID}');
           context.go(Uri(
-            path: 'itemDetail',
+            path: AppRouter.itemDetail,
             queryParameters: {'itemID': item.itemID},
           ).toString());
         },
