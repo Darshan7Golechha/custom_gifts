@@ -27,16 +27,16 @@ class ItemRepository implements IItemRepository {
     }
   }
 
-  // @override
-  // Future<Either<ApiFailure, Item>> getItem({required String itemID}) async {
-  //   try {
-  //     final item = await itemRemoteDataSource.getItem(itemID);
+  @override
+  Future<Either<ApiFailure, Item>> getItem({required String itemID}) async {
+    try {
+      final item = await itemRemoteDataSource.getItem(itemID);
 
-  //     return Right(item.toDomain());
-  //   } catch (e) {
-  //     return Left(FailureHandler.handleFailure(e));
-  //   }
-  // }
+      return Right(item.toDomain());
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
 
   @override
   Future<Either<ApiFailure, bool>> addItem({required Item item}) async {

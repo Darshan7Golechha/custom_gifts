@@ -20,18 +20,21 @@ mixin _$ItemEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() fetchItems,
+    required TResult Function(String itemID) fetchItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? fetchItems,
+    TResult? Function(String itemID)? fetchItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? fetchItems,
+    TResult Function(String itemID)? fetchItem,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$ItemEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_FetchItems value) fetchItems,
+    required TResult Function(_FetchItem value) fetchItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_FetchItems value)? fetchItems,
+    TResult? Function(_FetchItem value)? fetchItem,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_FetchItems value)? fetchItems,
+    TResult Function(_FetchItem value)? fetchItem,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,6 +125,7 @@ class _$InitializedImpl implements _Initialized {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() fetchItems,
+    required TResult Function(String itemID) fetchItem,
   }) {
     return initialized();
   }
@@ -128,6 +135,7 @@ class _$InitializedImpl implements _Initialized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? fetchItems,
+    TResult? Function(String itemID)? fetchItem,
   }) {
     return initialized?.call();
   }
@@ -137,6 +145,7 @@ class _$InitializedImpl implements _Initialized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? fetchItems,
+    TResult Function(String itemID)? fetchItem,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -150,6 +159,7 @@ class _$InitializedImpl implements _Initialized {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_FetchItems value) fetchItems,
+    required TResult Function(_FetchItem value) fetchItem,
   }) {
     return initialized(this);
   }
@@ -159,6 +169,7 @@ class _$InitializedImpl implements _Initialized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_FetchItems value)? fetchItems,
+    TResult? Function(_FetchItem value)? fetchItem,
   }) {
     return initialized?.call(this);
   }
@@ -168,6 +179,7 @@ class _$InitializedImpl implements _Initialized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_FetchItems value)? fetchItems,
+    TResult Function(_FetchItem value)? fetchItem,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -224,6 +236,7 @@ class _$FetchItemsImpl implements _FetchItems {
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
     required TResult Function() fetchItems,
+    required TResult Function(String itemID) fetchItem,
   }) {
     return fetchItems();
   }
@@ -233,6 +246,7 @@ class _$FetchItemsImpl implements _FetchItems {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
     TResult? Function()? fetchItems,
+    TResult? Function(String itemID)? fetchItem,
   }) {
     return fetchItems?.call();
   }
@@ -242,6 +256,7 @@ class _$FetchItemsImpl implements _FetchItems {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
     TResult Function()? fetchItems,
+    TResult Function(String itemID)? fetchItem,
     required TResult orElse(),
   }) {
     if (fetchItems != null) {
@@ -255,6 +270,7 @@ class _$FetchItemsImpl implements _FetchItems {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_FetchItems value) fetchItems,
+    required TResult Function(_FetchItem value) fetchItem,
   }) {
     return fetchItems(this);
   }
@@ -264,6 +280,7 @@ class _$FetchItemsImpl implements _FetchItems {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_FetchItems value)? fetchItems,
+    TResult? Function(_FetchItem value)? fetchItem,
   }) {
     return fetchItems?.call(this);
   }
@@ -273,6 +290,7 @@ class _$FetchItemsImpl implements _FetchItems {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
     TResult Function(_FetchItems value)? fetchItems,
+    TResult Function(_FetchItem value)? fetchItem,
     required TResult orElse(),
   }) {
     if (fetchItems != null) {
@@ -284,6 +302,152 @@ class _$FetchItemsImpl implements _FetchItems {
 
 abstract class _FetchItems implements ItemEvent {
   const factory _FetchItems() = _$FetchItemsImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchItemImplCopyWith<$Res> {
+  factory _$$FetchItemImplCopyWith(
+          _$FetchItemImpl value, $Res Function(_$FetchItemImpl) then) =
+      __$$FetchItemImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String itemID});
+}
+
+/// @nodoc
+class __$$FetchItemImplCopyWithImpl<$Res>
+    extends _$ItemEventCopyWithImpl<$Res, _$FetchItemImpl>
+    implements _$$FetchItemImplCopyWith<$Res> {
+  __$$FetchItemImplCopyWithImpl(
+      _$FetchItemImpl _value, $Res Function(_$FetchItemImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? itemID = null,
+  }) {
+    return _then(_$FetchItemImpl(
+      itemID: null == itemID
+          ? _value.itemID
+          : itemID // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchItemImpl implements _FetchItem {
+  const _$FetchItemImpl({required this.itemID});
+
+  @override
+  final String itemID;
+
+  @override
+  String toString() {
+    return 'ItemEvent.fetchItem(itemID: $itemID)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchItemImpl &&
+            (identical(other.itemID, itemID) || other.itemID == itemID));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, itemID);
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchItemImplCopyWith<_$FetchItemImpl> get copyWith =>
+      __$$FetchItemImplCopyWithImpl<_$FetchItemImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetchItems,
+    required TResult Function(String itemID) fetchItem,
+  }) {
+    return fetchItem(itemID);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetchItems,
+    TResult? Function(String itemID)? fetchItem,
+  }) {
+    return fetchItem?.call(itemID);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetchItems,
+    TResult Function(String itemID)? fetchItem,
+    required TResult orElse(),
+  }) {
+    if (fetchItem != null) {
+      return fetchItem(itemID);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_FetchItems value) fetchItems,
+    required TResult Function(_FetchItem value) fetchItem,
+  }) {
+    return fetchItem(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_FetchItems value)? fetchItems,
+    TResult? Function(_FetchItem value)? fetchItem,
+  }) {
+    return fetchItem?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_FetchItems value)? fetchItems,
+    TResult Function(_FetchItem value)? fetchItem,
+    required TResult orElse(),
+  }) {
+    if (fetchItem != null) {
+      return fetchItem(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchItem implements ItemEvent {
+  const factory _FetchItem({required final String itemID}) = _$FetchItemImpl;
+
+  String get itemID;
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FetchItemImplCopyWith<_$FetchItemImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

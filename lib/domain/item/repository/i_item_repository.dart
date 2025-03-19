@@ -5,5 +5,5 @@ import 'package:flutter_application_1/domain/item/entities/item.dart';
 abstract class IItemRepository {
   Future<Either<ApiFailure, List<Item>>> getItems();
   Future<Either<ApiFailure, bool>> addItem({required Item item});
-  // Future<Either<ApiFailure, Item>> getItem({required String itemID});
+  Future<Either<ApiFailure, Item>> getItem({required String itemID});
 }

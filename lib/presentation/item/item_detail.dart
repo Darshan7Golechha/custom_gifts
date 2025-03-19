@@ -18,7 +18,7 @@ class ItemDetail extends StatefulWidget {
 class _ItemDetailState extends State<ItemDetail> {
   @override
   void initState() {
-    // context.read<ItemBloc>().add(ItemEvent.fetchItem(itemID: widget.itemID));
+    context.read<ItemBloc>().add(ItemEvent.fetchItem(itemID: widget.itemID));
     super.initState();
   }
 
@@ -136,7 +136,7 @@ class _ItemDetailState extends State<ItemDetail> {
                             ),
                           ],
                           image: DecorationImage(
-                            image: NetworkImage(state.item.images[0]),
+                            image: const NetworkImage(''),
                             fit: BoxFit.cover,
                             onError: (error, stackTrace) =>
                                 const Icon(Icons.error_outline, size: 48),

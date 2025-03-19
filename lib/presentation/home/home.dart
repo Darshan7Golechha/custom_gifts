@@ -142,15 +142,26 @@ class _HomeContentState extends State<HomeContent> {
                 ],
               ),
               BlocBuilder<ItemBloc, ItemState>(
-                buildWhen: (previous, current) =>
-                    previous.isLoading != current.isLoading,
+                // Remove buildWhen to ensure we catch all state changes
                 builder: (context, state) {
+                  print('Current state: $state'); // Add debug print
+
                   if (state.isLoading) {
                     return const Center(child: CircularProgressIndicator());
                   }
 
+                  if (state.failureOrSuccessOption.isSome()) {
+                    return state.failureOrSuccessOption.fold(
+                      () => const SizedBox(),
+                      (either) => either.fold(
+                        (failure) => Center(child: Text('Error: $failure')),
+                        (_) => const SizedBox(),
+                      ),
+                    );
+                  }
+
                   if (state.itemList.isEmpty) {
-                    return const Center(child: Text('No itemList found.'));
+                    return const Center(child: Text('No items found.'));
                   }
 
                   return GridView.builder(
@@ -166,9 +177,7 @@ class _HomeContentState extends State<HomeContent> {
                     itemCount: state.itemList.length,
                     itemBuilder: (context, index) {
                       final item = state.itemList[index];
-                      return CustomItemGrid(
-                        item: item,
-                      );
+                      return CustomItemGrid(item: item);
                     },
                   );
                 },

@@ -14,63 +14,59 @@ part 'item_bloc.freezed.dart';
 class ItemBloc extends Bloc<ItemEvent, ItemState> {
   final IItemRepository itemRepository;
   ItemBloc({required this.itemRepository}) : super(ItemState.initial()) {
-    on<ItemEvent>(_onEvent);
-  }
+    on<ItemEvent>(
+      (event, emit) async {
+        await event.map(
+          initialized: (e) async {
+            emit(ItemState.initial());
+          },
+          fetchItems: (e) async {
+            emit(state.copyWith(
+              isLoading: true,
+              itemList: [],
+            ));
+            final failureOrSuccess = await itemRepository.getItems();
 
-  Future<void> _onEvent(ItemEvent event, Emitter<ItemState> emit) async {
-    event.map(
-      initialized: (e) async => emit(ItemState.initial()),
-      fetchItems: (e) async {
-        emit(
-          state.copyWith(
-            isLoading: true,
-            itemList: [],
-          ),
-        );
-        final failureOrSuccess = await itemRepository.getItems();
+            if (!emit.isDone) {
+              await failureOrSuccess.fold(
+                (failure) async => emit(state.copyWith(
+                  itemList: <Item>[],
+                  failureOrSuccessOption: optionOf(failureOrSuccess),
+                  isLoading: false,
+                )),
+                (items) async => emit(state.copyWith(
+                  itemList: items,
+                  failureOrSuccessOption: none(),
+                  isLoading: false,
+                )),
+              );
+            }
+          },
+          fetchItem: (e) async {
+            emit(state.copyWith(
+              isLoading: true,
+              item: Item.empty(), // Clear previous item while loading
+            ));
 
-        failureOrSuccess.fold(
-          (failure) => emit(
-            state.copyWith(
-              itemList: <Item>[],
-              failureOrSuccessOption: optionOf(failureOrSuccess),
-              isLoading: false,
-            ),
-          ),
-          (items) => emit(
-            state.copyWith(
-              itemList: items,
-              failureOrSuccessOption: none(),
-              isLoading: false,
-            ),
-          ),
+            final failureOrSuccess =
+                await itemRepository.getItem(itemID: e.itemID);
+
+            if (!emit.isDone) {
+              await failureOrSuccess.fold(
+                (failure) async => emit(state.copyWith(
+                  failureOrSuccessOption: optionOf(failureOrSuccess),
+                  isLoading: false,
+                )),
+                (item) async => emit(state.copyWith(
+                  item: item,
+                  failureOrSuccessOption: none(),
+                  isLoading: false,
+                )),
+              );
+            }
+          },
         );
       },
-      // fetchItem: (e) async {
-      //   emit(
-      //     state.copyWith(
-      //       isLoading: true,
-      //     ),
-      //   );
-
-      //   final failureOrSuccess = await itemRepository.getItem(itemID: e.itemID);
-
-      //   failureOrSuccess.fold(
-      //     (failure) => emit(
-      //       state.copyWith(
-      //         failureOrSuccessOption: optionOf(failureOrSuccess),
-      //         isLoading: false,
-      //       ),
-      //     ),
-      //     (item) => emit(
-      //       state.copyWith(
-      //         item: item,
-      //         failureOrSuccessOption: none(),
-      //         isLoading: false,
-      //       ),
-      //     ),
-      //   );
-      // },
       // addItem: (e) async {
       //   emit(
       //     state.copyWith(

@@ -1,81 +1,71 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/domain/item/entities/item.dart';
+import 'package:flutter_application_1/infrastructure/core/http_service.dart';
 import 'package:flutter_application_1/infrastructure/item/dtos/item_dto.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_application_1/core/config/env_config.dart';
+import 'package:flutter_application_1/env_config.dart';
 import 'package:flutter_application_1/infrastructure/item/dtos/item_dto.dart';
 
 class ItemRemoteDataSource {
-  final Dio _dio;
-
-  ItemRemoteDataSource() : _dio = Dio() {
-    _dio.options.baseUrl = EnvConfig.apiBaseUrl;
-    _dio.options.headers = {
-      'Content-Type': 'application/json',
-    };
-    _dio.options.validateStatus = (status) => true;
-  }
+  HttpService httpService = HttpService();
+  ItemRemoteDataSource({required this.httpService});
 
   Future<List<ItemDto>> getItems() async {
     try {
-      final response = await _dio.get('/items?populate=*');
+      final response = await httpService.request(
+        method: 'GET',
+        url: BaseOptions().baseUrl,
+      );
 
       if (response.statusCode != 200) {
         throw Exception('Failed to load items: ${response.statusCode}');
       }
 
-      if (response.data == null || response.data['data'] == null) {
-        throw Exception('Invalid response format from server');
+      final responseData = response.data;
+      if (responseData == null || !responseData.containsKey('data')) {
+        throw Exception('Invalid response format');
       }
 
-      final List<dynamic> data = response.data['data'] as List<dynamic>;
-      return data.map((item) {
-        if (item == null) {
-          throw Exception('Null item in response');
-        }
-        return ItemDto.fromStrapi(item as Map<String, dynamic>);
-      }).toList();
-    } on DioException catch (e) {
-      throw Exception('Network error: ${e.message}');
+      final List<dynamic> items = responseData['data'];
+      print('Number of items received: ${items.length}');
+
+      return items.map((item) => ItemDto.fromStrapi(item)).toList();
     } catch (e) {
-      throw Exception('Failed to load items: $e');
+      print('Error in getItems: $e');
+      rethrow;
     }
   }
 
-  // Future<ItemDto> fetchItemsFromJson() async {
-  //   try {
-  //     // Load the JSON data from the assets
-  //     final String response = await rootBundle.loadString('assets/item.json');
+  Future<ItemDto> getItem(String itemID) async {
+    try {
+      final response = await httpService.request(
+        method: 'GET',
+        url: BaseOptions().baseUrl,
+      );
 
-  //     // Parse the JSON data
-  //     final Map<String, dynamic> data = json.decode(response);
+      final responseData = response.data;
+      if (responseData == null || !responseData.containsKey('data')) {
+        throw Exception('Invalid response format');
+      }
 
-  //     // Convert the JSON to a ItemDto object
-  //     return ItemDto.fromJson(data);
-  //   } catch (e) {
-  //     throw Exception('Failed to fetch item: $e');
-  //   }
-  // }
+      if (responseData['error'] != null) {
+        final error = responseData['error'];
+        if (error['status'] == 404) {
+          throw Exception('Item not found');
+        }
+        throw Exception(error['message'] ?? 'Unknown error');
+      }
 
-  // Future<ItemDto> getItem(String itemID) async {
-  //   try {
-  //     final item = await fetchItemsFromJson();
-  //     if (item.itemID == itemID) {
-  //       return item;
-  //     }
-  //     return ItemDto.fromDomain(Item.empty().copyWith(itemID: itemID));
-  //   } catch (e) {
-  //     throw Exception('Failed to get item: $e');
-  //   }
-  //   // return (await postRef.doc(postID).get()).data()!;
-  // }
-
-  // Add an item (similar to previous methods, but we'll simulate storage)
-  Future<void> addItem(Item item) async {
-    // Here you would normally store the item, but we'll just log it for now
-    print('Item added: ${item.title}');
+      final item = responseData['data'];
+      return ItemDto.fromStrapi(item);
+    } catch (e) {
+      print('Error fetching item: $e');
+      rethrow;
+    }
   }
+
+  Future<void> addItem(Item item) async {}
 
   // Remove an item (no backend, so just print the action)
   Future<void> removeItem(Item item) async {

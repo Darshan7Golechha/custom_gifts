@@ -2,6 +2,7 @@ import 'package:flutter_application_1/app_routes.dart';
 import 'package:flutter_application_1/application/item/item_bloc.dart';
 import 'package:flutter_application_1/application/user/user_bloc.dart';
 import 'package:flutter_application_1/config.dart';
+import 'package:flutter_application_1/infrastructure/core/http_service.dart';
 import 'package:flutter_application_1/infrastructure/item/datasource/item_remote.dart';
 import 'package:flutter_application_1/infrastructure/item/repository/item_repository.dart';
 import 'package:flutter_application_1/infrastructure/user/datasource/user_remote.dart';
@@ -67,7 +68,8 @@ void setupDependencyInjection() {
   // //DATASOURCE
 
   locator.registerLazySingleton(() => UserRemoteDataSource());
-  locator.registerLazySingleton(() => ItemRemoteDataSource());
+  locator.registerLazySingleton(
+      () => ItemRemoteDataSource(httpService: HttpService()));
 
   // locator.registerLazySingleton(
   //   () => PalmistryDataSource(

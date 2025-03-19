@@ -3,7 +3,7 @@
 import 'package:flutter_application_1/domain/item/entities/item.dart';
 import 'package:flutter_application_1/domain/user/entities/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter_application_1/core/config/env_config.dart';
+import 'package:flutter_application_1/env_config.dart';
 
 part 'item_dto.freezed.dart';
 
@@ -62,27 +62,28 @@ class ItemDto with _$ItemDto {
       _$ItemDtoFromJson(json);
 
   factory ItemDto.fromStrapi(Map<String, dynamic> json) {
-    final attributes = json['attributes'] as Map<String, dynamic>;
-    final images = (attributes['images']?['data'] as List?)
-            ?.map((image) =>
-                '${EnvConfig.uploadUrl}${image['attributes']['url']}')
-            .toList() ??
-        [];
-    final videos = (attributes['videos']?['data'] as List?)
-            ?.map((video) =>
-                '${EnvConfig.uploadUrl}${video['attributes']['url']}')
-            .toList() ??
-        [];
+    try {
+      final images = (json['images'] as List?)?.map((image) {
+            final url = image['url'] as String;
+            return '${EnvConfig.uploadUrl}$url';
+          }).toList() ??
+          [];
 
-    return ItemDto(
-      userID: attributes['userID'] as String? ?? '',
-      itemID: json['id'].toString(), // Using Strapi's auto-generated ID
-      title: attributes['title'] as String? ?? '',
-      price: (attributes['price'] as int),
-      images: images,
-      videos: videos,
-      likesCount: attributes['likesCount'] as int? ?? 0,
-      commentsCount: attributes['commentsCount'] as int? ?? 0,
-    );
+      return ItemDto(
+        itemID: json['id'].toString(),
+        userID: json['userID']?.toString() ?? '',
+        title: json['title']?.toString() ??
+            '', // Note: 'titile' is the field name in Strapi
+        price: (json['price'] as int) ?? 0,
+        images: images,
+        likesCount: json['likesCount'] as int? ?? 0,
+        commentsCount: json['commentsCount'] as int? ?? 0,
+        videos: [], // Since videos is null in response
+      );
+    } catch (e) {
+      print('Error parsing ItemDto: $e');
+      print('JSON data: $json');
+      rethrow;
+    }
   }
 }
