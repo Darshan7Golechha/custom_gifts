@@ -22,6 +22,7 @@ _$ItemDtoImpl _$$ItemDtoImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList() ??
           [],
+      createdDate: (json['createdDate'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$ItemDtoImplToJson(_$ItemDtoImpl instance) =>
@@ -34,4 +35,5 @@ Map<String, dynamic> _$$ItemDtoImplToJson(_$ItemDtoImpl instance) =>
       'price': instance.price,
       'images': instance.images,
       'videos': instance.videos,
+      'createdDate': instance.createdDate,
     };

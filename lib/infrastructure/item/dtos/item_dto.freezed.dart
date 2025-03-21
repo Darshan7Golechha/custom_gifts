@@ -36,6 +36,8 @@ mixin _$ItemDto {
   List<String> get images => throw _privateConstructorUsedError;
   @JsonKey(name: 'videos', defaultValue: <String>[])
   List<String> get videos => throw _privateConstructorUsedError;
+  @JsonKey(name: 'createdDate', defaultValue: 0)
+  int get createdDate => throw _privateConstructorUsedError;
 
   /// Serializes this ItemDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -59,7 +61,8 @@ abstract class $ItemDtoCopyWith<$Res> {
       @JsonKey(name: 'commentsCount', defaultValue: 0) int commentsCount,
       @JsonKey(name: 'price', defaultValue: 0) int price,
       @JsonKey(name: 'images', defaultValue: <String>[]) List<String> images,
-      @JsonKey(name: 'videos', defaultValue: <String>[]) List<String> videos});
+      @JsonKey(name: 'videos', defaultValue: <String>[]) List<String> videos,
+      @JsonKey(name: 'createdDate', defaultValue: 0) int createdDate});
 }
 
 /// @nodoc
@@ -85,6 +88,7 @@ class _$ItemDtoCopyWithImpl<$Res, $Val extends ItemDto>
     Object? price = null,
     Object? images = null,
     Object? videos = null,
+    Object? createdDate = null,
   }) {
     return _then(_value.copyWith(
       userID: null == userID
@@ -119,6 +123,10 @@ class _$ItemDtoCopyWithImpl<$Res, $Val extends ItemDto>
           ? _value.videos
           : videos // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      createdDate: null == createdDate
+          ? _value.createdDate
+          : createdDate // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -138,7 +146,8 @@ abstract class _$$ItemDtoImplCopyWith<$Res> implements $ItemDtoCopyWith<$Res> {
       @JsonKey(name: 'commentsCount', defaultValue: 0) int commentsCount,
       @JsonKey(name: 'price', defaultValue: 0) int price,
       @JsonKey(name: 'images', defaultValue: <String>[]) List<String> images,
-      @JsonKey(name: 'videos', defaultValue: <String>[]) List<String> videos});
+      @JsonKey(name: 'videos', defaultValue: <String>[]) List<String> videos,
+      @JsonKey(name: 'createdDate', defaultValue: 0) int createdDate});
 }
 
 /// @nodoc
@@ -162,6 +171,7 @@ class __$$ItemDtoImplCopyWithImpl<$Res>
     Object? price = null,
     Object? images = null,
     Object? videos = null,
+    Object? createdDate = null,
   }) {
     return _then(_$ItemDtoImpl(
       userID: null == userID
@@ -196,6 +206,10 @@ class __$$ItemDtoImplCopyWithImpl<$Res>
           ? _value._videos
           : videos // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      createdDate: null == createdDate
+          ? _value.createdDate
+          : createdDate // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -214,7 +228,8 @@ class _$ItemDtoImpl extends _ItemDto {
       @JsonKey(name: 'images', defaultValue: <String>[])
       required final List<String> images,
       @JsonKey(name: 'videos', defaultValue: <String>[])
-      required final List<String> videos})
+      required final List<String> videos,
+      @JsonKey(name: 'createdDate', defaultValue: 0) required this.createdDate})
       : _images = images,
         _videos = videos,
         super._();
@@ -259,8 +274,12 @@ class _$ItemDtoImpl extends _ItemDto {
   }
 
   @override
+  @JsonKey(name: 'createdDate', defaultValue: 0)
+  final int createdDate;
+
+  @override
   String toString() {
-    return 'ItemDto(userID: $userID, itemID: $itemID, title: $title, likesCount: $likesCount, commentsCount: $commentsCount, price: $price, images: $images, videos: $videos)';
+    return 'ItemDto(userID: $userID, itemID: $itemID, title: $title, likesCount: $likesCount, commentsCount: $commentsCount, price: $price, images: $images, videos: $videos, createdDate: $createdDate)';
   }
 
   @override
@@ -277,7 +296,9 @@ class _$ItemDtoImpl extends _ItemDto {
                 other.commentsCount == commentsCount) &&
             (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
-            const DeepCollectionEquality().equals(other._videos, _videos));
+            const DeepCollectionEquality().equals(other._videos, _videos) &&
+            (identical(other.createdDate, createdDate) ||
+                other.createdDate == createdDate));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -291,7 +312,8 @@ class _$ItemDtoImpl extends _ItemDto {
       commentsCount,
       price,
       const DeepCollectionEquality().hash(_images),
-      const DeepCollectionEquality().hash(_videos));
+      const DeepCollectionEquality().hash(_videos),
+      createdDate);
 
   /// Create a copy of ItemDto
   /// with the given fields replaced by the non-null parameter values.
@@ -322,7 +344,9 @@ abstract class _ItemDto extends ItemDto {
       @JsonKey(name: 'images', defaultValue: <String>[])
       required final List<String> images,
       @JsonKey(name: 'videos', defaultValue: <String>[])
-      required final List<String> videos}) = _$ItemDtoImpl;
+      required final List<String> videos,
+      @JsonKey(name: 'createdDate', defaultValue: 0)
+      required final int createdDate}) = _$ItemDtoImpl;
   const _ItemDto._() : super._();
 
   factory _ItemDto.fromJson(Map<String, dynamic> json) = _$ItemDtoImpl.fromJson;
@@ -351,6 +375,9 @@ abstract class _ItemDto extends ItemDto {
   @override
   @JsonKey(name: 'videos', defaultValue: <String>[])
   List<String> get videos;
+  @override
+  @JsonKey(name: 'createdDate', defaultValue: 0)
+  int get createdDate;
 
   /// Create a copy of ItemDto
   /// with the given fields replaced by the non-null parameter values.

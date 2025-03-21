@@ -1,9 +1,16 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/domain/user/entities/user.dart';
 import 'package:flutter_application_1/infrastructure/user/dtos/user_dto.dart';
 
 class UserRemoteDataSource {
+  final userRef = FirebaseFirestore.instance
+      .collection('users')
+      .withConverter<UserDto>(
+        fromFirestore: (snapshots, _) => UserDto.fromJson(snapshots.data()!),
+        toFirestore: (userDto, _) => userDto.toJson(),
+      );
   Future<UserDto> fetchUsersFromJson() async {
     try {
       // Load the JSON data from the assets
@@ -31,7 +38,15 @@ class UserRemoteDataSource {
     }
   }
 
+  Future<bool> checkIfUsernameExists(String username) async {
+    return (await userRef.where('username', isEqualTo: username).get())
+        .docs
+        .isNotEmpty;
+  }
+
   Future<void> addUser(User user) async {
-    throw UnimplementedError("Add User is not supported in mock data.");
+    // User tempUser = user.copyWith(
+    //     // search: _generateCaseSearch('${user.username} ${user.fullName}'));
+    return await userRef.doc(user.userID).set(UserDto.fromDomain(user));
   }
 }

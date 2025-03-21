@@ -20,7 +20,10 @@ class ItemRepository implements IItemRepository {
   Future<Either<ApiFailure, List<Item>>> getItems() async {
     try {
       final itemDtoList = await itemRemoteDataSource.getItems();
-      final items = itemDtoList.map((itemDto) => itemDto.toDomain()).toList();
+      List<Item> items = [];
+      for (ItemDto itemDto in itemDtoList) {
+        items.add(itemDto.toDomain());
+      }
       return Right(items);
     } catch (e) {
       return Left(FailureHandler.handleFailure(e));

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app_routes.dart';
+import 'package:flutter_application_1/application/auth/auth_bloc.dart';
 import 'package:flutter_application_1/application/item/item_bloc.dart';
+import 'package:flutter_application_1/application/login/login_bloc.dart';
 import 'package:flutter_application_1/application/user/user_bloc.dart';
 import 'package:flutter_application_1/config.dart';
 import 'package:flutter_application_1/locator.dart';
@@ -34,6 +36,14 @@ class MyApp extends StatelessWidget {
           create: (context) =>
               locator<ItemBloc>()..add(const ItemEvent.initialized()),
         ),
+        BlocProvider(
+          create: (context) =>
+              locator<AuthBloc>()..add(const AuthEvent.initialized()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              locator<LoginBloc>()..add(const LoginEvent.initialized()),
+        ),
         // BlocProvider(
         //   create: (context) =>
         //       locator<HoroscopeBloc>()..add(const HoroscopeEvent.initialised()),
@@ -49,7 +59,7 @@ class MyApp extends StatelessWidget {
           navigatorKey: GlobalKey<NavigatorState>(),
           debugLogDiagnostics: true,
           routes: AppRouter.routes,
-          initialLocation: AppRouter.home,
+          initialLocation: AppRouter.login,
         ),
         title: config.appName,
         theme: theme.myTheme,

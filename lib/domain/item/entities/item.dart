@@ -16,11 +16,11 @@ class Item with _$Item {
     required int price,
     required List<String> images,
     required List<String> videos,
-    // required DateTime createdDate,
+    required DateTime createdDate,
     // required DateTime updatedDate,
   }) = _Item;
 
-  factory Item.empty() => const Item(
+  factory Item.empty() => Item(
         userID: '',
         itemID: '',
         title: '',
@@ -29,7 +29,7 @@ class Item with _$Item {
         price: 0,
         images: <String>[],
         videos: <String>[],
-        // createdDate: DateTime(2023),
+        createdDate: DateTime(2025),
         // updatedDate: DateTime(2023),
       );
 }

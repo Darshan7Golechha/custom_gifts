@@ -1,7 +1,12 @@
 import 'package:flutter_application_1/app_routes.dart';
+import 'package:flutter_application_1/application/auth/auth_bloc.dart';
 import 'package:flutter_application_1/application/item/item_bloc.dart';
+import 'package:flutter_application_1/application/login/login_bloc.dart';
 import 'package:flutter_application_1/application/user/user_bloc.dart';
 import 'package:flutter_application_1/config.dart';
+import 'package:flutter_application_1/infrastructure/auth/datasource/auth_remote.dart';
+import 'package:flutter_application_1/infrastructure/auth/repository/auth_repository.dart';
+import 'package:flutter_application_1/infrastructure/core/services/mailing_service.dart';
 import 'package:flutter_application_1/infrastructure/item/datasource/item_remote.dart';
 import 'package:flutter_application_1/infrastructure/item/repository/item_repository.dart';
 import 'package:flutter_application_1/infrastructure/user/datasource/user_remote.dart';
@@ -30,6 +35,11 @@ void setupDependencyInjection() {
       itemRepository: locator<ItemRepository>(),
     ),
   );
+  locator.registerLazySingleton(() => AuthBloc(
+        userRepository: locator<UserRepository>(),
+      ));
+  locator.registerLazySingleton(
+      () => LoginBloc(authRepository: locator<AuthRepository>()));
   // locator.registerLazySingleton(
   //   () => HoroscopeBloc(
   //     horoscopeRepository: locator<HoroscopeRepository>(),
@@ -53,6 +63,16 @@ void setupDependencyInjection() {
       userRemoteDataSource: locator<UserRemoteDataSource>(),
     ),
   );
+  locator.registerLazySingleton(
+    () => AuthRepository(
+      authRemoteDataSource: locator<AuthRemoteDataSource>(),
+      userRemoteDataSource: locator<UserRemoteDataSource>(),
+      mailingService: locator<MailingService>(),
+    ),
+  );
+
+  locator.registerLazySingleton(() => MailingService());
+
   // locator.registerLazySingleton(
   //   () => HoroscopeRepository(
   //     horoscopeDataSource: locator<HoroscopeDataSource>(),
@@ -68,6 +88,7 @@ void setupDependencyInjection() {
 
   locator.registerLazySingleton(() => UserRemoteDataSource());
   locator.registerLazySingleton(() => ItemRemoteDataSource());
+  locator.registerLazySingleton(() => AuthRemoteDataSource());
 
   // locator.registerLazySingleton(
   //   () => PalmistryDataSource(
