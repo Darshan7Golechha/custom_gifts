@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/presentation/auth/login.dart';
 import 'package:flutter_application_1/presentation/home/home.dart';
 import 'package:flutter_application_1/presentation/item/item_detail.dart';
 import 'package:flutter_application_1/presentation/message/chat.dart';
@@ -31,6 +32,7 @@ class AppRouter {
   }
 
   static const String home = '/home';
+  static const String login = '/login';
   static const String dashboard = '/dashboard';
   static const String profile = '/profile';
   static const String message = '/message';
@@ -44,6 +46,10 @@ class AppRouter {
         GoRoute(
           path: home,
           builder: (context, state) => const HomePage(),
+        ),
+        GoRoute(
+          path: login,
+          builder: (context, state) => const Login(),
         ),
         GoRoute(
           path: dashboard,

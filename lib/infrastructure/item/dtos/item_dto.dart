@@ -1,5 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_1/domain/item/entities/item.dart';
 import 'package:flutter_application_1/domain/user/entities/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -23,7 +24,7 @@ class ItemDto with _$ItemDto {
     required List<String> images,
     @JsonKey(name: 'videos', defaultValue: <String>[])
     required List<String> videos,
-    // @JsonKey(name: 'createdDate', defaultValue: 0) required int createdDate,
+    @JsonKey(name: 'createdDate', defaultValue: 0) required int createdDate,
     // @JsonKey(name: 'updatedDate', defaultValue: 0) required int updatedDate,
   }) = _ItemDto;
 
@@ -37,7 +38,7 @@ class ItemDto with _$ItemDto {
       price: item.price,
       images: item.images,
       videos: item.videos,
-      // createdDate: item.createdDate.millisecondsSinceEpoch,
+      createdDate: item.createdDate.millisecondsSinceEpoch,
       // updatedDate: item.updatedDate.millisecondsSinceEpoch,
     );
   }
@@ -52,7 +53,7 @@ class ItemDto with _$ItemDto {
       price: price,
       videos: videos,
       images: images,
-      // createdDate: DateTime.fromMillisecondsSinceEpoch(createdDate),
+      createdDate: DateTime(2025),
       // updatedDate: DateTime.fromMillisecondsSinceEpoch(updatedDate),
     );
   }

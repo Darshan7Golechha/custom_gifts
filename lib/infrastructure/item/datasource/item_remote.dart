@@ -1,62 +1,41 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/domain/item/entities/item.dart';
 import 'package:flutter_application_1/infrastructure/item/dtos/item_dto.dart';
 
 class ItemRemoteDataSource {
-  // Load items from the local JSON file in the assets
+  final itemRef = FirebaseFirestore.instance
+      .collection('items')
+      .withConverter<ItemDto>(
+        fromFirestore: (snapshots, _) => ItemDto.fromJson(snapshots.data()!),
+        toFirestore: (itemDto, _) => itemDto.toJson(),
+      );
   Future<List<ItemDto>> getItems() async {
-    try {
-      // Load the JSON file from assets
-      final String response = await rootBundle.loadString('assets/items.json');
-
-      // Decode the JSON into a List<dynamic>
-      final List<dynamic> data = json.decode(response);
-
-      // Convert each JSON object into ItemDto
-      List<ItemDto> items = data.map<ItemDto>((item) {
-        return ItemDto.fromJson(item);
-      }).toList();
-
-      // Limit the items to the first 5, if necessary
-      return items.toList();
-    } catch (e) {
-      throw Exception("Failed to load items: $e");
-    }
-  }
-
-  Future<ItemDto> fetchItemsFromJson() async {
-    try {
-      // Load the JSON data from the assets
-      final String response = await rootBundle.loadString('assets/items.json');
-
-      // Parse the JSON data
-      final Map<String, dynamic> data = json.decode(response);
-
-      // Convert the JSON to a ItemDto object
-      return ItemDto.fromJson(data);
-    } catch (e) {
-      throw Exception('Failed to fetch item: $e');
-    }
+    return ((await itemRef
+                .orderBy('createdDate', descending: true)
+                .limit(5)
+                .get())
+            .docs)
+        .map((e) => e.data())
+        .toList();
   }
 
   Future<ItemDto> getItem(String itemID) async {
-    try {
-      final item = await fetchItemsFromJson();
-      if (item.itemID == itemID) {
-        return item;
-      }
-      return ItemDto.fromDomain(Item.empty().copyWith(itemID: itemID));
-    } catch (e) {
-      throw Exception('Failed to get item: $e');
-    }
-    // return (await postRef.doc(postID).get()).data()!;
+    // try {
+    //   final item = await fetchItemsFromJson();
+    //   if (item.itemID == itemID) {
+    //     return item;
+    //   }
+    //   return ItemDto.fromDomain(Item.empty().copyWith(itemID: itemID));
+    // } catch (e) {
+    //   throw Exception('Failed to get item: $e');
+    // }
+    return (await itemRef.doc(itemID).get()).data()!;
   }
 
-  // Add an item (similar to previous methods, but we'll simulate storage)
   Future<void> addItem(Item item) async {
-    // Here you would normally store the item, but we'll just log it for now
-    print('Item added: ${item.title}');
+    await itemRef.doc(item.itemID).set(ItemDto.fromDomain(item));
   }
 
   // Remove an item (no backend, so just print the action)
