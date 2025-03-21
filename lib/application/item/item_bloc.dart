@@ -53,7 +53,8 @@ class ItemBloc extends Bloc<ItemEvent, ItemState> {
           ),
         );
 
-        final failureOrSuccess = await itemRepository.getItem(itemID: e.itemID);
+        final failureOrSuccess =
+            await itemRepository.getItemDetails(itemID: e.itemID);
 
         failureOrSuccess.fold(
           (failure) => emit(

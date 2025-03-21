@@ -25,6 +25,7 @@ mixin _$Item {
   List<String> get images => throw _privateConstructorUsedError;
   List<String> get videos => throw _privateConstructorUsedError;
   DateTime get createdDate => throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
 
   /// Create a copy of Item
   /// with the given fields replaced by the non-null parameter values.
@@ -46,7 +47,10 @@ abstract class $ItemCopyWith<$Res> {
       int price,
       List<String> images,
       List<String> videos,
-      DateTime createdDate});
+      DateTime createdDate,
+      User user});
+
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -73,6 +77,7 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
     Object? images = null,
     Object? videos = null,
     Object? createdDate = null,
+    Object? user = null,
   }) {
     return _then(_value.copyWith(
       itemID: null == itemID
@@ -111,7 +116,21 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ) as $Val);
+  }
+
+  /// Create a copy of Item
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
   }
 }
 
@@ -131,7 +150,11 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
       int price,
       List<String> images,
       List<String> videos,
-      DateTime createdDate});
+      DateTime createdDate,
+      User user});
+
+  @override
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -155,6 +178,7 @@ class __$$ItemImplCopyWithImpl<$Res>
     Object? images = null,
     Object? videos = null,
     Object? createdDate = null,
+    Object? user = null,
   }) {
     return _then(_$ItemImpl(
       itemID: null == itemID
@@ -193,6 +217,10 @@ class __$$ItemImplCopyWithImpl<$Res>
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
   }
 }
@@ -209,7 +237,8 @@ class _$ItemImpl extends _Item {
       required this.price,
       required final List<String> images,
       required final List<String> videos,
-      required this.createdDate})
+      required this.createdDate,
+      required this.user})
       : _images = images,
         _videos = videos,
         super._();
@@ -244,10 +273,12 @@ class _$ItemImpl extends _Item {
 
   @override
   final DateTime createdDate;
+  @override
+  final User user;
 
   @override
   String toString() {
-    return 'Item(itemID: $itemID, userID: $userID, title: $title, likesCount: $likesCount, commentsCount: $commentsCount, price: $price, images: $images, videos: $videos, createdDate: $createdDate)';
+    return 'Item(itemID: $itemID, userID: $userID, title: $title, likesCount: $likesCount, commentsCount: $commentsCount, price: $price, images: $images, videos: $videos, createdDate: $createdDate, user: $user)';
   }
 
   @override
@@ -266,7 +297,8 @@ class _$ItemImpl extends _Item {
             const DeepCollectionEquality().equals(other._images, _images) &&
             const DeepCollectionEquality().equals(other._videos, _videos) &&
             (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate));
+                other.createdDate == createdDate) &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
@@ -280,7 +312,8 @@ class _$ItemImpl extends _Item {
       price,
       const DeepCollectionEquality().hash(_images),
       const DeepCollectionEquality().hash(_videos),
-      createdDate);
+      createdDate,
+      user);
 
   /// Create a copy of Item
   /// with the given fields replaced by the non-null parameter values.
@@ -301,7 +334,8 @@ abstract class _Item extends Item {
       required final int price,
       required final List<String> images,
       required final List<String> videos,
-      required final DateTime createdDate}) = _$ItemImpl;
+      required final DateTime createdDate,
+      required final User user}) = _$ItemImpl;
   const _Item._() : super._();
 
   @override
@@ -322,6 +356,8 @@ abstract class _Item extends Item {
   List<String> get videos;
   @override
   DateTime get createdDate;
+  @override
+  User get user;
 
   /// Create a copy of Item
   /// with the given fields replaced by the non-null parameter values.

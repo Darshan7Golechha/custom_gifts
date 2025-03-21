@@ -40,7 +40,7 @@ class AppRouter {
   static const String gigs = '/gigs';
   static const String search = '/search';
   static const String vendor = '/vendor';
-  static const String itemDetail = '/itemDetail?itemID';
+  static const String itemDetail = '/itemDetail';
 
   static List<RouteBase> get routes => [
         GoRoute(

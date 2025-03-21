@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/app_routes.dart';
 import 'package:flutter_application_1/application/item/item_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -28,16 +29,15 @@ class _ItemDetailState extends State<ItemDetail> {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.go(
-            '/vendor/:id',
-          ),
+          onPressed: () => context.go(AppRouter.home),
         ),
-        // title: const Text('Product Details'),
       ),
       body: BlocBuilder<ItemBloc, ItemState>(
-        buildWhen: (previous, current) =>
-            previous.isLoading != current.isLoading,
         builder: (context, state) {
+          if (state.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
           return SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,15 +49,15 @@ class _ItemDetailState extends State<ItemDetail> {
                     children: [
                       Row(
                         children: [
-                          Text(
-                            state.item.title,
-                            style: Theme.of(context).textTheme.headlineSmall,
+                          Expanded(
+                            child: Text(
+                              state.item.title ?? 'No title',
+                              style: Theme.of(context).textTheme.headlineSmall,
+                            ),
                           ),
-                          const Spacer(),
                           IconButton(
                             icon: const Icon(Icons.bookmark_add_outlined),
                             onPressed: () {
-                              // Implement share functionality
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(content: Text('Bookmarked')),
                               );
@@ -66,11 +66,11 @@ class _ItemDetailState extends State<ItemDetail> {
                           IconButton(
                             icon: const Icon(Icons.share),
                             onPressed: () {
-                              // Implement share functionality
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                    content: Text(
-                                        'Share functionality coming soon')),
+                                  content:
+                                      Text('Share functionality coming soon'),
+                                ),
                               );
                             },
                           ),
@@ -78,42 +78,11 @@ class _ItemDetailState extends State<ItemDetail> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        state.item.price.toString(),
+                        '\$${state.item.price.toStringAsFixed(2) ?? '0.00'}',
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               color: Theme.of(context).primaryColor,
                               fontWeight: FontWeight.bold,
                             ),
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        'Description',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-                        'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-                        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
-                        'nisi ut aliquip ex ea commodo consequat.',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      const SizedBox(height: 24),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Added to cart')),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                          child: const Text('Add to Cart'),
-                        ),
                       ),
                     ],
                   ),
@@ -135,13 +104,22 @@ class _ItemDetailState extends State<ItemDetail> {
                               offset: const Offset(0, 2),
                             ),
                           ],
-                          image: DecorationImage(
-                            image: NetworkImage(state.item.images[0]),
-                            fit: BoxFit.cover,
-                            onError: (error, stackTrace) =>
-                                const Icon(Icons.error_outline, size: 48),
-                          ),
+                          image: state.item.images.isNotEmpty
+                              ? DecorationImage(
+                                  image: NetworkImage(state.item.images[0]),
+                                  fit: BoxFit.cover,
+                                )
+                              : null,
                         ),
+                        child: state.item.images.isEmpty
+                            ? const Center(
+                                child: Icon(
+                                  Icons.image_not_supported,
+                                  size: 48,
+                                  color: Colors.grey,
+                                ),
+                              )
+                            : null,
                       ),
                       Positioned(
                         bottom: 16,
@@ -194,6 +172,42 @@ class _ItemDetailState extends State<ItemDetail> {
                               ),
                             ],
                           ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Description',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        ' ',
+                        // sta'   te.item.description ?? 'No description available',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      const SizedBox(height: 24),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Added to cart')),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: const Text('Add to Cart'),
                         ),
                       ),
                     ],

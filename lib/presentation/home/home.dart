@@ -154,14 +154,15 @@ class _HomeContentState extends State<HomeContent> {
                   }
 
                   return GridView.builder(
+                    padding: const EdgeInsets.only(top: 16),
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      childAspectRatio: 0.75,
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 16,
+                      childAspectRatio: 0.65,
+                      mainAxisSpacing: 5,
+                      crossAxisSpacing: 5,
                     ),
                     itemCount: state.itemList.length,
                     itemBuilder: (context, index) {
