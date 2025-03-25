@@ -124,7 +124,25 @@ class _HomeContentState extends State<HomeContent> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildFeaturedCategories(context),
+              SizedBox(
+                height: 40,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    _buildSearchChip('Custom Mugs'),
+                    const SizedBox(width: 8),
+                    _buildSearchChip('Personalized Cards'),
+                    const SizedBox(width: 8),
+                    _buildSearchChip('Photo Frames'),
+                    const SizedBox(width: 8),
+                    _buildSearchChip('Custom T-shirts'),
+                    const SizedBox(width: 8),
+                    _buildSearchChip('Phone Cases'),
+                    const SizedBox(width: 8),
+                    _buildSearchChip('Wall Art'),
+                  ],
+                ),
+              ),
               const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -241,6 +259,30 @@ class _HomeContentState extends State<HomeContent> {
           },
         ),
       ],
+    );
+  }
+
+  Widget _buildSearchChip(String label) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(10),
+        onTap: () => context.go('/search', extra: label),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          decoration: BoxDecoration(
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Text(
+            label,
+            style: const TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
