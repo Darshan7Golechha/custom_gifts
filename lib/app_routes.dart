@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/presentation/auth/login.dart';
 import 'package:flutter_application_1/presentation/home/home.dart';
+import 'package:flutter_application_1/presentation/item/create_item/widgets/add_edit_item.dart';
 import 'package:flutter_application_1/presentation/item/item_detail.dart';
 import 'package:flutter_application_1/presentation/message/chat.dart';
 import 'package:flutter_application_1/presentation/message/messages.dart';
@@ -40,6 +41,7 @@ class AppRouter {
   static const String gigs = '/gigs';
   static const String search = '/search';
   static const String vendor = '/vendor';
+  static const String addItem = '/addItem';
   static const String itemDetail = '/itemDetail?itemID';
 
   static List<RouteBase> get routes => [
@@ -54,6 +56,18 @@ class AppRouter {
         GoRoute(
           path: dashboard,
           builder: (context, state) => const DashboardPage(),
+        ),
+        GoRoute(
+          path: addItem,
+          pageBuilder: (context, state) => buildWithCustomPageTransition<void>(
+            context: context,
+            state: state,
+            child: AddEditItem(
+              itemID: state.uri.queryParameters['itemID']!,
+            ),
+          ),
+          redirect: (context, state) => redirect(
+              '$addItem?itemID=${state.uri.queryParameters['itemID']!}'),
         ),
         GoRoute(
           path: profile,

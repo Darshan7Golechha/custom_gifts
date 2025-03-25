@@ -21,6 +21,9 @@ mixin _$ItemEvent {
     required TResult Function() initialized,
     required TResult Function() fetchItems,
     required TResult Function(String itemID) fetchItem,
+    required TResult Function(Item item) addItem,
+    required TResult Function(List<String> images) addImage,
+    required TResult Function(List<String> videos) addVideo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +31,9 @@ mixin _$ItemEvent {
     TResult? Function()? initialized,
     TResult? Function()? fetchItems,
     TResult? Function(String itemID)? fetchItem,
+    TResult? Function(Item item)? addItem,
+    TResult? Function(List<String> images)? addImage,
+    TResult? Function(List<String> videos)? addVideo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +41,9 @@ mixin _$ItemEvent {
     TResult Function()? initialized,
     TResult Function()? fetchItems,
     TResult Function(String itemID)? fetchItem,
+    TResult Function(Item item)? addItem,
+    TResult Function(List<String> images)? addImage,
+    TResult Function(List<String> videos)? addVideo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +52,9 @@ mixin _$ItemEvent {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_FetchItems value) fetchItems,
     required TResult Function(_FetchItem value) fetchItem,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddImage value) addImage,
+    required TResult Function(_AddVideo value) addVideo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +62,9 @@ mixin _$ItemEvent {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_FetchItems value)? fetchItems,
     TResult? Function(_FetchItem value)? fetchItem,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddImage value)? addImage,
+    TResult? Function(_AddVideo value)? addVideo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +72,9 @@ mixin _$ItemEvent {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_FetchItems value)? fetchItems,
     TResult Function(_FetchItem value)? fetchItem,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddImage value)? addImage,
+    TResult Function(_AddVideo value)? addVideo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,6 +144,9 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() initialized,
     required TResult Function() fetchItems,
     required TResult Function(String itemID) fetchItem,
+    required TResult Function(Item item) addItem,
+    required TResult Function(List<String> images) addImage,
+    required TResult Function(List<String> videos) addVideo,
   }) {
     return initialized();
   }
@@ -136,6 +157,9 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? initialized,
     TResult? Function()? fetchItems,
     TResult? Function(String itemID)? fetchItem,
+    TResult? Function(Item item)? addItem,
+    TResult? Function(List<String> images)? addImage,
+    TResult? Function(List<String> videos)? addVideo,
   }) {
     return initialized?.call();
   }
@@ -146,6 +170,9 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? initialized,
     TResult Function()? fetchItems,
     TResult Function(String itemID)? fetchItem,
+    TResult Function(Item item)? addItem,
+    TResult Function(List<String> images)? addImage,
+    TResult Function(List<String> videos)? addVideo,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -160,6 +187,9 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_FetchItems value) fetchItems,
     required TResult Function(_FetchItem value) fetchItem,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddImage value) addImage,
+    required TResult Function(_AddVideo value) addVideo,
   }) {
     return initialized(this);
   }
@@ -170,6 +200,9 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_FetchItems value)? fetchItems,
     TResult? Function(_FetchItem value)? fetchItem,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddImage value)? addImage,
+    TResult? Function(_AddVideo value)? addVideo,
   }) {
     return initialized?.call(this);
   }
@@ -180,6 +213,9 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_FetchItems value)? fetchItems,
     TResult Function(_FetchItem value)? fetchItem,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddImage value)? addImage,
+    TResult Function(_AddVideo value)? addVideo,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -237,6 +273,9 @@ class _$FetchItemsImpl implements _FetchItems {
     required TResult Function() initialized,
     required TResult Function() fetchItems,
     required TResult Function(String itemID) fetchItem,
+    required TResult Function(Item item) addItem,
+    required TResult Function(List<String> images) addImage,
+    required TResult Function(List<String> videos) addVideo,
   }) {
     return fetchItems();
   }
@@ -247,6 +286,9 @@ class _$FetchItemsImpl implements _FetchItems {
     TResult? Function()? initialized,
     TResult? Function()? fetchItems,
     TResult? Function(String itemID)? fetchItem,
+    TResult? Function(Item item)? addItem,
+    TResult? Function(List<String> images)? addImage,
+    TResult? Function(List<String> videos)? addVideo,
   }) {
     return fetchItems?.call();
   }
@@ -257,6 +299,9 @@ class _$FetchItemsImpl implements _FetchItems {
     TResult Function()? initialized,
     TResult Function()? fetchItems,
     TResult Function(String itemID)? fetchItem,
+    TResult Function(Item item)? addItem,
+    TResult Function(List<String> images)? addImage,
+    TResult Function(List<String> videos)? addVideo,
     required TResult orElse(),
   }) {
     if (fetchItems != null) {
@@ -271,6 +316,9 @@ class _$FetchItemsImpl implements _FetchItems {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_FetchItems value) fetchItems,
     required TResult Function(_FetchItem value) fetchItem,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddImage value) addImage,
+    required TResult Function(_AddVideo value) addVideo,
   }) {
     return fetchItems(this);
   }
@@ -281,6 +329,9 @@ class _$FetchItemsImpl implements _FetchItems {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_FetchItems value)? fetchItems,
     TResult? Function(_FetchItem value)? fetchItem,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddImage value)? addImage,
+    TResult? Function(_AddVideo value)? addVideo,
   }) {
     return fetchItems?.call(this);
   }
@@ -291,6 +342,9 @@ class _$FetchItemsImpl implements _FetchItems {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_FetchItems value)? fetchItems,
     TResult Function(_FetchItem value)? fetchItem,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddImage value)? addImage,
+    TResult Function(_AddVideo value)? addVideo,
     required TResult orElse(),
   }) {
     if (fetchItems != null) {
@@ -375,6 +429,9 @@ class _$FetchItemImpl implements _FetchItem {
     required TResult Function() initialized,
     required TResult Function() fetchItems,
     required TResult Function(String itemID) fetchItem,
+    required TResult Function(Item item) addItem,
+    required TResult Function(List<String> images) addImage,
+    required TResult Function(List<String> videos) addVideo,
   }) {
     return fetchItem(itemID);
   }
@@ -385,6 +442,9 @@ class _$FetchItemImpl implements _FetchItem {
     TResult? Function()? initialized,
     TResult? Function()? fetchItems,
     TResult? Function(String itemID)? fetchItem,
+    TResult? Function(Item item)? addItem,
+    TResult? Function(List<String> images)? addImage,
+    TResult? Function(List<String> videos)? addVideo,
   }) {
     return fetchItem?.call(itemID);
   }
@@ -395,6 +455,9 @@ class _$FetchItemImpl implements _FetchItem {
     TResult Function()? initialized,
     TResult Function()? fetchItems,
     TResult Function(String itemID)? fetchItem,
+    TResult Function(Item item)? addItem,
+    TResult Function(List<String> images)? addImage,
+    TResult Function(List<String> videos)? addVideo,
     required TResult orElse(),
   }) {
     if (fetchItem != null) {
@@ -409,6 +472,9 @@ class _$FetchItemImpl implements _FetchItem {
     required TResult Function(_Initialized value) initialized,
     required TResult Function(_FetchItems value) fetchItems,
     required TResult Function(_FetchItem value) fetchItem,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddImage value) addImage,
+    required TResult Function(_AddVideo value) addVideo,
   }) {
     return fetchItem(this);
   }
@@ -419,6 +485,9 @@ class _$FetchItemImpl implements _FetchItem {
     TResult? Function(_Initialized value)? initialized,
     TResult? Function(_FetchItems value)? fetchItems,
     TResult? Function(_FetchItem value)? fetchItem,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddImage value)? addImage,
+    TResult? Function(_AddVideo value)? addVideo,
   }) {
     return fetchItem?.call(this);
   }
@@ -429,6 +498,9 @@ class _$FetchItemImpl implements _FetchItem {
     TResult Function(_Initialized value)? initialized,
     TResult Function(_FetchItems value)? fetchItems,
     TResult Function(_FetchItem value)? fetchItem,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddImage value)? addImage,
+    TResult Function(_AddVideo value)? addVideo,
     required TResult orElse(),
   }) {
     if (fetchItem != null) {
@@ -447,6 +519,524 @@ abstract class _FetchItem implements ItemEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FetchItemImplCopyWith<_$FetchItemImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddItemImplCopyWith<$Res> {
+  factory _$$AddItemImplCopyWith(
+          _$AddItemImpl value, $Res Function(_$AddItemImpl) then) =
+      __$$AddItemImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Item item});
+
+  $ItemCopyWith<$Res> get item;
+}
+
+/// @nodoc
+class __$$AddItemImplCopyWithImpl<$Res>
+    extends _$ItemEventCopyWithImpl<$Res, _$AddItemImpl>
+    implements _$$AddItemImplCopyWith<$Res> {
+  __$$AddItemImplCopyWithImpl(
+      _$AddItemImpl _value, $Res Function(_$AddItemImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = null,
+  }) {
+    return _then(_$AddItemImpl(
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as Item,
+    ));
+  }
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ItemCopyWith<$Res> get item {
+    return $ItemCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AddItemImpl implements _AddItem {
+  const _$AddItemImpl({required this.item});
+
+  @override
+  final Item item;
+
+  @override
+  String toString() {
+    return 'ItemEvent.addItem(item: $item)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddItemImpl &&
+            (identical(other.item, item) || other.item == item));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, item);
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddItemImplCopyWith<_$AddItemImpl> get copyWith =>
+      __$$AddItemImplCopyWithImpl<_$AddItemImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetchItems,
+    required TResult Function(String itemID) fetchItem,
+    required TResult Function(Item item) addItem,
+    required TResult Function(List<String> images) addImage,
+    required TResult Function(List<String> videos) addVideo,
+  }) {
+    return addItem(item);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetchItems,
+    TResult? Function(String itemID)? fetchItem,
+    TResult? Function(Item item)? addItem,
+    TResult? Function(List<String> images)? addImage,
+    TResult? Function(List<String> videos)? addVideo,
+  }) {
+    return addItem?.call(item);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetchItems,
+    TResult Function(String itemID)? fetchItem,
+    TResult Function(Item item)? addItem,
+    TResult Function(List<String> images)? addImage,
+    TResult Function(List<String> videos)? addVideo,
+    required TResult orElse(),
+  }) {
+    if (addItem != null) {
+      return addItem(item);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_FetchItems value) fetchItems,
+    required TResult Function(_FetchItem value) fetchItem,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddImage value) addImage,
+    required TResult Function(_AddVideo value) addVideo,
+  }) {
+    return addItem(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_FetchItems value)? fetchItems,
+    TResult? Function(_FetchItem value)? fetchItem,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddImage value)? addImage,
+    TResult? Function(_AddVideo value)? addVideo,
+  }) {
+    return addItem?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_FetchItems value)? fetchItems,
+    TResult Function(_FetchItem value)? fetchItem,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddImage value)? addImage,
+    TResult Function(_AddVideo value)? addVideo,
+    required TResult orElse(),
+  }) {
+    if (addItem != null) {
+      return addItem(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddItem implements ItemEvent {
+  const factory _AddItem({required final Item item}) = _$AddItemImpl;
+
+  Item get item;
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddItemImplCopyWith<_$AddItemImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddImageImplCopyWith<$Res> {
+  factory _$$AddImageImplCopyWith(
+          _$AddImageImpl value, $Res Function(_$AddImageImpl) then) =
+      __$$AddImageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> images});
+}
+
+/// @nodoc
+class __$$AddImageImplCopyWithImpl<$Res>
+    extends _$ItemEventCopyWithImpl<$Res, _$AddImageImpl>
+    implements _$$AddImageImplCopyWith<$Res> {
+  __$$AddImageImplCopyWithImpl(
+      _$AddImageImpl _value, $Res Function(_$AddImageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? images = null,
+  }) {
+    return _then(_$AddImageImpl(
+      images: null == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddImageImpl implements _AddImage {
+  const _$AddImageImpl({required final List<String> images}) : _images = images;
+
+  final List<String> _images;
+  @override
+  List<String> get images {
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_images);
+  }
+
+  @override
+  String toString() {
+    return 'ItemEvent.addImage(images: $images)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddImageImpl &&
+            const DeepCollectionEquality().equals(other._images, _images));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_images));
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddImageImplCopyWith<_$AddImageImpl> get copyWith =>
+      __$$AddImageImplCopyWithImpl<_$AddImageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetchItems,
+    required TResult Function(String itemID) fetchItem,
+    required TResult Function(Item item) addItem,
+    required TResult Function(List<String> images) addImage,
+    required TResult Function(List<String> videos) addVideo,
+  }) {
+    return addImage(images);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetchItems,
+    TResult? Function(String itemID)? fetchItem,
+    TResult? Function(Item item)? addItem,
+    TResult? Function(List<String> images)? addImage,
+    TResult? Function(List<String> videos)? addVideo,
+  }) {
+    return addImage?.call(images);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetchItems,
+    TResult Function(String itemID)? fetchItem,
+    TResult Function(Item item)? addItem,
+    TResult Function(List<String> images)? addImage,
+    TResult Function(List<String> videos)? addVideo,
+    required TResult orElse(),
+  }) {
+    if (addImage != null) {
+      return addImage(images);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_FetchItems value) fetchItems,
+    required TResult Function(_FetchItem value) fetchItem,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddImage value) addImage,
+    required TResult Function(_AddVideo value) addVideo,
+  }) {
+    return addImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_FetchItems value)? fetchItems,
+    TResult? Function(_FetchItem value)? fetchItem,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddImage value)? addImage,
+    TResult? Function(_AddVideo value)? addVideo,
+  }) {
+    return addImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_FetchItems value)? fetchItems,
+    TResult Function(_FetchItem value)? fetchItem,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddImage value)? addImage,
+    TResult Function(_AddVideo value)? addVideo,
+    required TResult orElse(),
+  }) {
+    if (addImage != null) {
+      return addImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddImage implements ItemEvent {
+  const factory _AddImage({required final List<String> images}) =
+      _$AddImageImpl;
+
+  List<String> get images;
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddImageImplCopyWith<_$AddImageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddVideoImplCopyWith<$Res> {
+  factory _$$AddVideoImplCopyWith(
+          _$AddVideoImpl value, $Res Function(_$AddVideoImpl) then) =
+      __$$AddVideoImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> videos});
+}
+
+/// @nodoc
+class __$$AddVideoImplCopyWithImpl<$Res>
+    extends _$ItemEventCopyWithImpl<$Res, _$AddVideoImpl>
+    implements _$$AddVideoImplCopyWith<$Res> {
+  __$$AddVideoImplCopyWithImpl(
+      _$AddVideoImpl _value, $Res Function(_$AddVideoImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? videos = null,
+  }) {
+    return _then(_$AddVideoImpl(
+      videos: null == videos
+          ? _value._videos
+          : videos // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddVideoImpl implements _AddVideo {
+  const _$AddVideoImpl({required final List<String> videos}) : _videos = videos;
+
+  final List<String> _videos;
+  @override
+  List<String> get videos {
+    if (_videos is EqualUnmodifiableListView) return _videos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_videos);
+  }
+
+  @override
+  String toString() {
+    return 'ItemEvent.addVideo(videos: $videos)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddVideoImpl &&
+            const DeepCollectionEquality().equals(other._videos, _videos));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_videos));
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddVideoImplCopyWith<_$AddVideoImpl> get copyWith =>
+      __$$AddVideoImplCopyWithImpl<_$AddVideoImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetchItems,
+    required TResult Function(String itemID) fetchItem,
+    required TResult Function(Item item) addItem,
+    required TResult Function(List<String> images) addImage,
+    required TResult Function(List<String> videos) addVideo,
+  }) {
+    return addVideo(videos);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetchItems,
+    TResult? Function(String itemID)? fetchItem,
+    TResult? Function(Item item)? addItem,
+    TResult? Function(List<String> images)? addImage,
+    TResult? Function(List<String> videos)? addVideo,
+  }) {
+    return addVideo?.call(videos);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetchItems,
+    TResult Function(String itemID)? fetchItem,
+    TResult Function(Item item)? addItem,
+    TResult Function(List<String> images)? addImage,
+    TResult Function(List<String> videos)? addVideo,
+    required TResult orElse(),
+  }) {
+    if (addVideo != null) {
+      return addVideo(videos);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_FetchItems value) fetchItems,
+    required TResult Function(_FetchItem value) fetchItem,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddImage value) addImage,
+    required TResult Function(_AddVideo value) addVideo,
+  }) {
+    return addVideo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_FetchItems value)? fetchItems,
+    TResult? Function(_FetchItem value)? fetchItem,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddImage value)? addImage,
+    TResult? Function(_AddVideo value)? addVideo,
+  }) {
+    return addVideo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_FetchItems value)? fetchItems,
+    TResult Function(_FetchItem value)? fetchItem,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddImage value)? addImage,
+    TResult Function(_AddVideo value)? addVideo,
+    required TResult orElse(),
+  }) {
+    if (addVideo != null) {
+      return addVideo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddVideo implements ItemEvent {
+  const factory _AddVideo({required final List<String> videos}) =
+      _$AddVideoImpl;
+
+  List<String> get videos;
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddVideoImplCopyWith<_$AddVideoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

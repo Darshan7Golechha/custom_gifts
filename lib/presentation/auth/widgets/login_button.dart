@@ -38,7 +38,11 @@ class LoginButton extends StatelessWidget {
               context.read<AuthBloc>().add(
                     AuthEvent.authenticate(user: state.user),
                   );
-              context.go('/home');
+              if (state.user.isSeller == false) {
+                context.go('/dashboard');
+              } else {
+                context.go('/home');
+              }
             },
           ),
         );

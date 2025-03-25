@@ -71,26 +71,42 @@ class ItemBloc extends Bloc<ItemEvent, ItemState> {
           ),
         );
       },
-      // addItem: (e) async {
-      //   emit(
-      //     state.copyWith(
-      //       isLoading: true,
-      //       failureOrSuccessOption: none(),
-      //     ),
-      //   );
-      //   final failureOrSuccess = await itemRepository.addItem(
-      //     item: e.item.copyWith(
-      //       itemID: const Uuid().v1(),
-      //     ),
-      //   );
+      addItem: (e) async {
+        emit(
+          state.copyWith(
+            isLoading: true,
+            failureOrSuccessOption: none(),
+          ),
+        );
+        final failureOrSuccess = await itemRepository.addItem(
+          item: e.item.copyWith(
+            itemID: const Uuid().v1(),
+          ),
+        );
 
-      //   emit(
-      //     state.copyWith(
-      //       failureOrSuccessOption: optionOf(failureOrSuccess),
-      //       isLoading: false,
-      //     ),
-      //   );
-      // },
+        emit(
+          state.copyWith(
+            failureOrSuccessOption: optionOf(failureOrSuccess),
+            isLoading: false,
+          ),
+        );
+      },
+      addImage: (e) {
+        emit(
+          state.copyWith(
+            item: state.item
+                .copyWith(images: e.images, videos: state.item.videos),
+          ),
+        );
+      },
+      addVideo: (e) {
+        emit(
+          state.copyWith(
+            item: state.item
+                .copyWith(videos: e.videos, images: state.item.images),
+          ),
+        );
+      },
     );
   }
 }

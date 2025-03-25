@@ -6,6 +6,7 @@ import 'package:flutter_application_1/application/user/user_bloc.dart';
 import 'package:flutter_application_1/config.dart';
 import 'package:flutter_application_1/infrastructure/auth/datasource/auth_remote.dart';
 import 'package:flutter_application_1/infrastructure/auth/repository/auth_repository.dart';
+import 'package:flutter_application_1/infrastructure/core/datasource/storage_remote.dart';
 import 'package:flutter_application_1/infrastructure/core/services/mailing_service.dart';
 import 'package:flutter_application_1/infrastructure/item/datasource/item_remote.dart';
 import 'package:flutter_application_1/infrastructure/item/repository/item_repository.dart';
@@ -61,6 +62,7 @@ void setupDependencyInjection() {
     () => ItemRepository(
       itemRemoteDataSource: locator<ItemRemoteDataSource>(),
       userRemoteDataSource: locator<UserRemoteDataSource>(),
+      storageRemoteDataSource: locator<StorageRemoteDataSource>(),
     ),
   );
   locator.registerLazySingleton(
@@ -88,6 +90,7 @@ void setupDependencyInjection() {
 
   locator.registerLazySingleton(() => UserRemoteDataSource());
   locator.registerLazySingleton(() => ItemRemoteDataSource());
+  locator.registerLazySingleton(() => StorageRemoteDataSource());
   locator.registerLazySingleton(() => AuthRemoteDataSource());
 
   // locator.registerLazySingleton(
