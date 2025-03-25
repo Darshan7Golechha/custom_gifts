@@ -65,6 +65,20 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           ),
         );
       },
+      isSeller: (e) async {
+        emit(
+          state.copyWith(
+            isLoading: true,
+          ),
+        );
+        final failureOrSuccess = await userRepository.isSeller();
+        emit(
+          state.copyWith(
+            failureOrSuccessOption: optionOf(failureOrSuccess),
+            isLoading: false,
+          ),
+        );
+      },
     );
   }
 }
