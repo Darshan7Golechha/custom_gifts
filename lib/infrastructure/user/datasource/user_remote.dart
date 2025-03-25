@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:core';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/domain/user/entities/user.dart';
@@ -42,6 +43,10 @@ class UserRemoteDataSource {
     return (await userRef.where('username', isEqualTo: username).get())
         .docs
         .isNotEmpty;
+  }
+
+  Future<void> isSeller(String userID) async {
+    return await userRef.doc(userID).update({'isSeller': true});
   }
 
   Future<void> addUser(User user) async {

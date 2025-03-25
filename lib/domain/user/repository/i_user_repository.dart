@@ -9,6 +9,7 @@ abstract class IUserRepository {
   //     {required String userName});
 
   Future<Either<ApiFailure, bool>> addUser({required User user});
+  Future<Either<ApiFailure, bool>> isSeller();
 
   // Future<Either<ApiFailure, bool>> editUser({required User user});
 
