@@ -13,6 +13,7 @@ _$ItemDtoImpl _$$ItemDtoImplFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String? ?? '',
       likesCount: (json['likesCount'] as num?)?.toInt() ?? 0,
       thumbnail: json['thumbnail'] as String? ?? '',
+      description: json['description'] as String? ?? '',
       commentsCount: (json['commentsCount'] as num?)?.toInt() ?? 0,
       price: (json['price'] as num?)?.toInt() ?? 0,
       images: (json['images'] as List<dynamic>?)
@@ -33,6 +34,7 @@ Map<String, dynamic> _$$ItemDtoImplToJson(_$ItemDtoImpl instance) =>
       'title': instance.title,
       'likesCount': instance.likesCount,
       'thumbnail': instance.thumbnail,
+      'description': instance.description,
       'commentsCount': instance.commentsCount,
       'price': instance.price,
       'images': instance.images,

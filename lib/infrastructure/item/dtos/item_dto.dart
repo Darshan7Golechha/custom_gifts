@@ -19,6 +19,7 @@ class ItemDto with _$ItemDto {
     @JsonKey(name: 'title', defaultValue: '') required String title,
     @JsonKey(name: 'likesCount', defaultValue: 0) required int likesCount,
     @JsonKey(name: 'thumbnail', defaultValue: '') required String thumbnail,
+    @JsonKey(name: 'description', defaultValue: '') required String description,
     @JsonKey(name: 'commentsCount', defaultValue: 0) required int commentsCount,
     @JsonKey(name: 'price', defaultValue: 0) required int price,
     @JsonKey(name: 'images', defaultValue: <String>[])
@@ -35,6 +36,7 @@ class ItemDto with _$ItemDto {
       itemID: item.itemID,
       title: item.title,
       thumbnail: item.thumbnail,
+      description: item.description,
       likesCount: item.likesCount,
       commentsCount: item.commentsCount,
       price: item.price,
@@ -52,6 +54,7 @@ class ItemDto with _$ItemDto {
       title: title,
       thumbnail: thumbnail,
       likesCount: likesCount,
+      description: description,
       commentsCount: commentsCount,
       price: price,
       videos: videos,

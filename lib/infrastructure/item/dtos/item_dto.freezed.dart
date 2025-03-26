@@ -30,6 +30,8 @@ mixin _$ItemDto {
   int get likesCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'thumbnail', defaultValue: '')
   String get thumbnail => throw _privateConstructorUsedError;
+  @JsonKey(name: 'description', defaultValue: '')
+  String get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'commentsCount', defaultValue: 0)
   int get commentsCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'price', defaultValue: 0)
@@ -61,6 +63,7 @@ abstract class $ItemDtoCopyWith<$Res> {
       @JsonKey(name: 'title', defaultValue: '') String title,
       @JsonKey(name: 'likesCount', defaultValue: 0) int likesCount,
       @JsonKey(name: 'thumbnail', defaultValue: '') String thumbnail,
+      @JsonKey(name: 'description', defaultValue: '') String description,
       @JsonKey(name: 'commentsCount', defaultValue: 0) int commentsCount,
       @JsonKey(name: 'price', defaultValue: 0) int price,
       @JsonKey(name: 'images', defaultValue: <String>[]) List<String> images,
@@ -88,6 +91,7 @@ class _$ItemDtoCopyWithImpl<$Res, $Val extends ItemDto>
     Object? title = null,
     Object? likesCount = null,
     Object? thumbnail = null,
+    Object? description = null,
     Object? commentsCount = null,
     Object? price = null,
     Object? images = null,
@@ -114,6 +118,10 @@ class _$ItemDtoCopyWithImpl<$Res, $Val extends ItemDto>
       thumbnail: null == thumbnail
           ? _value.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       commentsCount: null == commentsCount
           ? _value.commentsCount
@@ -152,6 +160,7 @@ abstract class _$$ItemDtoImplCopyWith<$Res> implements $ItemDtoCopyWith<$Res> {
       @JsonKey(name: 'title', defaultValue: '') String title,
       @JsonKey(name: 'likesCount', defaultValue: 0) int likesCount,
       @JsonKey(name: 'thumbnail', defaultValue: '') String thumbnail,
+      @JsonKey(name: 'description', defaultValue: '') String description,
       @JsonKey(name: 'commentsCount', defaultValue: 0) int commentsCount,
       @JsonKey(name: 'price', defaultValue: 0) int price,
       @JsonKey(name: 'images', defaultValue: <String>[]) List<String> images,
@@ -177,6 +186,7 @@ class __$$ItemDtoImplCopyWithImpl<$Res>
     Object? title = null,
     Object? likesCount = null,
     Object? thumbnail = null,
+    Object? description = null,
     Object? commentsCount = null,
     Object? price = null,
     Object? images = null,
@@ -203,6 +213,10 @@ class __$$ItemDtoImplCopyWithImpl<$Res>
       thumbnail: null == thumbnail
           ? _value.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       commentsCount: null == commentsCount
           ? _value.commentsCount
@@ -237,6 +251,7 @@ class _$ItemDtoImpl extends _ItemDto {
       @JsonKey(name: 'title', defaultValue: '') required this.title,
       @JsonKey(name: 'likesCount', defaultValue: 0) required this.likesCount,
       @JsonKey(name: 'thumbnail', defaultValue: '') required this.thumbnail,
+      @JsonKey(name: 'description', defaultValue: '') required this.description,
       @JsonKey(name: 'commentsCount', defaultValue: 0)
       required this.commentsCount,
       @JsonKey(name: 'price', defaultValue: 0) required this.price,
@@ -268,6 +283,9 @@ class _$ItemDtoImpl extends _ItemDto {
   @JsonKey(name: 'thumbnail', defaultValue: '')
   final String thumbnail;
   @override
+  @JsonKey(name: 'description', defaultValue: '')
+  final String description;
+  @override
   @JsonKey(name: 'commentsCount', defaultValue: 0)
   final int commentsCount;
   @override
@@ -297,7 +315,7 @@ class _$ItemDtoImpl extends _ItemDto {
 
   @override
   String toString() {
-    return 'ItemDto(userID: $userID, itemID: $itemID, title: $title, likesCount: $likesCount, thumbnail: $thumbnail, commentsCount: $commentsCount, price: $price, images: $images, videos: $videos, createdDate: $createdDate)';
+    return 'ItemDto(userID: $userID, itemID: $itemID, title: $title, likesCount: $likesCount, thumbnail: $thumbnail, description: $description, commentsCount: $commentsCount, price: $price, images: $images, videos: $videos, createdDate: $createdDate)';
   }
 
   @override
@@ -312,6 +330,8 @@ class _$ItemDtoImpl extends _ItemDto {
                 other.likesCount == likesCount) &&
             (identical(other.thumbnail, thumbnail) ||
                 other.thumbnail == thumbnail) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.commentsCount, commentsCount) ||
                 other.commentsCount == commentsCount) &&
             (identical(other.price, price) || other.price == price) &&
@@ -330,6 +350,7 @@ class _$ItemDtoImpl extends _ItemDto {
       title,
       likesCount,
       thumbnail,
+      description,
       commentsCount,
       price,
       const DeepCollectionEquality().hash(_images),
@@ -361,6 +382,8 @@ abstract class _ItemDto extends ItemDto {
       required final int likesCount,
       @JsonKey(name: 'thumbnail', defaultValue: '')
       required final String thumbnail,
+      @JsonKey(name: 'description', defaultValue: '')
+      required final String description,
       @JsonKey(name: 'commentsCount', defaultValue: 0)
       required final int commentsCount,
       @JsonKey(name: 'price', defaultValue: 0) required final int price,
@@ -389,6 +412,9 @@ abstract class _ItemDto extends ItemDto {
   @override
   @JsonKey(name: 'thumbnail', defaultValue: '')
   String get thumbnail;
+  @override
+  @JsonKey(name: 'description', defaultValue: '')
+  String get description;
   @override
   @JsonKey(name: 'commentsCount', defaultValue: 0)
   int get commentsCount;

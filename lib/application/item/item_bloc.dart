@@ -19,7 +19,14 @@ class ItemBloc extends Bloc<ItemEvent, ItemState> {
 
   Future<void> _onEvent(ItemEvent event, Emitter<ItemState> emit) async {
     await event.map(
-      initialized: (e) async => emit(ItemState.initial()),
+      initialized: (_) {
+        emit(ItemState(
+          isLoading: false,
+          failureOrSuccessOption: const None(),
+          item: Item.empty(),
+          itemList: [],
+        ));
+      },
       fetchItems: (e) async {
         emit(
           state.copyWith(
@@ -72,40 +79,51 @@ class ItemBloc extends Bloc<ItemEvent, ItemState> {
         );
       },
       addItem: (e) async {
-        emit(
-          state.copyWith(
-            isLoading: true,
-            failureOrSuccessOption: none(),
-          ),
-        );
+        emit(state.copyWith(
+          isLoading: true,
+          failureOrSuccessOption: none(),
+        ));
+
         final failureOrSuccess = await itemRepository.addItem(
           item: e.item.copyWith(
             itemID: const Uuid().v1(),
           ),
         );
 
-        emit(
-          state.copyWith(
-            failureOrSuccessOption: optionOf(failureOrSuccess),
-            isLoading: false,
+        failureOrSuccess.fold(
+          (failure) => emit(
+            state.copyWith(
+              failureOrSuccessOption: optionOf(failureOrSuccess),
+              isLoading: false,
+            ),
+          ),
+          (success) => emit(
+            state.copyWith(
+              failureOrSuccessOption: optionOf(failureOrSuccess),
+              isLoading: false,
+            ),
           ),
         );
       },
       addImage: (e) {
-        emit(
-          state.copyWith(
-            item: state.item
-                .copyWith(images: e.images, videos: state.item.videos),
+        emit(state.copyWith(
+          isLoading: false,
+          item: state.item.copyWith(
+            images: e.images,
+            videos: state.item.videos,
           ),
-        );
+          failureOrSuccessOption: none(),
+        ));
       },
       addVideo: (e) {
-        emit(
-          state.copyWith(
-            item: state.item
-                .copyWith(videos: e.videos, images: state.item.images),
+        emit(state.copyWith(
+          isLoading: false,
+          item: state.item.copyWith(
+            videos: e.videos,
+            images: state.item.images,
           ),
-        );
+          failureOrSuccessOption: none(),
+        ));
       },
     );
   }

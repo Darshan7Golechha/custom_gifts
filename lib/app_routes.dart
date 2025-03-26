@@ -59,15 +59,7 @@ class AppRouter {
         ),
         GoRoute(
           path: addItem,
-          pageBuilder: (context, state) => buildWithCustomPageTransition<void>(
-            context: context,
-            state: state,
-            child: AddEditItem(
-              itemID: state.uri.queryParameters['itemID']!,
-            ),
-          ),
-          redirect: (context, state) => redirect(
-              '$addItem?itemID=${state.uri.queryParameters['itemID']!}'),
+          builder: (context, state) => const AddEditItem(),
         ),
         GoRoute(
           path: profile,

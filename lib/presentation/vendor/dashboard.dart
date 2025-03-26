@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/presentation/item/create_item/add_item.dart';
 import 'package:flutter_application_1/presentation/vendor/widgets/add_item_dailog.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_application_1/app_routes.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -19,7 +20,17 @@ class DashboardPage extends StatelessWidget {
               children: [
                 _buildHeader(),
                 const SizedBox(height: 20),
-                const NewItem(),
+                ElevatedButton.icon(
+                  onPressed: () => context.go('/addItem'),
+                  icon: const Icon(Icons.add),
+                  label: const Text('Add New Item'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 15),
+                  ),
+                ),
                 const SizedBox(height: 20),
                 _buildUserStats(),
                 const SizedBox(height: 20),
