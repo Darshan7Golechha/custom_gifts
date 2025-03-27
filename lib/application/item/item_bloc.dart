@@ -19,14 +19,7 @@ class ItemBloc extends Bloc<ItemEvent, ItemState> {
 
   Future<void> _onEvent(ItemEvent event, Emitter<ItemState> emit) async {
     await event.map(
-      initialized: (_) {
-        emit(ItemState(
-          isLoading: false,
-          failureOrSuccessOption: const None(),
-          item: Item.empty(),
-          itemList: [],
-        ));
-      },
+      initialized: (e) async => emit(ItemState.initial()),
       fetchItems: (e) async {
         emit(
           state.copyWith(

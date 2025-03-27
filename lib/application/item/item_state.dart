@@ -13,7 +13,7 @@ class ItemState with _$ItemState {
 
   factory ItemState.initial() => ItemState(
         failureOrSuccessOption: const None(),
-        isLoading: true,
+        isLoading: false,
         item: Item.empty(),
         itemList: <Item>[],
       );
