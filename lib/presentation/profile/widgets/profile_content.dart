@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/application/auth/auth_bloc.dart';
 import 'package:flutter_application_1/application/user/user_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_application_1/domain/user/entities/user.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 
 class ProfileContent extends StatefulWidget {
   const ProfileContent({super.key});
@@ -13,9 +15,8 @@ class ProfileContent extends StatefulWidget {
 class _ProfileContentState extends State<ProfileContent> {
   @override
   void initState() {
-    context
-        .read<UserBloc>()
-        .add(const UserEvent.fetchUserByUserID(userID: '1'));
+    context.read<UserBloc>().add(UserEvent.fetchUserByUserID(
+        userID: context.read<AuthBloc>().state.currentUser.userID));
     super.initState();
   }
 
