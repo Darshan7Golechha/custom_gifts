@@ -18,7 +18,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   }
 
   Future<void> _onEvent(UserEvent event, Emitter<UserState> emit) async {
-    event.map(
+    await event.map(
       initialised: (e) async => emit(UserState.initial()),
       fetchUserByUserID: (e) async {
         emit(

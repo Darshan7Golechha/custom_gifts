@@ -11,31 +11,12 @@ class UserRemoteDataSource {
         fromFirestore: (snapshots, _) => UserDto.fromJson(snapshots.data()!),
         toFirestore: (userDto, _) => userDto.toJson(),
       );
-  Future<UserDto> fetchUsersFromJson() async {
-    try {
-      // Load the JSON data from the assets
-      final String response = await rootBundle.loadString('assets/users.json');
-
-      // Parse the JSON data
-      final Map<String, dynamic> data = json.decode(response);
-
-      // Convert the JSON to a UserDto object
-      return UserDto.fromJson(data);
-    } catch (e) {
-      throw Exception('Failed to fetch user: $e');
-    }
-  }
 
   Future<UserDto> getUser(String userID) async {
-    try {
-      final user = await fetchUsersFromJson();
-      if (user.userID == userID) {
-        return user;
-      }
-      return UserDto.fromDomain(User.empty().copyWith(userID: userID));
-    } catch (e) {
-      throw Exception('Failed to get user: $e');
-    }
+    final user = (await userRef.doc(userID).get());
+    return user.exists
+        ? user.data()!
+        : UserDto.fromDomain(User.empty().copyWith(fullName: userID));
   }
 
   Future<bool> checkIfUsernameExists(String username) async {
