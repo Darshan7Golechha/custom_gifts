@@ -25,7 +25,8 @@ class CustomItemGrid extends StatelessWidget {
 
   Widget _buildResultCard() {
     return Card(
-      elevation: 2,
+      elevation: 3,
+      shadowColor: Colors.black.withOpacity(0.1),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -52,6 +53,21 @@ class CustomItemGrid extends StatelessWidget {
                           Image.network(
                             item.images[0],
                             fit: BoxFit.cover,
+                            loadingBuilder: (context, child, loadingProgress) {
+                              if (loadingProgress == null) return child;
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes !=
+                                          null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                          loadingProgress.expectedTotalBytes!
+                                      : null,
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.purple.withOpacity(0.5),
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                           // Add shimmer loading effect
                           Positioned.fill(
@@ -61,7 +77,7 @@ class CustomItemGrid extends StatelessWidget {
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
                                   colors: [
-                                    Colors.white.withOpacity(0.1),
+                                    Colors.white.withOpacity(0.15),
                                     Colors.white.withOpacity(0.05),
                                     Colors.transparent,
                                   ],
@@ -105,38 +121,45 @@ class CustomItemGrid extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w600,
-                    height: 1.2,
+                    height: 1.3,
+                    letterSpacing: 0.2,
                   ),
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'By Vendor Name',
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
+                    Expanded(
+                      child: Text(
+                        'By Vendor Name',
+                        style: TextStyle(
+                          color: Colors.grey[700],
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 0.1,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
+                    const SizedBox(width: 8),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
+                        horizontal: 10,
+                        vertical: 5,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.purple.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.purple.withOpacity(0.12),
+                        borderRadius: BorderRadius.circular(14),
                       ),
                       child: Text(
                         '\$${item.price}',
                         style: const TextStyle(
                           color: Colors.purple,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 15,
+                          letterSpacing: 0.3,
                         ),
                       ),
                     ),

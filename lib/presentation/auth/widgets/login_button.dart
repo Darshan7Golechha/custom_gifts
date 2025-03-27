@@ -41,7 +41,7 @@ class LoginButton extends StatelessWidget {
               if (!state.user.isSeller) {
                 context.go('/home');
               } else {
-                context.go('/home');
+                context.go('/dashboard');
               }
             },
           ),
