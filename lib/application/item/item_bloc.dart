@@ -71,26 +71,53 @@ class ItemBloc extends Bloc<ItemEvent, ItemState> {
           ),
         );
       },
-      // addItem: (e) async {
-      //   emit(
-      //     state.copyWith(
-      //       isLoading: true,
-      //       failureOrSuccessOption: none(),
-      //     ),
-      //   );
-      //   final failureOrSuccess = await itemRepository.addItem(
-      //     item: e.item.copyWith(
-      //       itemID: const Uuid().v1(),
-      //     ),
-      //   );
+      addItem: (e) async {
+        emit(state.copyWith(
+          isLoading: true,
+          failureOrSuccessOption: none(),
+        ));
 
-      //   emit(
-      //     state.copyWith(
-      //       failureOrSuccessOption: optionOf(failureOrSuccess),
-      //       isLoading: false,
-      //     ),
-      //   );
-      // },
+        final failureOrSuccess = await itemRepository.addItem(
+          item: e.item.copyWith(
+            itemID: const Uuid().v1(),
+          ),
+        );
+
+        failureOrSuccess.fold(
+          (failure) => emit(
+            state.copyWith(
+              failureOrSuccessOption: optionOf(failureOrSuccess),
+              isLoading: false,
+            ),
+          ),
+          (success) => emit(
+            state.copyWith(
+              failureOrSuccessOption: optionOf(failureOrSuccess),
+              isLoading: false,
+            ),
+          ),
+        );
+      },
+      addImage: (e) {
+        emit(state.copyWith(
+          isLoading: false,
+          item: state.item.copyWith(
+            images: e.images,
+            videos: state.item.videos,
+          ),
+          failureOrSuccessOption: none(),
+        ));
+      },
+      addVideo: (e) {
+        emit(state.copyWith(
+          isLoading: false,
+          item: state.item.copyWith(
+            videos: e.videos,
+            images: state.item.images,
+          ),
+          failureOrSuccessOption: none(),
+        ));
+      },
     );
   }
 }
