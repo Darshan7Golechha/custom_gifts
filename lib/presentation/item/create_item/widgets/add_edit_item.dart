@@ -80,7 +80,12 @@ class _AddEditItemState extends State<AddEditItem> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add New Item'),
+        title: const Text('Add New Item',
+            style: TextStyle(fontWeight: FontWeight.bold)),
+        backgroundColor: Colors.pink[300],
+        foregroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
       ),
       body: BlocListener<ItemBloc, ItemState>(
         listener: (context, state) {
@@ -89,12 +94,18 @@ class _AddEditItemState extends State<AddEditItem> {
             (failureOrSuccess) => failureOrSuccess.fold(
               (failure) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(failure.toString())),
+                  SnackBar(
+                    content: Text(failure.toString()),
+                    backgroundColor: Colors.red,
+                  ),
                 );
               },
               (success) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Item added successfully!')),
+                  const SnackBar(
+                    content: Text('Item added successfully!'),
+                    backgroundColor: Colors.green,
+                  ),
                 );
                 Navigator.of(context).pop();
               },
@@ -102,15 +113,25 @@ class _AddEditItemState extends State<AddEditItem> {
           );
         },
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(20),
           child: Form(
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                // Title Field
                 TextFormField(
                   controller: _titleController,
-                  decoration: const InputDecoration(labelText: 'Title'),
+                  decoration: InputDecoration(
+                    labelText: 'Title',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    prefixIcon: const Icon(Icons.title),
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a title';
@@ -118,11 +139,22 @@ class _AddEditItemState extends State<AddEditItem> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 20),
+
+                // Description Field
                 TextFormField(
                   controller: _descriptionController,
-                  decoration: const InputDecoration(labelText: 'Description'),
-                  maxLines: 3,
+                  decoration: InputDecoration(
+                    labelText: 'Description',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    prefixIcon: const Icon(Icons.description),
+                  ),
+                  maxLines: 4,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a description';
@@ -130,12 +162,21 @@ class _AddEditItemState extends State<AddEditItem> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 20),
+
+                // Price Field
                 TextFormField(
                   controller: _priceController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: 'Price',
                     prefixText: '\$',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    prefixIcon: const Icon(Icons.attach_money),
                   ),
                   keyboardType: TextInputType.number,
                   validator: (value) {
@@ -148,16 +189,57 @@ class _AddEditItemState extends State<AddEditItem> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 24),
-                ElevatedButton.icon(
-                  onPressed: _pickImages,
-                  icon: const Icon(Icons.photo_library),
-                  label: const Text('Add Images'),
+                const SizedBox(height: 30),
+
+                // Media Buttons Row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: _pickImages,
+                        icon: const Icon(Icons.photo_library,
+                            color: Colors.white),
+                        label: const Text('Add Images',
+                            style: TextStyle(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.pink[300],
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: _pickVideo,
+                        icon: const Icon(Icons.video_library,
+                            color: Colors.white),
+                        label: const Text('Add Video',
+                            style: TextStyle(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.pink[300],
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
+                const SizedBox(height: 20),
+
+                // Media Previews
                 if (_selectedImages.isNotEmpty) ...[
-                  const SizedBox(height: 8),
+                  const Text('Selected Images',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 10),
                   SizedBox(
-                    height: 100,
+                    height: 120,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: _selectedImages.length,
@@ -165,42 +247,45 @@ class _AddEditItemState extends State<AddEditItem> {
                         return Stack(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(right: 8),
-                              child: kIsWeb
-                                  ? Image.network(
-                                      _selectedImages[index],
-                                      width: 100,
-                                      height: 100,
-                                      fit: BoxFit.cover,
-                                      errorBuilder:
-                                          (context, error, stackTrace) {
-                                        return Container(
-                                          width: 100,
-                                          height: 100,
-                                          color: Colors.grey[200],
-                                          child: const Icon(Icons.error),
-                                        );
-                                      },
-                                    )
-                                  : Image.file(
-                                      File(_selectedImages[index]),
-                                      width: 100,
-                                      height: 100,
-                                      fit: BoxFit.cover,
-                                      errorBuilder:
-                                          (context, error, stackTrace) {
-                                        return Container(
-                                          width: 100,
-                                          height: 100,
-                                          color: Colors.grey[200],
-                                          child: const Icon(Icons.error),
-                                        );
-                                      },
-                                    ),
+                              padding: const EdgeInsets.only(right: 10),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: kIsWeb
+                                    ? Image.network(
+                                        _selectedImages[index],
+                                        width: 120,
+                                        height: 120,
+                                        fit: BoxFit.cover,
+                                        errorBuilder:
+                                            (context, error, stackTrace) {
+                                          return Container(
+                                            width: 120,
+                                            height: 120,
+                                            color: Colors.grey[200],
+                                            child: const Icon(Icons.error),
+                                          );
+                                        },
+                                      )
+                                    : Image.file(
+                                        File(_selectedImages[index]),
+                                        width: 120,
+                                        height: 120,
+                                        fit: BoxFit.cover,
+                                        errorBuilder:
+                                            (context, error, stackTrace) {
+                                          return Container(
+                                            width: 120,
+                                            height: 120,
+                                            color: Colors.grey[200],
+                                            child: const Icon(Icons.error),
+                                          );
+                                        },
+                                      ),
+                              ),
                             ),
                             Positioned(
-                              top: 4,
-                              right: 12,
+                              top: 5,
+                              right: 15,
                               child: GestureDetector(
                                 onTap: () {
                                   setState(() {
@@ -208,14 +293,14 @@ class _AddEditItemState extends State<AddEditItem> {
                                   });
                                 },
                                 child: Container(
-                                  padding: const EdgeInsets.all(4),
+                                  padding: const EdgeInsets.all(5),
                                   decoration: BoxDecoration(
-                                    color: Colors.black.withOpacity(0.5),
+                                    color: Colors.black.withOpacity(0.6),
                                     shape: BoxShape.circle,
                                   ),
                                   child: const Icon(
                                     Icons.close,
-                                    size: 16,
+                                    size: 18,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -227,33 +312,45 @@ class _AddEditItemState extends State<AddEditItem> {
                     ),
                   ),
                 ],
-                const SizedBox(height: 16),
-                ElevatedButton.icon(
-                  onPressed: _pickVideo,
-                  icon: const Icon(Icons.video_library),
-                  label: const Text('Add Video'),
-                ),
                 if (_selectedVideos.isNotEmpty) ...[
-                  const SizedBox(height: 8),
-                  Text('${_selectedVideos.length} video(s) selected'),
+                  const SizedBox(height: 20),
+                  const Text('Selected Videos',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 10),
+                  Text('${_selectedVideos.length} video(s) selected',
+                      style: const TextStyle(fontSize: 16)),
                 ],
-                const SizedBox(height: 32),
+                const SizedBox(height: 40),
+
+                // Submit Button
                 BlocBuilder<ItemBloc, ItemState>(
                   buildWhen: (previous, current) {
-                    print('Previous loading state: ${previous.isLoading}');
-                    print('Current loading state: ${current.isLoading}');
-                    print(
-                        'Should rebuild: ${previous.isLoading != current.isLoading}');
                     return previous.isLoading != current.isLoading;
                   },
                   builder: (context, state) {
-                    print(
-                        'Current state isLoading: ${state.isLoading}'); // Add this debug line
                     return ElevatedButton(
                       onPressed: state.isLoading ? null : _submitForm,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.pink[300],
+                        padding: const EdgeInsets.symmetric(vertical: 18),
+                        textStyle: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
                       child: state.isLoading
-                          ? const CircularProgressIndicator()
-                          : const Text('Add Item'),
+                          ? const SizedBox(
+                              height: 25,
+                              width: 25,
+                              child: CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation<Color>(Colors.white),
+                              ),
+                            )
+                          : const Text('Add Item',
+                              style: TextStyle(color: Colors.white)),
                     );
                   },
                 ),
