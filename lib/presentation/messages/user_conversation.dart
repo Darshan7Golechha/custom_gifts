@@ -493,20 +493,20 @@ class _UserConversationTile extends StatelessWidget {
                           width: 150,
                           height: 150),
                     ),
-                  if (chat.videoURL.isNotEmpty)
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(
-                        10,
-                        10,
-                        10,
-                        0,
-                      ),
-                      child: VideoPost(
-                        url: chat.videoURL,
-                        width: 150,
-                        height: 150,
-                      ),
-                    ),
+                  // if (chat.videoURL.isNotEmpty)
+                  //   Container(
+                  //     margin: const EdgeInsets.fromLTRB(
+                  //       10,
+                  //       10,
+                  //       10,
+                  //       0,
+                  //     ),
+                  //     child: VideoPost(
+                  //       url: chat.videoURL,
+                  //       width: 150,
+                  //       height: 150,
+                  //     ),
+                  //   ),
                   // if (chat.voiceURL.isNotEmpty)
                   //   Container(
                   //     margin: EdgeInsets.fromLTRB(
