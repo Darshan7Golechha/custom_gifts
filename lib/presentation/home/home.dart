@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/domain/user/entities/user.dart';
 import 'package:flutter_application_1/presentation/message/chat.dart';
 import 'package:flutter_application_1/presentation/order/orders.dart'; // Update import
 import 'package:flutter_application_1/presentation/profile/profile_screen.dart';
@@ -9,6 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_application_1/application/item/item_bloc.dart'; // Import the ItemBloc
 import 'package:flutter_application_1/presentation/home/widgets/category_card.dart'; // Your category card widget
 import 'package:flutter_application_1/presentation/home/widgets/vendor_card.dart'; // Your vendor card widget
+import 'package:flutter_application_1/application/auth/auth_bloc.dart'; // Import AuthBloc
+import 'package:flutter_application_1/presentation/vendor/dashboard.dart'; // Import DashboardPage
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,71 +23,88 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = [
-    const HomeContent(),
-    const ChatScreen(),
-    const SearchScreen(),
-    const OrdersScreen(),
-    const ProfileScreen(),
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    return Scaffold(
-      body: _pages[_currentIndex],
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _currentIndex,
-        onDestinationSelected: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        backgroundColor: colorScheme.surface,
-        elevation: 3,
-        shadowColor: colorScheme.shadow.withOpacity(0.2),
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.chat_outlined),
-            selectedIcon: Icon(Icons.chat),
-            label: 'Chat',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.search_outlined),
-            selectedIcon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.shopping_cart_outlined),
-            selectedIcon: Icon(Icons.shopping_cart),
-            label: 'Orders',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.person_outline),
-            selectedIcon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-      ),
-      floatingActionButton: _currentIndex == 0
-          ? FloatingActionButton.extended(
-              onPressed: () => context.go('/addItem'),
-              icon: const Icon(Icons.add),
-              label: const Text('Add Item'),
-              backgroundColor: colorScheme.primaryContainer,
-              foregroundColor: colorScheme.onPrimaryContainer,
-            )
-          : null,
+    return BlocBuilder<AuthBloc, AuthState>(
+      buildWhen: (previous, current) =>
+          previous.currentUser.isSeller != current.currentUser.isSeller,
+      builder: (context, state) {
+        // If loading, show a progress indicator
+        if (state.isLoading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        // Handle authenticated state
+        if (state.currentUser != User.empty()) {
+          final isSeller = state.currentUser.isSeller;
+
+          // Define pages based on user role
+          final List<Widget> pages = [
+            isSeller ? const DashboardPage() : const HomeContent(),
+            const ChatScreen(),
+            const SearchScreen(),
+            const OrdersScreen(),
+            const ProfileScreen(),
+          ];
+
+          return Scaffold(
+            body: pages[_currentIndex],
+            bottomNavigationBar: NavigationBar(
+              selectedIndex: _currentIndex,
+              onDestinationSelected: (index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+              backgroundColor: Theme.of(context).colorScheme.surface,
+              elevation: 3,
+              shadowColor:
+                  Theme.of(context).colorScheme.shadow.withOpacity(0.2),
+              destinations: const [
+                NavigationDestination(
+                  icon: Icon(Icons.home_outlined),
+                  selectedIcon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.chat_outlined),
+                  selectedIcon: Icon(Icons.chat),
+                  label: 'Chat',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.search_outlined),
+                  selectedIcon: Icon(Icons.search),
+                  label: 'Search',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.shopping_cart_outlined),
+                  selectedIcon: Icon(Icons.shopping_cart),
+                  label: 'Orders',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.person_outline),
+                  selectedIcon: Icon(Icons.person),
+                  label: 'Profile',
+                ),
+              ],
+            ),
+            floatingActionButton: _currentIndex == 0 && !isSeller
+                ? FloatingActionButton.extended(
+                    onPressed: () => context.go('/addItem'),
+                    icon: const Icon(Icons.add),
+                    label: const Text('Add Item'),
+                    backgroundColor:
+                        Theme.of(context).colorScheme.primaryContainer,
+                    foregroundColor:
+                        Theme.of(context).colorScheme.onPrimaryContainer,
+                  )
+                : null,
+          );
+        }
+
+        // Handle unauthenticated state
+        return const Scaffold(body: Center(child: Text('Not Authenticated')));
+      },
     );
   }
 }

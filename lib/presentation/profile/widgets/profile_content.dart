@@ -46,60 +46,81 @@ class _ProfileContentState extends State<ProfileContent> {
         // If user data is available, show profile content
         final user = state.user;
 
-        return SingleChildScrollView(
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
-              CircleAvatar(
-                radius: 50,
-                backgroundImage: NetworkImage(user.photoURL.isNotEmpty
-                    ? user.photoURL
-                    : 'https://example.com/default-avatar.jpg'),
-                child: user.photoURL.isEmpty
-                    ? const Icon(Icons.person, size: 50)
-                    : null,
+              // Profile Picture
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.primary,
+                    width: 2,
+                  ),
+                ),
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: NetworkImage(user.photoURL.isNotEmpty
+                      ? user.photoURL
+                      : 'https://via.placeholder.com/150'),
+                  backgroundColor: Colors.transparent,
+                  child: user.photoURL.isEmpty
+                      ? const Icon(Icons.person, size: 50)
+                      : null,
+                ),
               ),
               const SizedBox(height: 16),
+              // User Name
               Text(
                 user.fullName.isNotEmpty ? user.fullName : 'John Doe',
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(height: 8),
+              // User Email
               Text(
                 user.email.isNotEmpty ? user.email : 'john.doe@example.com',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey[600],
-                ),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Colors.grey[600],
+                    ),
               ),
               const SizedBox(height: 24),
+              // Profile Sections
               _buildProfileSection(
-                icon: Icons.shopping_bag,
+                context: context,
+                icon: Icons.shopping_bag_outlined,
                 title: 'Orders',
                 onTap: () {},
               ),
               _buildProfileSection(
-                icon: Icons.favorite,
+                context: context,
+                icon: Icons.favorite_border,
                 title: 'Wishlist',
                 onTap: () {},
               ),
               _buildProfileSection(
-                icon: Icons.settings,
+                context: context,
+                icon: Icons.settings_outlined,
                 title: 'Settings',
                 onTap: () {},
               ),
               _buildProfileSection(
-                icon: Icons.help,
+                context: context,
+                icon: Icons.help_outline,
                 title: 'Help & Support',
                 onTap: () {},
               ),
               _buildProfileSection(
+                context: context,
                 icon: Icons.logout,
                 title: 'Logout',
-                onTap: () {},
+                onTap: () {
+                  // TODO: Implement logout functionality
+                },
               ),
             ],
           ),
@@ -109,15 +130,38 @@ class _ProfileContentState extends State<ProfileContent> {
   }
 
   Widget _buildProfileSection({
+    required BuildContext context,
     required IconData icon,
     required String title,
     required VoidCallback onTap,
   }) {
-    return ListTile(
-      leading: Icon(icon),
-      title: Text(title),
-      trailing: const Icon(Icons.chevron_right),
-      onTap: onTap,
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: ListTile(
+        leading: Icon(icon, color: Theme.of(context).colorScheme.primary),
+        title: Text(
+          title,
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
+        ),
+        trailing: Icon(Icons.arrow_forward_ios,
+            size: 16, color: Theme.of(context).colorScheme.onSurfaceVariant),
+        onTap: onTap,
+      ),
     );
   }
 }

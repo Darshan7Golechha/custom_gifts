@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/application/user/user_bloc.dart';
 import 'package:flutter_application_1/presentation/auth/login.dart';
 import 'package:flutter_application_1/presentation/home/home.dart';
 import 'package:flutter_application_1/presentation/item/create_item/widgets/add_edit_item.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_application_1/screens/gig_details.dart';
 import 'package:flutter_application_1/presentation/order/orders.dart';
 import 'package:flutter_application_1/presentation/profile/profile_screen.dart';
 import 'package:flutter_application_1/presentation/search/serarch.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -48,6 +50,13 @@ class AppRouter {
         GoRoute(
           path: home,
           builder: (context, state) => const HomePage(),
+          redirect: (context, state) {
+            final userState = context.read<UserBloc>().state;
+            if (userState.user.isSeller) {
+              return dashboard;
+            }
+            return null;
+          },
         ),
         GoRoute(
           path: login,
@@ -56,6 +65,13 @@ class AppRouter {
         GoRoute(
           path: dashboard,
           builder: (context, state) => const DashboardPage(),
+          redirect: (context, state) {
+            final userState = context.read<UserBloc>().state;
+            if (!userState.user.isSeller) {
+              return home;
+            }
+            return null;
+          },
         ),
         GoRoute(
           path: addItem,

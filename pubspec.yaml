@@ -27,6 +27,7 @@ dependencies:
   json_annotation: ^4.9.0
   json_serializable: ^6.8.0
   json_theme: ^7.0.0+3
+  shared_preferences: ^2.5.3
   shimmer: ^3.0.0
   uuid: ^4.5.1
 description: A new Flutter project.

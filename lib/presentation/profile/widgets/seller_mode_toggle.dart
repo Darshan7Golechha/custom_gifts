@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_application_1/application/user/user_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SellerModeToggle extends StatefulWidget {
-  const SellerModeToggle({Key? key}) : super(key: key);
+  const SellerModeToggle({super.key});
 
   @override
   State<SellerModeToggle> createState() => _SellerModeToggleState();
@@ -9,6 +12,24 @@ class SellerModeToggle extends StatefulWidget {
 
 class _SellerModeToggleState extends State<SellerModeToggle> {
   bool isSellerMode = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSellerMode();
+  }
+
+  Future<void> _loadSellerMode() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      isSellerMode = prefs.getBool('isSellerMode') ?? false;
+    });
+  }
+
+  Future<void> _saveSellerMode(bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isSellerMode', value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +70,10 @@ class _SellerModeToggleState extends State<SellerModeToggle> {
               setState(() {
                 isSellerMode = value;
               });
+              _saveSellerMode(value); // Save the state
+              context
+                  .read<UserBloc>()
+                  .add(UserEvent.updateSellerMode(isSeller: value));
             },
           ),
         ],

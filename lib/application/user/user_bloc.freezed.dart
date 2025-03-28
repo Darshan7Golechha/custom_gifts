@@ -21,6 +21,7 @@ mixin _$UserEvent {
     required TResult Function() initialised,
     required TResult Function(String userID) fetchUserByUserID,
     required TResult Function(User user) addUser,
+    required TResult Function(bool isSeller) updateSellerMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$UserEvent {
     TResult? Function()? initialised,
     TResult? Function(String userID)? fetchUserByUserID,
     TResult? Function(User user)? addUser,
+    TResult? Function(bool isSeller)? updateSellerMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$UserEvent {
     TResult Function()? initialised,
     TResult Function(String userID)? fetchUserByUserID,
     TResult Function(User user)? addUser,
+    TResult Function(bool isSeller)? updateSellerMode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$UserEvent {
     required TResult Function(_Intialised value) initialised,
     required TResult Function(_FetchUserByUserID value) fetchUserByUserID,
     required TResult Function(_AddUser value) addUser,
+    required TResult Function(_UpdateSellerMode value) updateSellerMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$UserEvent {
     TResult? Function(_Intialised value)? initialised,
     TResult? Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_UpdateSellerMode value)? updateSellerMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$UserEvent {
     TResult Function(_Intialised value)? initialised,
     TResult Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult Function(_AddUser value)? addUser,
+    TResult Function(_UpdateSellerMode value)? updateSellerMode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,6 +132,7 @@ class _$IntialisedImpl implements _Intialised {
     required TResult Function() initialised,
     required TResult Function(String userID) fetchUserByUserID,
     required TResult Function(User user) addUser,
+    required TResult Function(bool isSeller) updateSellerMode,
   }) {
     return initialised();
   }
@@ -136,6 +143,7 @@ class _$IntialisedImpl implements _Intialised {
     TResult? Function()? initialised,
     TResult? Function(String userID)? fetchUserByUserID,
     TResult? Function(User user)? addUser,
+    TResult? Function(bool isSeller)? updateSellerMode,
   }) {
     return initialised?.call();
   }
@@ -146,6 +154,7 @@ class _$IntialisedImpl implements _Intialised {
     TResult Function()? initialised,
     TResult Function(String userID)? fetchUserByUserID,
     TResult Function(User user)? addUser,
+    TResult Function(bool isSeller)? updateSellerMode,
     required TResult orElse(),
   }) {
     if (initialised != null) {
@@ -160,6 +169,7 @@ class _$IntialisedImpl implements _Intialised {
     required TResult Function(_Intialised value) initialised,
     required TResult Function(_FetchUserByUserID value) fetchUserByUserID,
     required TResult Function(_AddUser value) addUser,
+    required TResult Function(_UpdateSellerMode value) updateSellerMode,
   }) {
     return initialised(this);
   }
@@ -170,6 +180,7 @@ class _$IntialisedImpl implements _Intialised {
     TResult? Function(_Intialised value)? initialised,
     TResult? Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_UpdateSellerMode value)? updateSellerMode,
   }) {
     return initialised?.call(this);
   }
@@ -180,6 +191,7 @@ class _$IntialisedImpl implements _Intialised {
     TResult Function(_Intialised value)? initialised,
     TResult Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult Function(_AddUser value)? addUser,
+    TResult Function(_UpdateSellerMode value)? updateSellerMode,
     required TResult orElse(),
   }) {
     if (initialised != null) {
@@ -265,6 +277,7 @@ class _$FetchUserByUserIDImpl implements _FetchUserByUserID {
     required TResult Function() initialised,
     required TResult Function(String userID) fetchUserByUserID,
     required TResult Function(User user) addUser,
+    required TResult Function(bool isSeller) updateSellerMode,
   }) {
     return fetchUserByUserID(userID);
   }
@@ -275,6 +288,7 @@ class _$FetchUserByUserIDImpl implements _FetchUserByUserID {
     TResult? Function()? initialised,
     TResult? Function(String userID)? fetchUserByUserID,
     TResult? Function(User user)? addUser,
+    TResult? Function(bool isSeller)? updateSellerMode,
   }) {
     return fetchUserByUserID?.call(userID);
   }
@@ -285,6 +299,7 @@ class _$FetchUserByUserIDImpl implements _FetchUserByUserID {
     TResult Function()? initialised,
     TResult Function(String userID)? fetchUserByUserID,
     TResult Function(User user)? addUser,
+    TResult Function(bool isSeller)? updateSellerMode,
     required TResult orElse(),
   }) {
     if (fetchUserByUserID != null) {
@@ -299,6 +314,7 @@ class _$FetchUserByUserIDImpl implements _FetchUserByUserID {
     required TResult Function(_Intialised value) initialised,
     required TResult Function(_FetchUserByUserID value) fetchUserByUserID,
     required TResult Function(_AddUser value) addUser,
+    required TResult Function(_UpdateSellerMode value) updateSellerMode,
   }) {
     return fetchUserByUserID(this);
   }
@@ -309,6 +325,7 @@ class _$FetchUserByUserIDImpl implements _FetchUserByUserID {
     TResult? Function(_Intialised value)? initialised,
     TResult? Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_UpdateSellerMode value)? updateSellerMode,
   }) {
     return fetchUserByUserID?.call(this);
   }
@@ -319,6 +336,7 @@ class _$FetchUserByUserIDImpl implements _FetchUserByUserID {
     TResult Function(_Intialised value)? initialised,
     TResult Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult Function(_AddUser value)? addUser,
+    TResult Function(_UpdateSellerMode value)? updateSellerMode,
     required TResult orElse(),
   }) {
     if (fetchUserByUserID != null) {
@@ -424,6 +442,7 @@ class _$AddUserImpl implements _AddUser {
     required TResult Function() initialised,
     required TResult Function(String userID) fetchUserByUserID,
     required TResult Function(User user) addUser,
+    required TResult Function(bool isSeller) updateSellerMode,
   }) {
     return addUser(user);
   }
@@ -434,6 +453,7 @@ class _$AddUserImpl implements _AddUser {
     TResult? Function()? initialised,
     TResult? Function(String userID)? fetchUserByUserID,
     TResult? Function(User user)? addUser,
+    TResult? Function(bool isSeller)? updateSellerMode,
   }) {
     return addUser?.call(user);
   }
@@ -444,6 +464,7 @@ class _$AddUserImpl implements _AddUser {
     TResult Function()? initialised,
     TResult Function(String userID)? fetchUserByUserID,
     TResult Function(User user)? addUser,
+    TResult Function(bool isSeller)? updateSellerMode,
     required TResult orElse(),
   }) {
     if (addUser != null) {
@@ -458,6 +479,7 @@ class _$AddUserImpl implements _AddUser {
     required TResult Function(_Intialised value) initialised,
     required TResult Function(_FetchUserByUserID value) fetchUserByUserID,
     required TResult Function(_AddUser value) addUser,
+    required TResult Function(_UpdateSellerMode value) updateSellerMode,
   }) {
     return addUser(this);
   }
@@ -468,6 +490,7 @@ class _$AddUserImpl implements _AddUser {
     TResult? Function(_Intialised value)? initialised,
     TResult? Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_UpdateSellerMode value)? updateSellerMode,
   }) {
     return addUser?.call(this);
   }
@@ -478,6 +501,7 @@ class _$AddUserImpl implements _AddUser {
     TResult Function(_Intialised value)? initialised,
     TResult Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult Function(_AddUser value)? addUser,
+    TResult Function(_UpdateSellerMode value)? updateSellerMode,
     required TResult orElse(),
   }) {
     if (addUser != null) {
@@ -496,6 +520,161 @@ abstract class _AddUser implements UserEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddUserImplCopyWith<_$AddUserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateSellerModeImplCopyWith<$Res> {
+  factory _$$UpdateSellerModeImplCopyWith(_$UpdateSellerModeImpl value,
+          $Res Function(_$UpdateSellerModeImpl) then) =
+      __$$UpdateSellerModeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isSeller});
+}
+
+/// @nodoc
+class __$$UpdateSellerModeImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$UpdateSellerModeImpl>
+    implements _$$UpdateSellerModeImplCopyWith<$Res> {
+  __$$UpdateSellerModeImplCopyWithImpl(_$UpdateSellerModeImpl _value,
+      $Res Function(_$UpdateSellerModeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isSeller = null,
+  }) {
+    return _then(_$UpdateSellerModeImpl(
+      isSeller: null == isSeller
+          ? _value.isSeller
+          : isSeller // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateSellerModeImpl implements _UpdateSellerMode {
+  const _$UpdateSellerModeImpl({required this.isSeller});
+
+  @override
+  final bool isSeller;
+
+  @override
+  String toString() {
+    return 'UserEvent.updateSellerMode(isSeller: $isSeller)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateSellerModeImpl &&
+            (identical(other.isSeller, isSeller) ||
+                other.isSeller == isSeller));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isSeller);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateSellerModeImplCopyWith<_$UpdateSellerModeImpl> get copyWith =>
+      __$$UpdateSellerModeImplCopyWithImpl<_$UpdateSellerModeImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialised,
+    required TResult Function(String userID) fetchUserByUserID,
+    required TResult Function(User user) addUser,
+    required TResult Function(bool isSeller) updateSellerMode,
+  }) {
+    return updateSellerMode(isSeller);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialised,
+    TResult? Function(String userID)? fetchUserByUserID,
+    TResult? Function(User user)? addUser,
+    TResult? Function(bool isSeller)? updateSellerMode,
+  }) {
+    return updateSellerMode?.call(isSeller);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialised,
+    TResult Function(String userID)? fetchUserByUserID,
+    TResult Function(User user)? addUser,
+    TResult Function(bool isSeller)? updateSellerMode,
+    required TResult orElse(),
+  }) {
+    if (updateSellerMode != null) {
+      return updateSellerMode(isSeller);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Intialised value) initialised,
+    required TResult Function(_FetchUserByUserID value) fetchUserByUserID,
+    required TResult Function(_AddUser value) addUser,
+    required TResult Function(_UpdateSellerMode value) updateSellerMode,
+  }) {
+    return updateSellerMode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Intialised value)? initialised,
+    TResult? Function(_FetchUserByUserID value)? fetchUserByUserID,
+    TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_UpdateSellerMode value)? updateSellerMode,
+  }) {
+    return updateSellerMode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Intialised value)? initialised,
+    TResult Function(_FetchUserByUserID value)? fetchUserByUserID,
+    TResult Function(_AddUser value)? addUser,
+    TResult Function(_UpdateSellerMode value)? updateSellerMode,
+    required TResult orElse(),
+  }) {
+    if (updateSellerMode != null) {
+      return updateSellerMode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateSellerMode implements UserEvent {
+  const factory _UpdateSellerMode({required final bool isSeller}) =
+      _$UpdateSellerModeImpl;
+
+  bool get isSeller;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateSellerModeImplCopyWith<_$UpdateSellerModeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

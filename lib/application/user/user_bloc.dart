@@ -45,6 +45,12 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           ),
         );
       },
+      updateSellerMode: (e) async {
+        emit(state.copyWith(
+          user: state.user.copyWith(isSeller: e.isSeller),
+          failureOrSuccessOption: none(),
+        ));
+      },
       addUser: (e) async {
         emit(
           state.copyWith(
