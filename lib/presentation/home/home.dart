@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/presentation/message/chat.dart';
+import 'package:flutter_application_1/presentation/messages/messages.dart';
 import 'package:flutter_application_1/presentation/order/orders.dart'; // Update import
 import 'package:flutter_application_1/presentation/profile/profile_screen.dart';
 import 'package:flutter_application_1/presentation/search/serarch.dart';
@@ -22,7 +23,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _pages = [
     const HomeContent(),
-    const ChatScreen(),
+    const Messages(),
     const SearchScreen(),
     const OrdersScreen(),
     const ProfileScreen(),

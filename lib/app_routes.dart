@@ -5,6 +5,8 @@ import 'package:flutter_application_1/presentation/item/create_item/widgets/add_
 import 'package:flutter_application_1/presentation/item/item_detail.dart';
 import 'package:flutter_application_1/presentation/message/chat.dart';
 import 'package:flutter_application_1/presentation/message/messages.dart';
+import 'package:flutter_application_1/presentation/messages/messages.dart';
+import 'package:flutter_application_1/presentation/messages/user_conversation.dart';
 import 'package:flutter_application_1/presentation/product/product_detail_page.dart';
 import 'package:flutter_application_1/presentation/vendor/dashboard.dart';
 import 'package:flutter_application_1/presentation/vendor/vendor_profile.dart';
@@ -42,12 +44,23 @@ class AppRouter {
   static const String search = '/search';
   static const String vendor = '/vendor';
   static const String addItem = '/addItem';
+  static const String messages = '/messages';
+  static const String conversation = '/conversation';
   static const String itemDetail = '/itemDetail?itemID';
 
   static List<RouteBase> get routes => [
         GoRoute(
           path: home,
           builder: (context, state) => const HomePage(),
+        ),
+        GoRoute(
+          path: messages,
+          pageBuilder: (context, state) => buildWithCustomPageTransition<void>(
+            context: context,
+            state: state,
+            child: const Messages(),
+          ),
+          redirect: (context, state) => redirect(messages),
         ),
         GoRoute(
           path: login,
@@ -114,6 +127,19 @@ class AppRouter {
               index: index,
             );
           },
+        ),
+        GoRoute(
+          path: conversation,
+          pageBuilder: (context, state) => buildWithCustomPageTransition<void>(
+            context: context,
+            state: state,
+            child: UserConversation(
+              userID: state.uri.queryParameters['userID']!,
+              conversationID: state.uri.queryParameters['conversationID']!,
+            ),
+          ),
+          // redirect: (context, state) => redirect(
+          //     '$conversation?userID=${state.uri.queryParameters['userID']!}&conversationID=${state.uri.queryParameters['conversationID']!}'),
         ),
       ];
   static redirect(String redirectRoute) {
