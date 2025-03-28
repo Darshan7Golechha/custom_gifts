@@ -18,21 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChatEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialised,
+    required TResult Function() initialized,
     required TResult Function(String conversationID) getConversation,
     required TResult Function(Chat chat) sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialised,
+    TResult? Function()? initialized,
     TResult? Function(String conversationID)? getConversation,
     TResult? Function(Chat chat)? sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialised,
+    TResult Function()? initialized,
     TResult Function(String conversationID)? getConversation,
     TResult Function(Chat chat)? sendMessage,
     required TResult orElse(),
@@ -40,21 +40,21 @@ mixin _$ChatEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialised value) initialised,
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_GetConversation value) getConversation,
     required TResult Function(_SendMessage value) sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialised value)? initialised,
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_GetConversation value)? getConversation,
     TResult? Function(_SendMessage value)? sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialised value)? initialised,
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_GetConversation value)? getConversation,
     TResult Function(_SendMessage value)? sendMessage,
     required TResult orElse(),
@@ -83,18 +83,18 @@ class _$ChatEventCopyWithImpl<$Res, $Val extends ChatEvent>
 }
 
 /// @nodoc
-abstract class _$$InitialisedImplCopyWith<$Res> {
-  factory _$$InitialisedImplCopyWith(
-          _$InitialisedImpl value, $Res Function(_$InitialisedImpl) then) =
-      __$$InitialisedImplCopyWithImpl<$Res>;
+abstract class _$$InitializedImplCopyWith<$Res> {
+  factory _$$InitializedImplCopyWith(
+          _$InitializedImpl value, $Res Function(_$InitializedImpl) then) =
+      __$$InitializedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialisedImplCopyWithImpl<$Res>
-    extends _$ChatEventCopyWithImpl<$Res, _$InitialisedImpl>
-    implements _$$InitialisedImplCopyWith<$Res> {
-  __$$InitialisedImplCopyWithImpl(
-      _$InitialisedImpl _value, $Res Function(_$InitialisedImpl) _then)
+class __$$InitializedImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$InitializedImpl>
+    implements _$$InitializedImplCopyWith<$Res> {
+  __$$InitializedImplCopyWithImpl(
+      _$InitializedImpl _value, $Res Function(_$InitializedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ChatEvent
@@ -103,18 +103,18 @@ class __$$InitialisedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialisedImpl implements _Initialised {
-  const _$InitialisedImpl();
+class _$InitializedImpl implements _Initialized {
+  const _$InitializedImpl();
 
   @override
   String toString() {
-    return 'ChatEvent.initialised()';
+    return 'ChatEvent.initialized()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialisedImpl);
+        (other.runtimeType == runtimeType && other is _$InitializedImpl);
   }
 
   @override
@@ -123,33 +123,33 @@ class _$InitialisedImpl implements _Initialised {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialised,
+    required TResult Function() initialized,
     required TResult Function(String conversationID) getConversation,
     required TResult Function(Chat chat) sendMessage,
   }) {
-    return initialised();
+    return initialized();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialised,
+    TResult? Function()? initialized,
     TResult? Function(String conversationID)? getConversation,
     TResult? Function(Chat chat)? sendMessage,
   }) {
-    return initialised?.call();
+    return initialized?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialised,
+    TResult Function()? initialized,
     TResult Function(String conversationID)? getConversation,
     TResult Function(Chat chat)? sendMessage,
     required TResult orElse(),
   }) {
-    if (initialised != null) {
-      return initialised();
+    if (initialized != null) {
+      return initialized();
     }
     return orElse();
   }
@@ -157,40 +157,40 @@ class _$InitialisedImpl implements _Initialised {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialised value) initialised,
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_GetConversation value) getConversation,
     required TResult Function(_SendMessage value) sendMessage,
   }) {
-    return initialised(this);
+    return initialized(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialised value)? initialised,
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_GetConversation value)? getConversation,
     TResult? Function(_SendMessage value)? sendMessage,
   }) {
-    return initialised?.call(this);
+    return initialized?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialised value)? initialised,
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_GetConversation value)? getConversation,
     TResult Function(_SendMessage value)? sendMessage,
     required TResult orElse(),
   }) {
-    if (initialised != null) {
-      return initialised(this);
+    if (initialized != null) {
+      return initialized(this);
     }
     return orElse();
   }
 }
 
-abstract class _Initialised implements ChatEvent {
-  const factory _Initialised() = _$InitialisedImpl;
+abstract class _Initialized implements ChatEvent {
+  const factory _Initialized() = _$InitializedImpl;
 }
 
 /// @nodoc
@@ -263,7 +263,7 @@ class _$GetConversationImpl implements _GetConversation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialised,
+    required TResult Function() initialized,
     required TResult Function(String conversationID) getConversation,
     required TResult Function(Chat chat) sendMessage,
   }) {
@@ -273,7 +273,7 @@ class _$GetConversationImpl implements _GetConversation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialised,
+    TResult? Function()? initialized,
     TResult? Function(String conversationID)? getConversation,
     TResult? Function(Chat chat)? sendMessage,
   }) {
@@ -283,7 +283,7 @@ class _$GetConversationImpl implements _GetConversation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialised,
+    TResult Function()? initialized,
     TResult Function(String conversationID)? getConversation,
     TResult Function(Chat chat)? sendMessage,
     required TResult orElse(),
@@ -297,7 +297,7 @@ class _$GetConversationImpl implements _GetConversation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialised value) initialised,
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_GetConversation value) getConversation,
     required TResult Function(_SendMessage value) sendMessage,
   }) {
@@ -307,7 +307,7 @@ class _$GetConversationImpl implements _GetConversation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialised value)? initialised,
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_GetConversation value)? getConversation,
     TResult? Function(_SendMessage value)? sendMessage,
   }) {
@@ -317,7 +317,7 @@ class _$GetConversationImpl implements _GetConversation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialised value)? initialised,
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_GetConversation value)? getConversation,
     TResult Function(_SendMessage value)? sendMessage,
     required TResult orElse(),
@@ -422,7 +422,7 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialised,
+    required TResult Function() initialized,
     required TResult Function(String conversationID) getConversation,
     required TResult Function(Chat chat) sendMessage,
   }) {
@@ -432,7 +432,7 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialised,
+    TResult? Function()? initialized,
     TResult? Function(String conversationID)? getConversation,
     TResult? Function(Chat chat)? sendMessage,
   }) {
@@ -442,7 +442,7 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialised,
+    TResult Function()? initialized,
     TResult Function(String conversationID)? getConversation,
     TResult Function(Chat chat)? sendMessage,
     required TResult orElse(),
@@ -456,7 +456,7 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialised value) initialised,
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_GetConversation value) getConversation,
     required TResult Function(_SendMessage value) sendMessage,
   }) {
@@ -466,7 +466,7 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialised value)? initialised,
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_GetConversation value)? getConversation,
     TResult? Function(_SendMessage value)? sendMessage,
   }) {
@@ -476,7 +476,7 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialised value)? initialised,
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_GetConversation value)? getConversation,
     TResult Function(_SendMessage value)? sendMessage,
     required TResult orElse(),

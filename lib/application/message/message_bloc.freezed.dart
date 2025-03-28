@@ -18,38 +18,38 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MessageEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialised,
+    required TResult Function() initialized,
     required TResult Function() getAllMessages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialised,
+    TResult? Function()? initialized,
     TResult? Function()? getAllMessages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialised,
+    TResult Function()? initialized,
     TResult Function()? getAllMessages,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialised value) initialised,
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_GetAllMessages value) getAllMessages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialised value)? initialised,
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_GetAllMessages value)? getAllMessages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialised value)? initialised,
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_GetAllMessages value)? getAllMessages,
     required TResult orElse(),
   }) =>
@@ -78,18 +78,18 @@ class _$MessageEventCopyWithImpl<$Res, $Val extends MessageEvent>
 }
 
 /// @nodoc
-abstract class _$$InitialisedImplCopyWith<$Res> {
-  factory _$$InitialisedImplCopyWith(
-          _$InitialisedImpl value, $Res Function(_$InitialisedImpl) then) =
-      __$$InitialisedImplCopyWithImpl<$Res>;
+abstract class _$$InitializedImplCopyWith<$Res> {
+  factory _$$InitializedImplCopyWith(
+          _$InitializedImpl value, $Res Function(_$InitializedImpl) then) =
+      __$$InitializedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialisedImplCopyWithImpl<$Res>
-    extends _$MessageEventCopyWithImpl<$Res, _$InitialisedImpl>
-    implements _$$InitialisedImplCopyWith<$Res> {
-  __$$InitialisedImplCopyWithImpl(
-      _$InitialisedImpl _value, $Res Function(_$InitialisedImpl) _then)
+class __$$InitializedImplCopyWithImpl<$Res>
+    extends _$MessageEventCopyWithImpl<$Res, _$InitializedImpl>
+    implements _$$InitializedImplCopyWith<$Res> {
+  __$$InitializedImplCopyWithImpl(
+      _$InitializedImpl _value, $Res Function(_$InitializedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of MessageEvent
@@ -98,18 +98,18 @@ class __$$InitialisedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialisedImpl implements _Initialised {
-  const _$InitialisedImpl();
+class _$InitializedImpl implements _Initialized {
+  const _$InitializedImpl();
 
   @override
   String toString() {
-    return 'MessageEvent.initialised()';
+    return 'MessageEvent.initialized()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialisedImpl);
+        (other.runtimeType == runtimeType && other is _$InitializedImpl);
   }
 
   @override
@@ -118,30 +118,30 @@ class _$InitialisedImpl implements _Initialised {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialised,
+    required TResult Function() initialized,
     required TResult Function() getAllMessages,
   }) {
-    return initialised();
+    return initialized();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialised,
+    TResult? Function()? initialized,
     TResult? Function()? getAllMessages,
   }) {
-    return initialised?.call();
+    return initialized?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialised,
+    TResult Function()? initialized,
     TResult Function()? getAllMessages,
     required TResult orElse(),
   }) {
-    if (initialised != null) {
-      return initialised();
+    if (initialized != null) {
+      return initialized();
     }
     return orElse();
   }
@@ -149,37 +149,37 @@ class _$InitialisedImpl implements _Initialised {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialised value) initialised,
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_GetAllMessages value) getAllMessages,
   }) {
-    return initialised(this);
+    return initialized(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialised value)? initialised,
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_GetAllMessages value)? getAllMessages,
   }) {
-    return initialised?.call(this);
+    return initialized?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialised value)? initialised,
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_GetAllMessages value)? getAllMessages,
     required TResult orElse(),
   }) {
-    if (initialised != null) {
-      return initialised(this);
+    if (initialized != null) {
+      return initialized(this);
     }
     return orElse();
   }
 }
 
-abstract class _Initialised implements MessageEvent {
-  const factory _Initialised() = _$InitialisedImpl;
+abstract class _Initialized implements MessageEvent {
+  const factory _Initialized() = _$InitializedImpl;
 }
 
 /// @nodoc
@@ -223,7 +223,7 @@ class _$GetAllMessagesImpl implements _GetAllMessages {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initialised,
+    required TResult Function() initialized,
     required TResult Function() getAllMessages,
   }) {
     return getAllMessages();
@@ -232,7 +232,7 @@ class _$GetAllMessagesImpl implements _GetAllMessages {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialised,
+    TResult? Function()? initialized,
     TResult? Function()? getAllMessages,
   }) {
     return getAllMessages?.call();
@@ -241,7 +241,7 @@ class _$GetAllMessagesImpl implements _GetAllMessages {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialised,
+    TResult Function()? initialized,
     TResult Function()? getAllMessages,
     required TResult orElse(),
   }) {
@@ -254,7 +254,7 @@ class _$GetAllMessagesImpl implements _GetAllMessages {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initialised value) initialised,
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_GetAllMessages value) getAllMessages,
   }) {
     return getAllMessages(this);
@@ -263,7 +263,7 @@ class _$GetAllMessagesImpl implements _GetAllMessages {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialised value)? initialised,
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_GetAllMessages value)? getAllMessages,
   }) {
     return getAllMessages?.call(this);
@@ -272,7 +272,7 @@ class _$GetAllMessagesImpl implements _GetAllMessages {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialised value)? initialised,
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_GetAllMessages value)? getAllMessages,
     required TResult orElse(),
   }) {

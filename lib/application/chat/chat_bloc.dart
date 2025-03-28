@@ -22,7 +22,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
   Future<void> _onEvent(ChatEvent event, Emitter<ChatState> emit) async {
     await event.map(
-      initialised: (e) async => emit(ChatState.initial()),
+      initialized: (e) async => emit(ChatState.initial()),
       getConversation: (e) async {
         emit(
           state.copyWith(

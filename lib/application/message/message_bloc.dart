@@ -19,7 +19,7 @@ class MessageBloc extends Bloc<MessageEvent, MessageState> {
 
   Future<void> _onEvent(MessageEvent event, Emitter<MessageState> emit) async {
     await event.map(
-      initialised: (e) async => emit(MessageState.initial()),
+      initialized: (e) async => emit(MessageState.initial()),
       getAllMessages: (e) async {
         emit(
           state.copyWith(
