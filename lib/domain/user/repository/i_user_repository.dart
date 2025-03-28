@@ -10,6 +10,8 @@ abstract class IUserRepository {
 
   Future<Either<ApiFailure, bool>> addUser({required User user});
 
+  Future<Either<ApiFailure, bool>> readMessages();
+
   // Future<Either<ApiFailure, bool>> editUser({required User user});
 
   // Future<Either<ApiFailure, bool>> editUserProfilePhoto(

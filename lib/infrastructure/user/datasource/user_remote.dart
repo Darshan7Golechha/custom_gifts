@@ -30,4 +30,12 @@ class UserRemoteDataSource {
     //     // search: _generateCaseSearch('${user.username} ${user.fullName}'));
     return await userRef.doc(user.userID).set(UserDto.fromDomain(user));
   }
+
+  Future<void> updateReadMessagesStatus(String userID, bool value) async {
+    var count = value ? FieldValue.increment(1) : 0;
+    return await userRef.doc(userID).update({
+      'unreadMessages': value,
+      'unreadMessagesCount': count,
+    });
+  }
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app_routes.dart';
 import 'package:flutter_application_1/application/auth/auth_bloc.dart';
+import 'package:flutter_application_1/application/chat/chat_bloc.dart';
 import 'package:flutter_application_1/application/item/item_bloc.dart';
 import 'package:flutter_application_1/application/login/login_bloc.dart';
+import 'package:flutter_application_1/application/message/message_bloc.dart';
 import 'package:flutter_application_1/application/user/user_bloc.dart';
 import 'package:flutter_application_1/config.dart';
 import 'package:flutter_application_1/locator.dart';
@@ -43,6 +45,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               locator<LoginBloc>()..add(const LoginEvent.initialized()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              locator<MessageBloc>()..add(const MessageEvent.initialized()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              locator<ChatBloc>()..add(const ChatEvent.initialized()),
         ),
         // BlocProvider(
         //   create: (context) =>
