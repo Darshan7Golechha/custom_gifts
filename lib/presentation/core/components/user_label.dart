@@ -60,13 +60,6 @@ class UserLabel extends StatelessWidget {
             ),
           ],
         ),
-        subtitle: Text(
-          ' bbbbbb',
-          style: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(color: Colors.grey),
-        ),
         trailing: trailing,
       ),
     );

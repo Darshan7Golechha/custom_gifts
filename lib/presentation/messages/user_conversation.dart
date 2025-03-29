@@ -117,6 +117,11 @@ class _UserConversationListState extends State<_UserConversationList> {
                                   buildWhen: (previous, current) =>
                                       previous.isLoading != current.isLoading,
                                   builder: (context, state) {
+                                    if (state.isLoading) {
+                                      return const Center(
+                                        child: CircularProgressIndicator(),
+                                      );
+                                    }
                                     return FirestoreListView<ChatDto>(
                                       reverse: true,
                                       key: Key(DateTime.now().toString()),

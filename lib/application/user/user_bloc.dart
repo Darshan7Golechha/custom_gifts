@@ -79,6 +79,29 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           ),
         );
       },
+      getAllVendors: (e) async {
+        emit(
+          state.copyWith(
+            isLoading: true,
+          ),
+        );
+        final failureOrSuccess = await userRepository.getAllVendors();
+        failureOrSuccess.fold(
+          (failure) => emit(
+            state.copyWith(
+              failureOrSuccessOption: optionOf(failureOrSuccess),
+              isLoading: false,
+            ),
+          ),
+          (users) => emit(
+            state.copyWith(
+              users: users,
+              failureOrSuccessOption: none(),
+              isLoading: false,
+            ),
+          ),
+        );
+      },
     );
   }
 }

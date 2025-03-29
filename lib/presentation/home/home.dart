@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/application/user/user_bloc.dart';
+import 'package:flutter_application_1/domain/user/entities/user.dart';
 import 'package:flutter_application_1/presentation/message/chat.dart';
 import 'package:flutter_application_1/presentation/messages/messages.dart';
 import 'package:flutter_application_1/presentation/order/orders.dart'; // Update import
@@ -11,15 +13,10 @@ import 'package:flutter_application_1/application/item/item_bloc.dart'; // Impor
 import 'package:flutter_application_1/presentation/home/widgets/category_card.dart'; // Your category card widget
 import 'package:flutter_application_1/presentation/home/widgets/vendor_card.dart'; // Your vendor card widget
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
+  final ValueNotifier<int> _currentIndex = ValueNotifier<int>(0);
 
   final List<Widget> _pages = [
     const HomeContent(),
@@ -30,62 +27,59 @@ class _HomePageState extends State<HomePage> {
   ];
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    return Scaffold(
-      body: _pages[_currentIndex],
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _currentIndex,
-        onDestinationSelected: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        backgroundColor: colorScheme.surface,
-        elevation: 3,
-        shadowColor: colorScheme.shadow.withOpacity(0.2),
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
-            label: 'Home',
+
+    return ValueListenableBuilder<int>(
+      valueListenable: _currentIndex,
+      builder: (context, index, _) {
+        return Scaffold(
+          body: _pages[index],
+          bottomNavigationBar: NavigationBar(
+            selectedIndex: index,
+            onDestinationSelected: (value) => _currentIndex.value = value,
+            backgroundColor: colorScheme.surface,
+            elevation: 3,
+            shadowColor: colorScheme.shadow.withOpacity(0.2),
+            destinations: const [
+              NavigationDestination(
+                icon: Icon(Icons.home_outlined),
+                selectedIcon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.chat_outlined),
+                selectedIcon: Icon(Icons.chat),
+                label: 'Chat',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.search_outlined),
+                selectedIcon: Icon(Icons.search),
+                label: 'Search',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.shopping_cart_outlined),
+                selectedIcon: Icon(Icons.shopping_cart),
+                label: 'Orders',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.person_outline),
+                selectedIcon: Icon(Icons.person),
+                label: 'Profile',
+              ),
+            ],
           ),
-          NavigationDestination(
-            icon: Icon(Icons.chat_outlined),
-            selectedIcon: Icon(Icons.chat),
-            label: 'Chat',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.search_outlined),
-            selectedIcon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.shopping_cart_outlined),
-            selectedIcon: Icon(Icons.shopping_cart),
-            label: 'Orders',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.person_outline),
-            selectedIcon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-      ),
-      floatingActionButton: _currentIndex == 0
-          ? FloatingActionButton.extended(
-              onPressed: () => context.go('/addItem'),
-              icon: const Icon(Icons.add),
-              label: const Text('Add Item'),
-              backgroundColor: colorScheme.primaryContainer,
-              foregroundColor: colorScheme.onPrimaryContainer,
-            )
-          : null,
+          floatingActionButton: index == 0
+              ? FloatingActionButton.extended(
+                  onPressed: () => context.go('/addItem'),
+                  icon: const Icon(Icons.add),
+                  label: const Text('Add Item'),
+                  backgroundColor: colorScheme.primaryContainer,
+                  foregroundColor: colorScheme.onPrimaryContainer,
+                )
+              : null,
+        );
+      },
     );
   }
 }
@@ -101,7 +95,7 @@ class _HomeContentState extends State<HomeContent> {
   @override
   void initState() {
     super.initState();
-    // Dispatch the event to fetch itemList when the widget is initialized
+    context.read<UserBloc>().add(UserEvent.getAllVendors());
     context.read<ItemBloc>().add(const ItemEvent.fetchItems());
   }
 
@@ -223,23 +217,27 @@ class _HomeContentState extends State<HomeContent> {
                     return const Center(child: Text('No itemList found.'));
                   }
 
-                  return GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.75,
-                      mainAxisSpacing: 8,
-                      crossAxisSpacing: 8,
-                    ),
-                    itemCount: state.itemList.length,
-                    itemBuilder: (context, index) {
-                      final item = state.itemList[index];
-                      return CustomItemGrid(
-                        item: item,
-                      );
-                    },
+                  return Column(
+                    children: [
+                      GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.75,
+                          mainAxisSpacing: 8,
+                          crossAxisSpacing: 8,
+                        ),
+                        itemCount: state.itemList.length,
+                        itemBuilder: (context, index) {
+                          final item = state.itemList[index];
+                          return CustomItemGrid(
+                            item: item,
+                          );
+                        },
+                      ),
+                    ],
                   );
                 },
               ),
@@ -279,38 +277,41 @@ class _HomeContentState extends State<HomeContent> {
   }
 
   Widget _buildVendorsList() {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return BlocBuilder<UserBloc, UserState>(
+      buildWhen: (previous, current) => previous.isLoading != current.isLoading,
+      builder: (context, state) {
+        return Column(
           children: [
-            Text(
-              'Top Vendors',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Top Vendors',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                TextButton(
+                  onPressed: () => context.go('/vendors'), // Updated to use go
+                  child: const Text('See All'),
+                ),
+              ],
             ),
-            TextButton(
-              onPressed: () => context.go('/vendors'), // Updated to use go
-              child: const Text('See All'),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: state.users.length,
+              itemBuilder: (context, index) {
+                final user = state.users[index];
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: VendorCard(user: user),
+                );
+              },
             ),
           ],
-        ),
-        ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: 2,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: GestureDetector(
-                onTap: () => context.go('/vendor/$index'), // Updated to use go
-                child: const VendorCard(),
-              ),
-            );
-          },
-        ),
-      ],
+        );
+      },
     );
   }
 

@@ -8,12 +8,14 @@ class UserState with _$UserState {
     required Option<Either<ApiFailure, dynamic>> failureOrSuccessOption,
     required bool isLoading,
     required User user,
+    required List<User> users,
     required List<Item> itemList,
   }) = _UserState;
 
   factory UserState.initial() => UserState(
         failureOrSuccessOption: const None(),
         isLoading: false,
+        users: <User>[],
         itemList: <Item>[],
         user: User.empty(),
       );
