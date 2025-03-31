@@ -25,6 +25,13 @@ class UserRemoteDataSource {
         .isNotEmpty;
   }
 
+  Future<List<UserDto>> getAllVendors() async {
+    return (await userRef.where('isSeller', isEqualTo: true).limit(5).get())
+        .docs
+        .map((e) => e.data())
+        .toList();
+  }
+
   Future<void> addUser(User user) async {
     // User tempUser = user.copyWith(
     //     // search: _generateCaseSearch('${user.username} ${user.fullName}'));

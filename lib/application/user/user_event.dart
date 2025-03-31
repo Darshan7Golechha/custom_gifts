@@ -7,4 +7,5 @@ class UserEvent with _$UserEvent {
       _FetchUserByUserID;
   const factory UserEvent.addUser({required User user}) = _AddUser;
   const factory UserEvent.readMessages() = _UnreadMessages;
+  const factory UserEvent.getAllVendors() = _GetAllVendors;
 }

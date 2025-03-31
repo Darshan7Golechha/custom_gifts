@@ -51,7 +51,7 @@ class AppRouter {
   static List<RouteBase> get routes => [
         GoRoute(
           path: home,
-          builder: (context, state) => const HomePage(),
+          builder: (context, state) => HomePage(),
         ),
         GoRoute(
           path: messages,
@@ -75,6 +75,19 @@ class AppRouter {
           builder: (context, state) => const AddEditItem(),
         ),
         GoRoute(
+          path: conversation,
+          pageBuilder: (context, state) => buildWithCustomPageTransition<void>(
+            context: context,
+            state: state,
+            child: UserConversation(
+              userID: state.uri.queryParameters['userID']!,
+              conversationID: state.uri.queryParameters['conversationID']!,
+            ),
+          ),
+          // redirect: (context, state) => redirect(
+          //     '$conversation?userID=${state.uri.queryParameters['userID']!}&conversationID=${state.uri.queryParameters['conversationID']!}'),
+        ),
+        GoRoute(
           path: profile,
           builder: (context, state) => const ProfileScreen(),
         ),
@@ -95,6 +108,18 @@ class AppRouter {
               '$itemDetail?itemID=${state.uri.queryParameters['itemID']!}'),
         ),
         GoRoute(
+          path: vendor,
+          pageBuilder: (context, state) => buildWithCustomPageTransition<void>(
+            context: context,
+            state: state,
+            child: VendorProfile(
+              userID: state.uri.queryParameters['userID']!,
+            ),
+          ),
+          // redirect: (context, state) => redirect(
+          //     '$vendor?userID=${state.uri.queryParameters['vendor']!}'),
+        ),
+        GoRoute(
           path: orders,
           builder: (context, state) => const OrdersScreen(),
         ),
@@ -109,14 +134,14 @@ class AppRouter {
           path: search,
           builder: (context, state) => const SearchScreen(),
         ),
-        GoRoute(
-          path: '/vendor/:id',
-          builder: (context, state) {
-            return const ProfilePage(
-              id: '',
-            );
-          },
-        ),
+        // GoRoute(
+        //   path: '/vendor/:id',
+        //   builder: (context, state) {
+        //     return const VendorProfile(
+        //       id: '',
+        //     );
+        //   },
+        // ),
         GoRoute(
           path: '/product/:index',
           builder: (context, state) {

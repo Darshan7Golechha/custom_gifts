@@ -46,4 +46,15 @@ class UserRepository implements IUserRepository {
       return Left(FailureHandler.handleFailure(e));
     }
   }
+
+  @override
+  Future<Either<ApiFailure, List<User>>> getAllVendors() async {
+    try {
+      final userList = await userRemoteDataSource.getAllVendors();
+
+      return Right(userList.map((e) => e.toDomain()).toList());
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
 }

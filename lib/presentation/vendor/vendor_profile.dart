@@ -1,20 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/application/user/user_bloc.dart';
+import 'package:flutter_application_1/domain/user/entities/user.dart';
 import 'package:flutter_application_1/presentation/home/widgets/product_grid.dart';
 import 'package:flutter_application_1/presentation/profile/widgets/about.dart';
 import 'package:flutter_application_1/presentation/profile/widgets/profile_header.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+class VendorProfile extends StatefulWidget {
+  final String userID;
 
-class ProfilePage extends StatelessWidget {
-  final String id;
+  const VendorProfile({super.key, required this.userID});
 
-  const ProfilePage({Key? key, required this.id}) : super(key: key);
+  @override
+  State<VendorProfile> createState() => _VendorProfileState();
+}
+
+class _VendorProfileState extends State<VendorProfile> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    context
+        .read<UserBloc>()
+        .add(UserEvent.fetchUserByUserID(userID: widget.userID));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildAppBar(context),
-      body: _buildBody(context),
+    return BlocBuilder<UserBloc, UserState>(
+      buildWhen: (previous, current) => previous.isLoading != current.isLoading,
+      builder: (context, state) {
+        return Scaffold(
+          appBar: _buildAppBar(context),
+          body: _buildBody(context, state.user),
+        );
+      },
     );
   }
 
@@ -28,7 +49,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildBody(BuildContext context) {
+  Widget _buildBody(BuildContext context, User user) {
     return DefaultTabController(
       length: 2,
       child: CustomScrollView(
@@ -36,7 +57,9 @@ class ProfilePage extends StatelessWidget {
           SliverToBoxAdapter(
             child: Column(
               children: [
-                const ProfileHeader(),
+                ProfileHeader(
+                  userID: user.userID,
+                ),
                 _buildTabBar(context),
               ],
             ),
@@ -107,7 +130,9 @@ class ProfilePage extends StatelessWidget {
     return const SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(16.0),
-        child: ProductGrid(products: [],),
+        child: ProductGrid(
+          products: [],
+        ),
       ),
     );
   }

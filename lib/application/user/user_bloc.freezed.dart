@@ -22,6 +22,7 @@ mixin _$UserEvent {
     required TResult Function(String userID) fetchUserByUserID,
     required TResult Function(User user) addUser,
     required TResult Function() readMessages,
+    required TResult Function() getAllVendors,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$UserEvent {
     TResult? Function(String userID)? fetchUserByUserID,
     TResult? Function(User user)? addUser,
     TResult? Function()? readMessages,
+    TResult? Function()? getAllVendors,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$UserEvent {
     TResult Function(String userID)? fetchUserByUserID,
     TResult Function(User user)? addUser,
     TResult Function()? readMessages,
+    TResult Function()? getAllVendors,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$UserEvent {
     required TResult Function(_FetchUserByUserID value) fetchUserByUserID,
     required TResult Function(_AddUser value) addUser,
     required TResult Function(_UnreadMessages value) readMessages,
+    required TResult Function(_GetAllVendors value) getAllVendors,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$UserEvent {
     TResult? Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult? Function(_AddUser value)? addUser,
     TResult? Function(_UnreadMessages value)? readMessages,
+    TResult? Function(_GetAllVendors value)? getAllVendors,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$UserEvent {
     TResult Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult Function(_AddUser value)? addUser,
     TResult Function(_UnreadMessages value)? readMessages,
+    TResult Function(_GetAllVendors value)? getAllVendors,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +139,7 @@ class _$IntialisedImpl implements _Intialised {
     required TResult Function(String userID) fetchUserByUserID,
     required TResult Function(User user) addUser,
     required TResult Function() readMessages,
+    required TResult Function() getAllVendors,
   }) {
     return initialised();
   }
@@ -144,6 +151,7 @@ class _$IntialisedImpl implements _Intialised {
     TResult? Function(String userID)? fetchUserByUserID,
     TResult? Function(User user)? addUser,
     TResult? Function()? readMessages,
+    TResult? Function()? getAllVendors,
   }) {
     return initialised?.call();
   }
@@ -155,6 +163,7 @@ class _$IntialisedImpl implements _Intialised {
     TResult Function(String userID)? fetchUserByUserID,
     TResult Function(User user)? addUser,
     TResult Function()? readMessages,
+    TResult Function()? getAllVendors,
     required TResult orElse(),
   }) {
     if (initialised != null) {
@@ -170,6 +179,7 @@ class _$IntialisedImpl implements _Intialised {
     required TResult Function(_FetchUserByUserID value) fetchUserByUserID,
     required TResult Function(_AddUser value) addUser,
     required TResult Function(_UnreadMessages value) readMessages,
+    required TResult Function(_GetAllVendors value) getAllVendors,
   }) {
     return initialised(this);
   }
@@ -181,6 +191,7 @@ class _$IntialisedImpl implements _Intialised {
     TResult? Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult? Function(_AddUser value)? addUser,
     TResult? Function(_UnreadMessages value)? readMessages,
+    TResult? Function(_GetAllVendors value)? getAllVendors,
   }) {
     return initialised?.call(this);
   }
@@ -192,6 +203,7 @@ class _$IntialisedImpl implements _Intialised {
     TResult Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult Function(_AddUser value)? addUser,
     TResult Function(_UnreadMessages value)? readMessages,
+    TResult Function(_GetAllVendors value)? getAllVendors,
     required TResult orElse(),
   }) {
     if (initialised != null) {
@@ -278,6 +290,7 @@ class _$FetchUserByUserIDImpl implements _FetchUserByUserID {
     required TResult Function(String userID) fetchUserByUserID,
     required TResult Function(User user) addUser,
     required TResult Function() readMessages,
+    required TResult Function() getAllVendors,
   }) {
     return fetchUserByUserID(userID);
   }
@@ -289,6 +302,7 @@ class _$FetchUserByUserIDImpl implements _FetchUserByUserID {
     TResult? Function(String userID)? fetchUserByUserID,
     TResult? Function(User user)? addUser,
     TResult? Function()? readMessages,
+    TResult? Function()? getAllVendors,
   }) {
     return fetchUserByUserID?.call(userID);
   }
@@ -300,6 +314,7 @@ class _$FetchUserByUserIDImpl implements _FetchUserByUserID {
     TResult Function(String userID)? fetchUserByUserID,
     TResult Function(User user)? addUser,
     TResult Function()? readMessages,
+    TResult Function()? getAllVendors,
     required TResult orElse(),
   }) {
     if (fetchUserByUserID != null) {
@@ -315,6 +330,7 @@ class _$FetchUserByUserIDImpl implements _FetchUserByUserID {
     required TResult Function(_FetchUserByUserID value) fetchUserByUserID,
     required TResult Function(_AddUser value) addUser,
     required TResult Function(_UnreadMessages value) readMessages,
+    required TResult Function(_GetAllVendors value) getAllVendors,
   }) {
     return fetchUserByUserID(this);
   }
@@ -326,6 +342,7 @@ class _$FetchUserByUserIDImpl implements _FetchUserByUserID {
     TResult? Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult? Function(_AddUser value)? addUser,
     TResult? Function(_UnreadMessages value)? readMessages,
+    TResult? Function(_GetAllVendors value)? getAllVendors,
   }) {
     return fetchUserByUserID?.call(this);
   }
@@ -337,6 +354,7 @@ class _$FetchUserByUserIDImpl implements _FetchUserByUserID {
     TResult Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult Function(_AddUser value)? addUser,
     TResult Function(_UnreadMessages value)? readMessages,
+    TResult Function(_GetAllVendors value)? getAllVendors,
     required TResult orElse(),
   }) {
     if (fetchUserByUserID != null) {
@@ -443,6 +461,7 @@ class _$AddUserImpl implements _AddUser {
     required TResult Function(String userID) fetchUserByUserID,
     required TResult Function(User user) addUser,
     required TResult Function() readMessages,
+    required TResult Function() getAllVendors,
   }) {
     return addUser(user);
   }
@@ -454,6 +473,7 @@ class _$AddUserImpl implements _AddUser {
     TResult? Function(String userID)? fetchUserByUserID,
     TResult? Function(User user)? addUser,
     TResult? Function()? readMessages,
+    TResult? Function()? getAllVendors,
   }) {
     return addUser?.call(user);
   }
@@ -465,6 +485,7 @@ class _$AddUserImpl implements _AddUser {
     TResult Function(String userID)? fetchUserByUserID,
     TResult Function(User user)? addUser,
     TResult Function()? readMessages,
+    TResult Function()? getAllVendors,
     required TResult orElse(),
   }) {
     if (addUser != null) {
@@ -480,6 +501,7 @@ class _$AddUserImpl implements _AddUser {
     required TResult Function(_FetchUserByUserID value) fetchUserByUserID,
     required TResult Function(_AddUser value) addUser,
     required TResult Function(_UnreadMessages value) readMessages,
+    required TResult Function(_GetAllVendors value) getAllVendors,
   }) {
     return addUser(this);
   }
@@ -491,6 +513,7 @@ class _$AddUserImpl implements _AddUser {
     TResult? Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult? Function(_AddUser value)? addUser,
     TResult? Function(_UnreadMessages value)? readMessages,
+    TResult? Function(_GetAllVendors value)? getAllVendors,
   }) {
     return addUser?.call(this);
   }
@@ -502,6 +525,7 @@ class _$AddUserImpl implements _AddUser {
     TResult Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult Function(_AddUser value)? addUser,
     TResult Function(_UnreadMessages value)? readMessages,
+    TResult Function(_GetAllVendors value)? getAllVendors,
     required TResult orElse(),
   }) {
     if (addUser != null) {
@@ -568,6 +592,7 @@ class _$UnreadMessagesImpl implements _UnreadMessages {
     required TResult Function(String userID) fetchUserByUserID,
     required TResult Function(User user) addUser,
     required TResult Function() readMessages,
+    required TResult Function() getAllVendors,
   }) {
     return readMessages();
   }
@@ -579,6 +604,7 @@ class _$UnreadMessagesImpl implements _UnreadMessages {
     TResult? Function(String userID)? fetchUserByUserID,
     TResult? Function(User user)? addUser,
     TResult? Function()? readMessages,
+    TResult? Function()? getAllVendors,
   }) {
     return readMessages?.call();
   }
@@ -590,6 +616,7 @@ class _$UnreadMessagesImpl implements _UnreadMessages {
     TResult Function(String userID)? fetchUserByUserID,
     TResult Function(User user)? addUser,
     TResult Function()? readMessages,
+    TResult Function()? getAllVendors,
     required TResult orElse(),
   }) {
     if (readMessages != null) {
@@ -605,6 +632,7 @@ class _$UnreadMessagesImpl implements _UnreadMessages {
     required TResult Function(_FetchUserByUserID value) fetchUserByUserID,
     required TResult Function(_AddUser value) addUser,
     required TResult Function(_UnreadMessages value) readMessages,
+    required TResult Function(_GetAllVendors value) getAllVendors,
   }) {
     return readMessages(this);
   }
@@ -616,6 +644,7 @@ class _$UnreadMessagesImpl implements _UnreadMessages {
     TResult? Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult? Function(_AddUser value)? addUser,
     TResult? Function(_UnreadMessages value)? readMessages,
+    TResult? Function(_GetAllVendors value)? getAllVendors,
   }) {
     return readMessages?.call(this);
   }
@@ -627,6 +656,7 @@ class _$UnreadMessagesImpl implements _UnreadMessages {
     TResult Function(_FetchUserByUserID value)? fetchUserByUserID,
     TResult Function(_AddUser value)? addUser,
     TResult Function(_UnreadMessages value)? readMessages,
+    TResult Function(_GetAllVendors value)? getAllVendors,
     required TResult orElse(),
   }) {
     if (readMessages != null) {
@@ -641,11 +671,135 @@ abstract class _UnreadMessages implements UserEvent {
 }
 
 /// @nodoc
+abstract class _$$GetAllVendorsImplCopyWith<$Res> {
+  factory _$$GetAllVendorsImplCopyWith(
+          _$GetAllVendorsImpl value, $Res Function(_$GetAllVendorsImpl) then) =
+      __$$GetAllVendorsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetAllVendorsImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$GetAllVendorsImpl>
+    implements _$$GetAllVendorsImplCopyWith<$Res> {
+  __$$GetAllVendorsImplCopyWithImpl(
+      _$GetAllVendorsImpl _value, $Res Function(_$GetAllVendorsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$GetAllVendorsImpl implements _GetAllVendors {
+  const _$GetAllVendorsImpl();
+
+  @override
+  String toString() {
+    return 'UserEvent.getAllVendors()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetAllVendorsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialised,
+    required TResult Function(String userID) fetchUserByUserID,
+    required TResult Function(User user) addUser,
+    required TResult Function() readMessages,
+    required TResult Function() getAllVendors,
+  }) {
+    return getAllVendors();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialised,
+    TResult? Function(String userID)? fetchUserByUserID,
+    TResult? Function(User user)? addUser,
+    TResult? Function()? readMessages,
+    TResult? Function()? getAllVendors,
+  }) {
+    return getAllVendors?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialised,
+    TResult Function(String userID)? fetchUserByUserID,
+    TResult Function(User user)? addUser,
+    TResult Function()? readMessages,
+    TResult Function()? getAllVendors,
+    required TResult orElse(),
+  }) {
+    if (getAllVendors != null) {
+      return getAllVendors();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Intialised value) initialised,
+    required TResult Function(_FetchUserByUserID value) fetchUserByUserID,
+    required TResult Function(_AddUser value) addUser,
+    required TResult Function(_UnreadMessages value) readMessages,
+    required TResult Function(_GetAllVendors value) getAllVendors,
+  }) {
+    return getAllVendors(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Intialised value)? initialised,
+    TResult? Function(_FetchUserByUserID value)? fetchUserByUserID,
+    TResult? Function(_AddUser value)? addUser,
+    TResult? Function(_UnreadMessages value)? readMessages,
+    TResult? Function(_GetAllVendors value)? getAllVendors,
+  }) {
+    return getAllVendors?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Intialised value)? initialised,
+    TResult Function(_FetchUserByUserID value)? fetchUserByUserID,
+    TResult Function(_AddUser value)? addUser,
+    TResult Function(_UnreadMessages value)? readMessages,
+    TResult Function(_GetAllVendors value)? getAllVendors,
+    required TResult orElse(),
+  }) {
+    if (getAllVendors != null) {
+      return getAllVendors(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAllVendors implements UserEvent {
+  const factory _GetAllVendors() = _$GetAllVendorsImpl;
+}
+
+/// @nodoc
 mixin _$UserState {
   Option<Either<ApiFailure, dynamic>> get failureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   User get user => throw _privateConstructorUsedError;
+  List<User> get users => throw _privateConstructorUsedError;
   List<Item> get itemList => throw _privateConstructorUsedError;
 
   /// Create a copy of UserState
@@ -664,6 +818,7 @@ abstract class $UserStateCopyWith<$Res> {
       {Option<Either<ApiFailure, dynamic>> failureOrSuccessOption,
       bool isLoading,
       User user,
+      List<User> users,
       List<Item> itemList});
 
   $UserCopyWith<$Res> get user;
@@ -687,6 +842,7 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
     Object? failureOrSuccessOption = null,
     Object? isLoading = null,
     Object? user = null,
+    Object? users = null,
     Object? itemList = null,
   }) {
     return _then(_value.copyWith(
@@ -702,6 +858,10 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
+      users: null == users
+          ? _value.users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<User>,
       itemList: null == itemList
           ? _value.itemList
           : itemList // ignore: cast_nullable_to_non_nullable
@@ -732,6 +892,7 @@ abstract class _$$UserStateImplCopyWith<$Res>
       {Option<Either<ApiFailure, dynamic>> failureOrSuccessOption,
       bool isLoading,
       User user,
+      List<User> users,
       List<Item> itemList});
 
   @override
@@ -754,6 +915,7 @@ class __$$UserStateImplCopyWithImpl<$Res>
     Object? failureOrSuccessOption = null,
     Object? isLoading = null,
     Object? user = null,
+    Object? users = null,
     Object? itemList = null,
   }) {
     return _then(_$UserStateImpl(
@@ -769,6 +931,10 @@ class __$$UserStateImplCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
+      users: null == users
+          ? _value._users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<User>,
       itemList: null == itemList
           ? _value._itemList
           : itemList // ignore: cast_nullable_to_non_nullable
@@ -784,8 +950,10 @@ class _$UserStateImpl extends _UserState {
       {required this.failureOrSuccessOption,
       required this.isLoading,
       required this.user,
+      required final List<User> users,
       required final List<Item> itemList})
-      : _itemList = itemList,
+      : _users = users,
+        _itemList = itemList,
         super._();
 
   @override
@@ -794,6 +962,14 @@ class _$UserStateImpl extends _UserState {
   final bool isLoading;
   @override
   final User user;
+  final List<User> _users;
+  @override
+  List<User> get users {
+    if (_users is EqualUnmodifiableListView) return _users;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_users);
+  }
+
   final List<Item> _itemList;
   @override
   List<Item> get itemList {
@@ -804,7 +980,7 @@ class _$UserStateImpl extends _UserState {
 
   @override
   String toString() {
-    return 'UserState(failureOrSuccessOption: $failureOrSuccessOption, isLoading: $isLoading, user: $user, itemList: $itemList)';
+    return 'UserState(failureOrSuccessOption: $failureOrSuccessOption, isLoading: $isLoading, user: $user, users: $users, itemList: $itemList)';
   }
 
   @override
@@ -817,12 +993,18 @@ class _$UserStateImpl extends _UserState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.user, user) || other.user == user) &&
+            const DeepCollectionEquality().equals(other._users, _users) &&
             const DeepCollectionEquality().equals(other._itemList, _itemList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failureOrSuccessOption,
-      isLoading, user, const DeepCollectionEquality().hash(_itemList));
+  int get hashCode => Object.hash(
+      runtimeType,
+      failureOrSuccessOption,
+      isLoading,
+      user,
+      const DeepCollectionEquality().hash(_users),
+      const DeepCollectionEquality().hash(_itemList));
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -839,6 +1021,7 @@ abstract class _UserState extends UserState {
           failureOrSuccessOption,
       required final bool isLoading,
       required final User user,
+      required final List<User> users,
       required final List<Item> itemList}) = _$UserStateImpl;
   const _UserState._() : super._();
 
@@ -848,6 +1031,8 @@ abstract class _UserState extends UserState {
   bool get isLoading;
   @override
   User get user;
+  @override
+  List<User> get users;
   @override
   List<Item> get itemList;
 
