@@ -17,8 +17,8 @@ void initialSetup({required Flavor flavor}) {
   final config = locator.get<Config>();
   config.currentFlavor = flavor;
 
-  final theme = locator.get<CustomTheme>();
-  theme.currentFlavor = flavor;
+  // final theme = locator.get<CustomTheme>();
+  // theme.currentFlavor = flavor;
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final config = locator.get<Config>();
-    final theme = locator.get<CustomTheme>();
+    // final theme = locator.get<CustomTheme>();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
           initialLocation: AppRouter.login,
         ),
         title: config.appName,
-        theme: theme.myTheme,
+        // theme: theme.myTheme,
       ),
     );
   }

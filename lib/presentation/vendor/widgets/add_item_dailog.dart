@@ -289,7 +289,7 @@ class _AddItemDialogContentState extends State<AddItemDialogContent> {
                                 function: () => context.go(AppRouter.home),
                               ),
                             ),
-                            SizedBox(width: CustomTheme().margin),
+                            SizedBox(width: 12),
                             Expanded(
                               child: CustomButton(
                                 text: widget.isEditing ? 'UPDATE' : 'POST',

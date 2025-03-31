@@ -217,27 +217,18 @@ class _HomeContentState extends State<HomeContent> {
                     return const Center(child: Text('No itemList found.'));
                   }
 
-                  return Column(
-                    children: [
-                      GridView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 0.75,
-                          mainAxisSpacing: 8,
-                          crossAxisSpacing: 8,
-                        ),
-                        itemCount: state.itemList.length,
-                        itemBuilder: (context, index) {
-                          final item = state.itemList[index];
-                          return CustomItemGrid(
-                            item: item,
-                          );
-                        },
-                      ),
-                    ],
+                  return ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: state.itemList.length,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 16),
+                    itemBuilder: (context, index) {
+                      final item = state.itemList[index];
+                      return CustomItemGrid(
+                        item: item,
+                      );
+                    },
                   );
                 },
               ),

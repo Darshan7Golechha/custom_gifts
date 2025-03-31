@@ -8,167 +8,232 @@ import 'package:go_router/go_router.dart';
 
 class CustomItemGrid extends StatelessWidget {
   final Item item;
-
   const CustomItemGrid({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-        onTap: () {
-          context.go(Uri(
-            path: 'itemDetail',
-            queryParameters: {'itemID': item.itemID},
-          ).toString());
-        },
-        child: _buildResultCard());
-  }
+    final colorScheme = Theme.of(context).colorScheme;
 
-  Widget _buildResultCard() {
     return Card(
-      elevation: 3,
-      shadowColor: Colors.black.withOpacity(0.1),
+      elevation: 0,
+      margin: const EdgeInsets.only(bottom: 1),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(0),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Image Container
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(12),
-                ),
-              ),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(12),
-                ),
-                child: item.images.isNotEmpty
-                    ? Stack(
-                        fit: StackFit.expand,
-                        children: [
-                          Image.network(
-                            item.images[0],
-                            fit: BoxFit.cover,
-                            loadingBuilder: (context, child, loadingProgress) {
-                              if (loadingProgress == null) return child;
-                              return Center(
-                                child: CircularProgressIndicator(
-                                  value: loadingProgress.expectedTotalBytes !=
-                                          null
-                                      ? loadingProgress.cumulativeBytesLoaded /
-                                          loadingProgress.expectedTotalBytes!
-                                      : null,
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    Colors.purple.withOpacity(0.5),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                          // Add shimmer loading effect
-                          Positioned.fill(
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    Colors.white.withOpacity(0.15),
-                                    Colors.white.withOpacity(0.05),
-                                    Colors.transparent,
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    : Center(
-                        child: Icon(
-                          Icons.image_outlined,
-                          size: 40,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-              ),
-            ),
-          ),
-          // Content Container
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: const BorderRadius.vertical(
-                bottom: Radius.circular(12),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 4,
-                  offset: const Offset(0, -2),
-                ),
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  item.title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    height: 1.3,
-                    letterSpacing: 0.2,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          maxHeight: 600,
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // User Header
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
                   children: [
-                    Expanded(
-                      child: Text(
-                        'By Vendor Name',
-                        style: TextStyle(
-                          color: Colors.grey[700],
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 0.1,
-                        ),
-                        overflow: TextOverflow.ellipsis,
+                    CircleAvatar(
+                      radius: 16,
+                      backgroundColor: colorScheme.primaryContainer,
+                      child: Icon(
+                        Icons.person,
+                        size: 20,
+                        color: colorScheme.onPrimaryContainer,
                       ),
                     ),
                     const SizedBox(width: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 5,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Vendor Name',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: colorScheme.onSurface,
+                            ),
+                          ),
+                          Text(
+                            'Location',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
                       ),
-                      decoration: BoxDecoration(
-                        color: Colors.purple.withOpacity(0.12),
-                        borderRadius: BorderRadius.circular(14),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.more_vert),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+              ),
+
+              // Image Section - Fixed height
+              SizedBox(
+                height: 300,
+                child: Hero(
+                  tag: 'item-${item.itemID}',
+                  child: item.images.isNotEmpty
+                      ? Stack(
+                          fit: StackFit.expand,
+                          children: [
+                            Image.network(
+                              item.images[0],
+                              fit: BoxFit.cover,
+                              loadingBuilder:
+                                  (context, child, loadingProgress) {
+                                if (loadingProgress == null) return child;
+                                return _buildShimmerEffect(colorScheme);
+                              },
+                            ),
+                            // Price overlay
+                            Positioned(
+                              bottom: 12,
+                              left: 12,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 6,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.7),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Text(
+                                  '\$${item.price}',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      : _buildPlaceholder(colorScheme),
+                ),
+              ),
+
+              // Action Buttons
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.favorite_border),
+                      onPressed: () {},
+                      padding: const EdgeInsets.all(8),
+                      constraints: const BoxConstraints(),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.chat_bubble_outline),
+                      onPressed: () {},
+                      padding: const EdgeInsets.all(8),
+                      constraints: const BoxConstraints(),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.shopping_cart_outlined),
+                      onPressed: () {},
+                      padding: const EdgeInsets.all(8),
+                      constraints: const BoxConstraints(),
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      icon: const Icon(Icons.bookmark_border),
+                      onPressed: () {},
+                      padding: const EdgeInsets.all(8),
+                      constraints: const BoxConstraints(),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Title and Description
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
                       ),
-                      child: Text(
-                        '\$${item.price}',
-                        style: const TextStyle(
-                          color: Colors.purple,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 15,
-                          letterSpacing: 0.3,
+                    ),
+                    if (item.description.isNotEmpty)
+                      Text(
+                        item.description,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: colorScheme.onSurfaceVariant,
+                          fontSize: 14,
                         ),
+                      ),
+                    const SizedBox(height: 4),
+                    Text(
+                      '2 hours ago',
+                      style: TextStyle(
+                        color: colorScheme.onSurfaceVariant,
+                        fontSize: 12,
                       ),
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildShimmerEffect(ColorScheme colorScheme) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            colorScheme.surfaceContainerHighest.withOpacity(0.5),
+            colorScheme.surfaceContainerHighest.withOpacity(0.3),
+            colorScheme.surfaceContainerHighest.withOpacity(0.5),
+          ],
+        ),
+      ),
+      child: Center(
+        child: CircularProgressIndicator(
+          strokeWidth: 2,
+          valueColor: AlwaysStoppedAnimation<Color>(
+            colorScheme.primary.withOpacity(0.7),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPlaceholder(ColorScheme colorScheme) {
+    return Container(
+      color: colorScheme.surfaceContainerHighest.withOpacity(0.3),
+      child: Center(
+        child: Icon(
+          Icons.image_outlined,
+          size: 48,
+          color: colorScheme.outline,
+        ),
       ),
     );
   }

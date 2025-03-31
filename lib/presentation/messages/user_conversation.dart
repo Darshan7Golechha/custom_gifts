@@ -53,7 +53,15 @@ class _UserConversationMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => context.go(
+            '/home',
+          ),
+        ),
+        // title: const Text('Product Details'),
+      ),
       body: _UserConversationList(
         userID: userID,
         conversationID: conversationID,

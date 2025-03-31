@@ -28,7 +28,7 @@ void setupDependencyInjection() {
 
   //CONFIG
   locator.registerLazySingleton(() => Config());
-  locator.registerLazySingleton(() => CustomTheme());
+  // locator.registerLazySingleton(() => CustomTheme());
 
   // //BLOC
   locator.registerLazySingleton(
