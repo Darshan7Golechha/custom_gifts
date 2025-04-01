@@ -12,6 +12,9 @@ abstract class IUserRepository {
 
   Future<Either<ApiFailure, bool>> readMessages();
   Future<Either<ApiFailure, List<User>>> getAllVendors();
+  Future<Either<ApiFailure, bool>> editUserProfilePhoto(
+      {required User user, required String? selectedUserImage});
+  Future<Either<ApiFailure, bool>> editUser({required User user});
 
   // Future<Either<ApiFailure, bool>> editUser({required User user});
 

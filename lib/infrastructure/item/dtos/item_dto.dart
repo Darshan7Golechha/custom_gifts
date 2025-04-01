@@ -47,7 +47,7 @@ class ItemDto with _$ItemDto {
     );
   }
 
-  Item toDomain() {
+  Item toDomain(User user) {
     return Item(
       userID: userID,
       itemID: itemID,
@@ -60,6 +60,7 @@ class ItemDto with _$ItemDto {
       videos: videos,
       images: images,
       createdDate: DateTime(2025),
+      user: user,
       // updatedDate: DateTime.fromMillisecondsSinceEpoch(updatedDate),
     );
   }
