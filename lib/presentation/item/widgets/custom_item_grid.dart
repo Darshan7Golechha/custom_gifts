@@ -37,11 +37,7 @@ class CustomItemGrid extends StatelessWidget {
                     CircleAvatar(
                       radius: 16,
                       backgroundColor: colorScheme.primaryContainer,
-                      child: Icon(
-                        Icons.person,
-                        size: 20,
-                        color: colorScheme.onPrimaryContainer,
-                      ),
+                      child: Image.network(item.user.photoURL),
                     ),
                     const SizedBox(width: 8),
                     Expanded(
@@ -49,18 +45,11 @@ class CustomItemGrid extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Vendor Name',
+                            item.user.fullName,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
                               color: colorScheme.onSurface,
-                            ),
-                          ),
-                          Text(
-                            'Location',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: colorScheme.onSurfaceVariant,
                             ),
                           ),
                         ],

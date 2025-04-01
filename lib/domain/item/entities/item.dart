@@ -19,6 +19,7 @@ class Item with _$Item {
     required List<String> images,
     required List<String> videos,
     required DateTime createdDate,
+    required User user,
     // required DateTime updatedDate,
   }) = _Item;
 
@@ -34,6 +35,7 @@ class Item with _$Item {
         images: <String>[],
         videos: <String>[],
         createdDate: DateTime(2025),
+        user: User.empty(),
         // updatedDate: DateTime(2023),
       );
 }

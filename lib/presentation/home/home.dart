@@ -135,7 +135,7 @@ class _HomeContentState extends State<HomeContent> {
             child: Container(
               decoration: BoxDecoration(
                 color: colorScheme.surfaceContainerHighest,
-                borderRadius: BorderRadius.circular(28),
+                borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
                 children: [
@@ -146,8 +146,6 @@ class _HomeContentState extends State<HomeContent> {
                         prefixIcon: Icon(Icons.search,
                             color: colorScheme.onSurfaceVariant),
                         border: InputBorder.none,
-                        contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 16),
                       ),
                     ),
                   ),
@@ -313,13 +311,13 @@ class _HomeContentState extends State<HomeContent> {
         elevation: 0,
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(10),
           onTap: () => context.go('/search', extra: label),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.secondaryContainer,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
               border: Border.all(
                 color: Theme.of(context).colorScheme.outline.withOpacity(0.5),
                 width: 1,

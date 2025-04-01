@@ -45,4 +45,12 @@ class UserRemoteDataSource {
       'unreadMessagesCount': count,
     });
   }
+
+  Future<void> editUser(User user) async {
+    // User tempUser = user.copyWith(
+    //     search: _generateCaseSearch('${user.username} ${user.fullName}'));
+    return await userRef
+        .doc(user.userID)
+        .update(UserDto.fromDomain(user).toJson());
+  }
 }

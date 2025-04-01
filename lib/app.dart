@@ -5,6 +5,7 @@ import 'package:flutter_application_1/application/chat/chat_bloc.dart';
 import 'package:flutter_application_1/application/item/item_bloc.dart';
 import 'package:flutter_application_1/application/login/login_bloc.dart';
 import 'package:flutter_application_1/application/message/message_bloc.dart';
+import 'package:flutter_application_1/application/setting/setting_bloc.dart';
 import 'package:flutter_application_1/application/user/user_bloc.dart';
 import 'package:flutter_application_1/config.dart';
 import 'package:flutter_application_1/locator.dart';
@@ -53,6 +54,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               locator<ChatBloc>()..add(const ChatEvent.initialized()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              locator<SettingBloc>()..add(const SettingEvent.initialized()),
         ),
         // BlocProvider(
         //   create: (context) =>
