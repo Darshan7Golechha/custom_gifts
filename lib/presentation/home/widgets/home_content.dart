@@ -19,26 +19,16 @@ class _HomeContentState extends State<HomeContent> {
     final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
-        elevation: 2,
-        scrolledUnderElevation: 4,
-        backgroundColor: colorScheme.surface,
+        backgroundColor: Colors.orange.withOpacity(0.1),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Custom Gifts',
+              'Welcome 👋',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: colorScheme.onSurface,
-              ),
-            ),
-            Text(
-              'Find unique handcrafted items',
-              style: TextStyle(
-                fontSize: 14,
-                color: colorScheme.onSurfaceVariant,
-                fontWeight: FontWeight.w400,
               ),
             ),
           ],
@@ -49,10 +39,11 @@ class _HomeContentState extends State<HomeContent> {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Container(
               decoration: BoxDecoration(
-                color: colorScheme.surfaceContainerHighest,
-                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
                     child: TextField(
@@ -61,15 +52,15 @@ class _HomeContentState extends State<HomeContent> {
                         prefixIcon: Icon(Icons.search,
                             color: colorScheme.onSurfaceVariant),
                         border: InputBorder.none,
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 16),
                       ),
                     ),
                   ),
                   IconButton(
                     icon: Icon(Icons.filter_list,
                         color: colorScheme.onSurfaceVariant),
-                    onPressed: () {
-                      // TODO: Implement filter functionality
-                    },
+                    onPressed: () {},
                   ),
                 ],
               ),
