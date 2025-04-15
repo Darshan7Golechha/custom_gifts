@@ -3,6 +3,7 @@ import 'package:flutter_application_1/application/auth/auth_bloc.dart';
 import 'package:flutter_application_1/application/chat/chat_bloc.dart';
 import 'package:flutter_application_1/application/item/item_bloc.dart';
 import 'package:flutter_application_1/application/login/login_bloc.dart';
+import 'package:flutter_application_1/application/logout/logout_bloc.dart';
 import 'package:flutter_application_1/application/message/message_bloc.dart';
 import 'package:flutter_application_1/application/setting/setting_bloc.dart';
 import 'package:flutter_application_1/application/user/user_bloc.dart';
@@ -35,6 +36,11 @@ void setupDependencyInjection() {
   locator.registerLazySingleton(
     () => UserBloc(
       userRepository: locator<UserRepository>(),
+    ),
+  );
+  locator.registerLazySingleton(
+    () => LogoutBloc(
+      authRepository: locator<AuthRepository>(),
     ),
   );
   locator.registerLazySingleton(

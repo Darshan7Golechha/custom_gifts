@@ -46,6 +46,33 @@ class ItemBloc extends Bloc<ItemEvent, ItemState> {
           ),
         );
       },
+      fetchUserItems: (e) async {
+        emit(
+          state.copyWith(
+            isLoading: true,
+            itemList: [],
+          ),
+        );
+        final failureOrSuccess =
+            await itemRepository.getUserItems(userID: e.userID);
+
+        failureOrSuccess.fold(
+          (failure) => emit(
+            state.copyWith(
+              itemList: <Item>[],
+              failureOrSuccessOption: optionOf(failureOrSuccess),
+              isLoading: false,
+            ),
+          ),
+          (items) => emit(
+            state.copyWith(
+              itemList: items,
+              failureOrSuccessOption: none(),
+              isLoading: false,
+            ),
+          ),
+        );
+      },
       fetchItem: (e) async {
         emit(
           state.copyWith(

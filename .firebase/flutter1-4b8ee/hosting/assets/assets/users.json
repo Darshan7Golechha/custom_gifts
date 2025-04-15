@@ -1,0 +1,17 @@
+{
+    "userID": "1",
+    "email": "darshan@gmail.com",
+    "fullName": "Darshan Jain",
+    "username": "darshanjain",
+    "photoURL": "https://example.com/johndoe.jpg",
+    "coverPhotoURL": "https://example.com/cover.jpg",
+    "about": "A passionate developer.",
+    "unreadNotificationsCount": 3,
+    "unreadMessagesCount": 1,
+    "isDeleted": false,
+    "isBlocked": false,
+    "isSeller": false,
+    "unreadMessages": true,
+    "welcomeMailSent": false,
+    "unreadNotifications": true
+}

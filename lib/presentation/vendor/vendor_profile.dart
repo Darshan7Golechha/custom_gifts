@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/application/user/user_bloc.dart';
 import 'package:flutter_application_1/domain/user/entities/user.dart';
 import 'package:flutter_application_1/presentation/home/widgets/product_grid.dart';
-import 'package:flutter_application_1/presentation/profile/widgets/about.dart';
-import 'package:flutter_application_1/presentation/profile/widgets/profile_header.dart';
+import 'package:flutter_application_1/presentation/profile/widgets/profile_photo.dart.dart';
+import 'package:flutter_application_1/presentation/profile/widgets/vendor_profile_header.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -43,7 +43,7 @@ class _VendorProfileState extends State<VendorProfile> {
     return AppBar(
       leading: IconButton(
         icon: const Icon(Icons.arrow_back),
-        onPressed: () => context.go('/'),
+        onPressed: () => context.go('/home'),
       ),
       title: const Text('Profile'),
     );
@@ -57,7 +57,7 @@ class _VendorProfileState extends State<VendorProfile> {
           SliverToBoxAdapter(
             child: Column(
               children: [
-                ProfileHeader(
+                VendorProfileHeader(
                   userID: user.userID,
                 ),
                 _buildTabBar(context),
@@ -67,8 +67,8 @@ class _VendorProfileState extends State<VendorProfile> {
           SliverFillRemaining(
             child: TabBarView(
               children: [
-                _buildProductsTab(),
-                const About(),
+                _buildProductsTab(userID: user.userID),
+                // const About(),
               ],
             ),
           ),
@@ -126,12 +126,12 @@ class _VendorProfileState extends State<VendorProfile> {
     );
   }
 
-  Widget _buildProductsTab() {
-    return const SingleChildScrollView(
+  Widget _buildProductsTab({required String userID}) {
+    return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(16.0),
         child: ProductGrid(
-          products: [],
+          userID: userID,
         ),
       ),
     );

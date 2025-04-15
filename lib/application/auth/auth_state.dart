@@ -11,6 +11,7 @@ class AuthState with _$AuthState {
         myBlockerUsersList, // These are users who have blocked me
     required bool isLoading,
     required Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+    required Option<Either<ApiFailure, dynamic>> logoutFailureOrSuccessOption,
   }) = _AuthState;
 
   factory AuthState.initial() => AuthState(
@@ -19,6 +20,7 @@ class AuthState with _$AuthState {
         myBlockerUsersList: <User>[],
         apiFailureOrSuccessOption: none(),
         isLoading: false,
+        logoutFailureOrSuccessOption: none(),
       );
 
   List<String> get blockedUsers =>

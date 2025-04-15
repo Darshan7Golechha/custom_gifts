@@ -21,6 +21,17 @@ class ItemRemoteDataSource {
         .toList();
   }
 
+  Future<List<ItemDto>> getUserItems(String userID) async {
+    return ((await itemRef
+                .where('userID', isEqualTo: userID)
+                .orderBy('createdDate', descending: true)
+                .limit(5)
+                .get())
+            .docs)
+        .map((e) => e.data())
+        .toList();
+  }
+
   Future<ItemDto> getItem(String itemID) async {
     // try {
     //   final item = await fetchItemsFromJson();
