@@ -22,6 +22,21 @@ class _AddEditItemState extends State<AddEditItem> {
   final _priceController = TextEditingController();
   final List<String> _selectedImages = [];
   final List<String> _selectedVideos = [];
+  String _selectedCategory = 'Art';
+
+  // Define categories
+  final List<String> _categories = [
+    'Art',
+    'Crafts',
+    'Handmade',
+    'Vintage',
+    'Jewelry',
+    'Clothing',
+    'Home Decor',
+    'Toys',
+    'Digital Art',
+    'Other',
+  ];
 
   @override
   void initState() {
@@ -64,6 +79,7 @@ class _AddEditItemState extends State<AddEditItem> {
         videos: _selectedVideos,
         createdDate: DateTime.now(),
         user: User.empty(), // This will be set in the repository
+        category: _selectedCategory,
       );
 
       context.read<ItemBloc>().add(ItemEvent.addItem(item: item));
@@ -187,6 +203,41 @@ class _AddEditItemState extends State<AddEditItem> {
                     }
                     if (double.tryParse(value) == null) {
                       return 'Please enter a valid number';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 30),
+
+                // Category Dropdown
+                DropdownButtonFormField<String>(
+                  value: _selectedCategory,
+                  decoration: InputDecoration(
+                    labelText: 'Category',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    prefixIcon: const Icon(Icons.category),
+                  ),
+                  items: _categories.map((String category) {
+                    return DropdownMenuItem(
+                      value: category,
+                      child: Text(category),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    if (newValue != null) {
+                      setState(() {
+                        _selectedCategory = newValue;
+                      });
+                    }
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please select a category';
                     }
                     return null;
                   },

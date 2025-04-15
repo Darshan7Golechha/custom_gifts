@@ -7,4 +7,6 @@ abstract class IItemRepository {
   Future<Either<ApiFailure, bool>> addItem({required Item item});
   Future<Either<ApiFailure, Item>> getItem({required String itemID});
   Future<Either<ApiFailure, List<Item>>> getUserItems({required String userID});
+  Future<Either<ApiFailure, List<Item>>> getItemsByCategory(
+      {required String category});
 }
