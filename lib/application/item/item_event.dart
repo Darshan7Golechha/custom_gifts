@@ -7,7 +7,8 @@ class ItemEvent with _$ItemEvent {
   const factory ItemEvent.fetchItem({required String itemID}) = _FetchItem;
   const factory ItemEvent.fetchUserItems({required String userID}) =
       _FetchUSerItems;
-
+  const factory ItemEvent.fetchItemsByCategory({required String category}) =
+      _FetchItemsByCategory;
   const factory ItemEvent.addItem({required Item item}) = _AddItem;
 
   const factory ItemEvent.addImage({required List<String> images}) = _AddImage;

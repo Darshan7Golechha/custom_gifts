@@ -22,6 +22,7 @@ mixin _$ItemEvent {
     required TResult Function() fetchItems,
     required TResult Function(String itemID) fetchItem,
     required TResult Function(String userID) fetchUserItems,
+    required TResult Function(String category) fetchItemsByCategory,
     required TResult Function(Item item) addItem,
     required TResult Function(List<String> images) addImage,
     required TResult Function(List<String> videos) addVideo,
@@ -33,6 +34,7 @@ mixin _$ItemEvent {
     TResult? Function()? fetchItems,
     TResult? Function(String itemID)? fetchItem,
     TResult? Function(String userID)? fetchUserItems,
+    TResult? Function(String category)? fetchItemsByCategory,
     TResult? Function(Item item)? addItem,
     TResult? Function(List<String> images)? addImage,
     TResult? Function(List<String> videos)? addVideo,
@@ -44,6 +46,7 @@ mixin _$ItemEvent {
     TResult Function()? fetchItems,
     TResult Function(String itemID)? fetchItem,
     TResult Function(String userID)? fetchUserItems,
+    TResult Function(String category)? fetchItemsByCategory,
     TResult Function(Item item)? addItem,
     TResult Function(List<String> images)? addImage,
     TResult Function(List<String> videos)? addVideo,
@@ -56,6 +59,7 @@ mixin _$ItemEvent {
     required TResult Function(_FetchItems value) fetchItems,
     required TResult Function(_FetchItem value) fetchItem,
     required TResult Function(_FetchUSerItems value) fetchUserItems,
+    required TResult Function(_FetchItemsByCategory value) fetchItemsByCategory,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_AddImage value) addImage,
     required TResult Function(_AddVideo value) addVideo,
@@ -67,6 +71,7 @@ mixin _$ItemEvent {
     TResult? Function(_FetchItems value)? fetchItems,
     TResult? Function(_FetchItem value)? fetchItem,
     TResult? Function(_FetchUSerItems value)? fetchUserItems,
+    TResult? Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddImage value)? addImage,
     TResult? Function(_AddVideo value)? addVideo,
@@ -78,6 +83,7 @@ mixin _$ItemEvent {
     TResult Function(_FetchItems value)? fetchItems,
     TResult Function(_FetchItem value)? fetchItem,
     TResult Function(_FetchUSerItems value)? fetchUserItems,
+    TResult Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddImage value)? addImage,
     TResult Function(_AddVideo value)? addVideo,
@@ -151,6 +157,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function() fetchItems,
     required TResult Function(String itemID) fetchItem,
     required TResult Function(String userID) fetchUserItems,
+    required TResult Function(String category) fetchItemsByCategory,
     required TResult Function(Item item) addItem,
     required TResult Function(List<String> images) addImage,
     required TResult Function(List<String> videos) addVideo,
@@ -165,6 +172,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function()? fetchItems,
     TResult? Function(String itemID)? fetchItem,
     TResult? Function(String userID)? fetchUserItems,
+    TResult? Function(String category)? fetchItemsByCategory,
     TResult? Function(Item item)? addItem,
     TResult? Function(List<String> images)? addImage,
     TResult? Function(List<String> videos)? addVideo,
@@ -179,6 +187,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function()? fetchItems,
     TResult Function(String itemID)? fetchItem,
     TResult Function(String userID)? fetchUserItems,
+    TResult Function(String category)? fetchItemsByCategory,
     TResult Function(Item item)? addItem,
     TResult Function(List<String> images)? addImage,
     TResult Function(List<String> videos)? addVideo,
@@ -197,6 +206,7 @@ class _$InitializedImpl implements _Initialized {
     required TResult Function(_FetchItems value) fetchItems,
     required TResult Function(_FetchItem value) fetchItem,
     required TResult Function(_FetchUSerItems value) fetchUserItems,
+    required TResult Function(_FetchItemsByCategory value) fetchItemsByCategory,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_AddImage value) addImage,
     required TResult Function(_AddVideo value) addVideo,
@@ -211,6 +221,7 @@ class _$InitializedImpl implements _Initialized {
     TResult? Function(_FetchItems value)? fetchItems,
     TResult? Function(_FetchItem value)? fetchItem,
     TResult? Function(_FetchUSerItems value)? fetchUserItems,
+    TResult? Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddImage value)? addImage,
     TResult? Function(_AddVideo value)? addVideo,
@@ -225,6 +236,7 @@ class _$InitializedImpl implements _Initialized {
     TResult Function(_FetchItems value)? fetchItems,
     TResult Function(_FetchItem value)? fetchItem,
     TResult Function(_FetchUSerItems value)? fetchUserItems,
+    TResult Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddImage value)? addImage,
     TResult Function(_AddVideo value)? addVideo,
@@ -286,6 +298,7 @@ class _$FetchItemsImpl implements _FetchItems {
     required TResult Function() fetchItems,
     required TResult Function(String itemID) fetchItem,
     required TResult Function(String userID) fetchUserItems,
+    required TResult Function(String category) fetchItemsByCategory,
     required TResult Function(Item item) addItem,
     required TResult Function(List<String> images) addImage,
     required TResult Function(List<String> videos) addVideo,
@@ -300,6 +313,7 @@ class _$FetchItemsImpl implements _FetchItems {
     TResult? Function()? fetchItems,
     TResult? Function(String itemID)? fetchItem,
     TResult? Function(String userID)? fetchUserItems,
+    TResult? Function(String category)? fetchItemsByCategory,
     TResult? Function(Item item)? addItem,
     TResult? Function(List<String> images)? addImage,
     TResult? Function(List<String> videos)? addVideo,
@@ -314,6 +328,7 @@ class _$FetchItemsImpl implements _FetchItems {
     TResult Function()? fetchItems,
     TResult Function(String itemID)? fetchItem,
     TResult Function(String userID)? fetchUserItems,
+    TResult Function(String category)? fetchItemsByCategory,
     TResult Function(Item item)? addItem,
     TResult Function(List<String> images)? addImage,
     TResult Function(List<String> videos)? addVideo,
@@ -332,6 +347,7 @@ class _$FetchItemsImpl implements _FetchItems {
     required TResult Function(_FetchItems value) fetchItems,
     required TResult Function(_FetchItem value) fetchItem,
     required TResult Function(_FetchUSerItems value) fetchUserItems,
+    required TResult Function(_FetchItemsByCategory value) fetchItemsByCategory,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_AddImage value) addImage,
     required TResult Function(_AddVideo value) addVideo,
@@ -346,6 +362,7 @@ class _$FetchItemsImpl implements _FetchItems {
     TResult? Function(_FetchItems value)? fetchItems,
     TResult? Function(_FetchItem value)? fetchItem,
     TResult? Function(_FetchUSerItems value)? fetchUserItems,
+    TResult? Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddImage value)? addImage,
     TResult? Function(_AddVideo value)? addVideo,
@@ -360,6 +377,7 @@ class _$FetchItemsImpl implements _FetchItems {
     TResult Function(_FetchItems value)? fetchItems,
     TResult Function(_FetchItem value)? fetchItem,
     TResult Function(_FetchUSerItems value)? fetchUserItems,
+    TResult Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddImage value)? addImage,
     TResult Function(_AddVideo value)? addVideo,
@@ -448,6 +466,7 @@ class _$FetchItemImpl implements _FetchItem {
     required TResult Function() fetchItems,
     required TResult Function(String itemID) fetchItem,
     required TResult Function(String userID) fetchUserItems,
+    required TResult Function(String category) fetchItemsByCategory,
     required TResult Function(Item item) addItem,
     required TResult Function(List<String> images) addImage,
     required TResult Function(List<String> videos) addVideo,
@@ -462,6 +481,7 @@ class _$FetchItemImpl implements _FetchItem {
     TResult? Function()? fetchItems,
     TResult? Function(String itemID)? fetchItem,
     TResult? Function(String userID)? fetchUserItems,
+    TResult? Function(String category)? fetchItemsByCategory,
     TResult? Function(Item item)? addItem,
     TResult? Function(List<String> images)? addImage,
     TResult? Function(List<String> videos)? addVideo,
@@ -476,6 +496,7 @@ class _$FetchItemImpl implements _FetchItem {
     TResult Function()? fetchItems,
     TResult Function(String itemID)? fetchItem,
     TResult Function(String userID)? fetchUserItems,
+    TResult Function(String category)? fetchItemsByCategory,
     TResult Function(Item item)? addItem,
     TResult Function(List<String> images)? addImage,
     TResult Function(List<String> videos)? addVideo,
@@ -494,6 +515,7 @@ class _$FetchItemImpl implements _FetchItem {
     required TResult Function(_FetchItems value) fetchItems,
     required TResult Function(_FetchItem value) fetchItem,
     required TResult Function(_FetchUSerItems value) fetchUserItems,
+    required TResult Function(_FetchItemsByCategory value) fetchItemsByCategory,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_AddImage value) addImage,
     required TResult Function(_AddVideo value) addVideo,
@@ -508,6 +530,7 @@ class _$FetchItemImpl implements _FetchItem {
     TResult? Function(_FetchItems value)? fetchItems,
     TResult? Function(_FetchItem value)? fetchItem,
     TResult? Function(_FetchUSerItems value)? fetchUserItems,
+    TResult? Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddImage value)? addImage,
     TResult? Function(_AddVideo value)? addVideo,
@@ -522,6 +545,7 @@ class _$FetchItemImpl implements _FetchItem {
     TResult Function(_FetchItems value)? fetchItems,
     TResult Function(_FetchItem value)? fetchItem,
     TResult Function(_FetchUSerItems value)? fetchUserItems,
+    TResult Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddImage value)? addImage,
     TResult Function(_AddVideo value)? addVideo,
@@ -619,6 +643,7 @@ class _$FetchUSerItemsImpl implements _FetchUSerItems {
     required TResult Function() fetchItems,
     required TResult Function(String itemID) fetchItem,
     required TResult Function(String userID) fetchUserItems,
+    required TResult Function(String category) fetchItemsByCategory,
     required TResult Function(Item item) addItem,
     required TResult Function(List<String> images) addImage,
     required TResult Function(List<String> videos) addVideo,
@@ -633,6 +658,7 @@ class _$FetchUSerItemsImpl implements _FetchUSerItems {
     TResult? Function()? fetchItems,
     TResult? Function(String itemID)? fetchItem,
     TResult? Function(String userID)? fetchUserItems,
+    TResult? Function(String category)? fetchItemsByCategory,
     TResult? Function(Item item)? addItem,
     TResult? Function(List<String> images)? addImage,
     TResult? Function(List<String> videos)? addVideo,
@@ -647,6 +673,7 @@ class _$FetchUSerItemsImpl implements _FetchUSerItems {
     TResult Function()? fetchItems,
     TResult Function(String itemID)? fetchItem,
     TResult Function(String userID)? fetchUserItems,
+    TResult Function(String category)? fetchItemsByCategory,
     TResult Function(Item item)? addItem,
     TResult Function(List<String> images)? addImage,
     TResult Function(List<String> videos)? addVideo,
@@ -665,6 +692,7 @@ class _$FetchUSerItemsImpl implements _FetchUSerItems {
     required TResult Function(_FetchItems value) fetchItems,
     required TResult Function(_FetchItem value) fetchItem,
     required TResult Function(_FetchUSerItems value) fetchUserItems,
+    required TResult Function(_FetchItemsByCategory value) fetchItemsByCategory,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_AddImage value) addImage,
     required TResult Function(_AddVideo value) addVideo,
@@ -679,6 +707,7 @@ class _$FetchUSerItemsImpl implements _FetchUSerItems {
     TResult? Function(_FetchItems value)? fetchItems,
     TResult? Function(_FetchItem value)? fetchItem,
     TResult? Function(_FetchUSerItems value)? fetchUserItems,
+    TResult? Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddImage value)? addImage,
     TResult? Function(_AddVideo value)? addVideo,
@@ -693,6 +722,7 @@ class _$FetchUSerItemsImpl implements _FetchUSerItems {
     TResult Function(_FetchItems value)? fetchItems,
     TResult Function(_FetchItem value)? fetchItem,
     TResult Function(_FetchUSerItems value)? fetchUserItems,
+    TResult Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddImage value)? addImage,
     TResult Function(_AddVideo value)? addVideo,
@@ -716,6 +746,186 @@ abstract class _FetchUSerItems implements ItemEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FetchUSerItemsImplCopyWith<_$FetchUSerItemsImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FetchItemsByCategoryImplCopyWith<$Res> {
+  factory _$$FetchItemsByCategoryImplCopyWith(_$FetchItemsByCategoryImpl value,
+          $Res Function(_$FetchItemsByCategoryImpl) then) =
+      __$$FetchItemsByCategoryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String category});
+}
+
+/// @nodoc
+class __$$FetchItemsByCategoryImplCopyWithImpl<$Res>
+    extends _$ItemEventCopyWithImpl<$Res, _$FetchItemsByCategoryImpl>
+    implements _$$FetchItemsByCategoryImplCopyWith<$Res> {
+  __$$FetchItemsByCategoryImplCopyWithImpl(_$FetchItemsByCategoryImpl _value,
+      $Res Function(_$FetchItemsByCategoryImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? category = null,
+  }) {
+    return _then(_$FetchItemsByCategoryImpl(
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchItemsByCategoryImpl implements _FetchItemsByCategory {
+  const _$FetchItemsByCategoryImpl({required this.category});
+
+  @override
+  final String category;
+
+  @override
+  String toString() {
+    return 'ItemEvent.fetchItemsByCategory(category: $category)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchItemsByCategoryImpl &&
+            (identical(other.category, category) ||
+                other.category == category));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, category);
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchItemsByCategoryImplCopyWith<_$FetchItemsByCategoryImpl>
+      get copyWith =>
+          __$$FetchItemsByCategoryImplCopyWithImpl<_$FetchItemsByCategoryImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialized,
+    required TResult Function() fetchItems,
+    required TResult Function(String itemID) fetchItem,
+    required TResult Function(String userID) fetchUserItems,
+    required TResult Function(String category) fetchItemsByCategory,
+    required TResult Function(Item item) addItem,
+    required TResult Function(List<String> images) addImage,
+    required TResult Function(List<String> videos) addVideo,
+  }) {
+    return fetchItemsByCategory(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialized,
+    TResult? Function()? fetchItems,
+    TResult? Function(String itemID)? fetchItem,
+    TResult? Function(String userID)? fetchUserItems,
+    TResult? Function(String category)? fetchItemsByCategory,
+    TResult? Function(Item item)? addItem,
+    TResult? Function(List<String> images)? addImage,
+    TResult? Function(List<String> videos)? addVideo,
+  }) {
+    return fetchItemsByCategory?.call(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialized,
+    TResult Function()? fetchItems,
+    TResult Function(String itemID)? fetchItem,
+    TResult Function(String userID)? fetchUserItems,
+    TResult Function(String category)? fetchItemsByCategory,
+    TResult Function(Item item)? addItem,
+    TResult Function(List<String> images)? addImage,
+    TResult Function(List<String> videos)? addVideo,
+    required TResult orElse(),
+  }) {
+    if (fetchItemsByCategory != null) {
+      return fetchItemsByCategory(category);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_FetchItems value) fetchItems,
+    required TResult Function(_FetchItem value) fetchItem,
+    required TResult Function(_FetchUSerItems value) fetchUserItems,
+    required TResult Function(_FetchItemsByCategory value) fetchItemsByCategory,
+    required TResult Function(_AddItem value) addItem,
+    required TResult Function(_AddImage value) addImage,
+    required TResult Function(_AddVideo value) addVideo,
+  }) {
+    return fetchItemsByCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_FetchItems value)? fetchItems,
+    TResult? Function(_FetchItem value)? fetchItem,
+    TResult? Function(_FetchUSerItems value)? fetchUserItems,
+    TResult? Function(_FetchItemsByCategory value)? fetchItemsByCategory,
+    TResult? Function(_AddItem value)? addItem,
+    TResult? Function(_AddImage value)? addImage,
+    TResult? Function(_AddVideo value)? addVideo,
+  }) {
+    return fetchItemsByCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_FetchItems value)? fetchItems,
+    TResult Function(_FetchItem value)? fetchItem,
+    TResult Function(_FetchUSerItems value)? fetchUserItems,
+    TResult Function(_FetchItemsByCategory value)? fetchItemsByCategory,
+    TResult Function(_AddItem value)? addItem,
+    TResult Function(_AddImage value)? addImage,
+    TResult Function(_AddVideo value)? addVideo,
+    required TResult orElse(),
+  }) {
+    if (fetchItemsByCategory != null) {
+      return fetchItemsByCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchItemsByCategory implements ItemEvent {
+  const factory _FetchItemsByCategory({required final String category}) =
+      _$FetchItemsByCategoryImpl;
+
+  String get category;
+
+  /// Create a copy of ItemEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FetchItemsByCategoryImplCopyWith<_$FetchItemsByCategoryImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -802,6 +1012,7 @@ class _$AddItemImpl implements _AddItem {
     required TResult Function() fetchItems,
     required TResult Function(String itemID) fetchItem,
     required TResult Function(String userID) fetchUserItems,
+    required TResult Function(String category) fetchItemsByCategory,
     required TResult Function(Item item) addItem,
     required TResult Function(List<String> images) addImage,
     required TResult Function(List<String> videos) addVideo,
@@ -816,6 +1027,7 @@ class _$AddItemImpl implements _AddItem {
     TResult? Function()? fetchItems,
     TResult? Function(String itemID)? fetchItem,
     TResult? Function(String userID)? fetchUserItems,
+    TResult? Function(String category)? fetchItemsByCategory,
     TResult? Function(Item item)? addItem,
     TResult? Function(List<String> images)? addImage,
     TResult? Function(List<String> videos)? addVideo,
@@ -830,6 +1042,7 @@ class _$AddItemImpl implements _AddItem {
     TResult Function()? fetchItems,
     TResult Function(String itemID)? fetchItem,
     TResult Function(String userID)? fetchUserItems,
+    TResult Function(String category)? fetchItemsByCategory,
     TResult Function(Item item)? addItem,
     TResult Function(List<String> images)? addImage,
     TResult Function(List<String> videos)? addVideo,
@@ -848,6 +1061,7 @@ class _$AddItemImpl implements _AddItem {
     required TResult Function(_FetchItems value) fetchItems,
     required TResult Function(_FetchItem value) fetchItem,
     required TResult Function(_FetchUSerItems value) fetchUserItems,
+    required TResult Function(_FetchItemsByCategory value) fetchItemsByCategory,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_AddImage value) addImage,
     required TResult Function(_AddVideo value) addVideo,
@@ -862,6 +1076,7 @@ class _$AddItemImpl implements _AddItem {
     TResult? Function(_FetchItems value)? fetchItems,
     TResult? Function(_FetchItem value)? fetchItem,
     TResult? Function(_FetchUSerItems value)? fetchUserItems,
+    TResult? Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddImage value)? addImage,
     TResult? Function(_AddVideo value)? addVideo,
@@ -876,6 +1091,7 @@ class _$AddItemImpl implements _AddItem {
     TResult Function(_FetchItems value)? fetchItems,
     TResult Function(_FetchItem value)? fetchItem,
     TResult Function(_FetchUSerItems value)? fetchUserItems,
+    TResult Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddImage value)? addImage,
     TResult Function(_AddVideo value)? addVideo,
@@ -978,6 +1194,7 @@ class _$AddImageImpl implements _AddImage {
     required TResult Function() fetchItems,
     required TResult Function(String itemID) fetchItem,
     required TResult Function(String userID) fetchUserItems,
+    required TResult Function(String category) fetchItemsByCategory,
     required TResult Function(Item item) addItem,
     required TResult Function(List<String> images) addImage,
     required TResult Function(List<String> videos) addVideo,
@@ -992,6 +1209,7 @@ class _$AddImageImpl implements _AddImage {
     TResult? Function()? fetchItems,
     TResult? Function(String itemID)? fetchItem,
     TResult? Function(String userID)? fetchUserItems,
+    TResult? Function(String category)? fetchItemsByCategory,
     TResult? Function(Item item)? addItem,
     TResult? Function(List<String> images)? addImage,
     TResult? Function(List<String> videos)? addVideo,
@@ -1006,6 +1224,7 @@ class _$AddImageImpl implements _AddImage {
     TResult Function()? fetchItems,
     TResult Function(String itemID)? fetchItem,
     TResult Function(String userID)? fetchUserItems,
+    TResult Function(String category)? fetchItemsByCategory,
     TResult Function(Item item)? addItem,
     TResult Function(List<String> images)? addImage,
     TResult Function(List<String> videos)? addVideo,
@@ -1024,6 +1243,7 @@ class _$AddImageImpl implements _AddImage {
     required TResult Function(_FetchItems value) fetchItems,
     required TResult Function(_FetchItem value) fetchItem,
     required TResult Function(_FetchUSerItems value) fetchUserItems,
+    required TResult Function(_FetchItemsByCategory value) fetchItemsByCategory,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_AddImage value) addImage,
     required TResult Function(_AddVideo value) addVideo,
@@ -1038,6 +1258,7 @@ class _$AddImageImpl implements _AddImage {
     TResult? Function(_FetchItems value)? fetchItems,
     TResult? Function(_FetchItem value)? fetchItem,
     TResult? Function(_FetchUSerItems value)? fetchUserItems,
+    TResult? Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddImage value)? addImage,
     TResult? Function(_AddVideo value)? addVideo,
@@ -1052,6 +1273,7 @@ class _$AddImageImpl implements _AddImage {
     TResult Function(_FetchItems value)? fetchItems,
     TResult Function(_FetchItem value)? fetchItem,
     TResult Function(_FetchUSerItems value)? fetchUserItems,
+    TResult Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddImage value)? addImage,
     TResult Function(_AddVideo value)? addVideo,
@@ -1155,6 +1377,7 @@ class _$AddVideoImpl implements _AddVideo {
     required TResult Function() fetchItems,
     required TResult Function(String itemID) fetchItem,
     required TResult Function(String userID) fetchUserItems,
+    required TResult Function(String category) fetchItemsByCategory,
     required TResult Function(Item item) addItem,
     required TResult Function(List<String> images) addImage,
     required TResult Function(List<String> videos) addVideo,
@@ -1169,6 +1392,7 @@ class _$AddVideoImpl implements _AddVideo {
     TResult? Function()? fetchItems,
     TResult? Function(String itemID)? fetchItem,
     TResult? Function(String userID)? fetchUserItems,
+    TResult? Function(String category)? fetchItemsByCategory,
     TResult? Function(Item item)? addItem,
     TResult? Function(List<String> images)? addImage,
     TResult? Function(List<String> videos)? addVideo,
@@ -1183,6 +1407,7 @@ class _$AddVideoImpl implements _AddVideo {
     TResult Function()? fetchItems,
     TResult Function(String itemID)? fetchItem,
     TResult Function(String userID)? fetchUserItems,
+    TResult Function(String category)? fetchItemsByCategory,
     TResult Function(Item item)? addItem,
     TResult Function(List<String> images)? addImage,
     TResult Function(List<String> videos)? addVideo,
@@ -1201,6 +1426,7 @@ class _$AddVideoImpl implements _AddVideo {
     required TResult Function(_FetchItems value) fetchItems,
     required TResult Function(_FetchItem value) fetchItem,
     required TResult Function(_FetchUSerItems value) fetchUserItems,
+    required TResult Function(_FetchItemsByCategory value) fetchItemsByCategory,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_AddImage value) addImage,
     required TResult Function(_AddVideo value) addVideo,
@@ -1215,6 +1441,7 @@ class _$AddVideoImpl implements _AddVideo {
     TResult? Function(_FetchItems value)? fetchItems,
     TResult? Function(_FetchItem value)? fetchItem,
     TResult? Function(_FetchUSerItems value)? fetchUserItems,
+    TResult? Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_AddImage value)? addImage,
     TResult? Function(_AddVideo value)? addVideo,
@@ -1229,6 +1456,7 @@ class _$AddVideoImpl implements _AddVideo {
     TResult Function(_FetchItems value)? fetchItems,
     TResult Function(_FetchItem value)? fetchItem,
     TResult Function(_FetchUSerItems value)? fetchUserItems,
+    TResult Function(_FetchItemsByCategory value)? fetchItemsByCategory,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_AddImage value)? addImage,
     TResult Function(_AddVideo value)? addVideo,

@@ -20,6 +20,7 @@ mixin _$Item {
   String get userID => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get thumbnail => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get likesCount => throw _privateConstructorUsedError;
   int get commentsCount => throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ abstract class $ItemCopyWith<$Res> {
       String userID,
       String title,
       String thumbnail,
+      String category,
       String description,
       int likesCount,
       int commentsCount,
@@ -76,6 +78,7 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
     Object? userID = null,
     Object? title = null,
     Object? thumbnail = null,
+    Object? category = null,
     Object? description = null,
     Object? likesCount = null,
     Object? commentsCount = null,
@@ -101,6 +104,10 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
       thumbnail: null == thumbnail
           ? _value.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
@@ -160,6 +167,7 @@ abstract class _$$ItemImplCopyWith<$Res> implements $ItemCopyWith<$Res> {
       String userID,
       String title,
       String thumbnail,
+      String category,
       String description,
       int likesCount,
       int commentsCount,
@@ -189,6 +197,7 @@ class __$$ItemImplCopyWithImpl<$Res>
     Object? userID = null,
     Object? title = null,
     Object? thumbnail = null,
+    Object? category = null,
     Object? description = null,
     Object? likesCount = null,
     Object? commentsCount = null,
@@ -214,6 +223,10 @@ class __$$ItemImplCopyWithImpl<$Res>
       thumbnail: null == thumbnail
           ? _value.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
@@ -259,6 +272,7 @@ class _$ItemImpl extends _Item {
       required this.userID,
       required this.title,
       required this.thumbnail,
+      required this.category,
       required this.description,
       required this.likesCount,
       required this.commentsCount,
@@ -279,6 +293,8 @@ class _$ItemImpl extends _Item {
   final String title;
   @override
   final String thumbnail;
+  @override
+  final String category;
   @override
   final String description;
   @override
@@ -310,7 +326,7 @@ class _$ItemImpl extends _Item {
 
   @override
   String toString() {
-    return 'Item(itemID: $itemID, userID: $userID, title: $title, thumbnail: $thumbnail, description: $description, likesCount: $likesCount, commentsCount: $commentsCount, price: $price, images: $images, videos: $videos, createdDate: $createdDate, user: $user)';
+    return 'Item(itemID: $itemID, userID: $userID, title: $title, thumbnail: $thumbnail, category: $category, description: $description, likesCount: $likesCount, commentsCount: $commentsCount, price: $price, images: $images, videos: $videos, createdDate: $createdDate, user: $user)';
   }
 
   @override
@@ -323,6 +339,8 @@ class _$ItemImpl extends _Item {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.thumbnail, thumbnail) ||
                 other.thumbnail == thumbnail) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.likesCount, likesCount) ||
@@ -344,6 +362,7 @@ class _$ItemImpl extends _Item {
       userID,
       title,
       thumbnail,
+      category,
       description,
       likesCount,
       commentsCount,
@@ -368,6 +387,7 @@ abstract class _Item extends Item {
       required final String userID,
       required final String title,
       required final String thumbnail,
+      required final String category,
       required final String description,
       required final int likesCount,
       required final int commentsCount,
@@ -386,6 +406,8 @@ abstract class _Item extends Item {
   String get title;
   @override
   String get thumbnail;
+  @override
+  String get category;
   @override
   String get description;
   @override
