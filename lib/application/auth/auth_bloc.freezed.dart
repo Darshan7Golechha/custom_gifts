@@ -612,6 +612,8 @@ mixin _$AuthState {
   bool get isLoading => throw _privateConstructorUsedError;
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
+  Option<Either<ApiFailure, dynamic>> get logoutFailureOrSuccessOption =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -630,7 +632,8 @@ abstract class $AuthStateCopyWith<$Res> {
       List<User> blockedUsersList,
       List<User> myBlockerUsersList,
       bool isLoading,
-      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption});
+      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+      Option<Either<ApiFailure, dynamic>> logoutFailureOrSuccessOption});
 
   $UserCopyWith<$Res> get currentUser;
 }
@@ -655,6 +658,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? myBlockerUsersList = null,
     Object? isLoading = null,
     Object? apiFailureOrSuccessOption = null,
+    Object? logoutFailureOrSuccessOption = null,
   }) {
     return _then(_value.copyWith(
       currentUser: null == currentUser
@@ -676,6 +680,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
       apiFailureOrSuccessOption: null == apiFailureOrSuccessOption
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ApiFailure, dynamic>>,
+      logoutFailureOrSuccessOption: null == logoutFailureOrSuccessOption
+          ? _value.logoutFailureOrSuccessOption
+          : logoutFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, dynamic>>,
     ) as $Val);
   }
@@ -704,7 +712,8 @@ abstract class _$$AuthStateImplCopyWith<$Res>
       List<User> blockedUsersList,
       List<User> myBlockerUsersList,
       bool isLoading,
-      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption});
+      Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption,
+      Option<Either<ApiFailure, dynamic>> logoutFailureOrSuccessOption});
 
   @override
   $UserCopyWith<$Res> get currentUser;
@@ -728,6 +737,7 @@ class __$$AuthStateImplCopyWithImpl<$Res>
     Object? myBlockerUsersList = null,
     Object? isLoading = null,
     Object? apiFailureOrSuccessOption = null,
+    Object? logoutFailureOrSuccessOption = null,
   }) {
     return _then(_$AuthStateImpl(
       currentUser: null == currentUser
@@ -750,6 +760,10 @@ class __$$AuthStateImplCopyWithImpl<$Res>
           ? _value.apiFailureOrSuccessOption
           : apiFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<ApiFailure, dynamic>>,
+      logoutFailureOrSuccessOption: null == logoutFailureOrSuccessOption
+          ? _value.logoutFailureOrSuccessOption
+          : logoutFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ApiFailure, dynamic>>,
     ));
   }
 }
@@ -762,7 +776,8 @@ class _$AuthStateImpl extends _AuthState {
       required final List<User> blockedUsersList,
       required final List<User> myBlockerUsersList,
       required this.isLoading,
-      required this.apiFailureOrSuccessOption})
+      required this.apiFailureOrSuccessOption,
+      required this.logoutFailureOrSuccessOption})
       : _blockedUsersList = blockedUsersList,
         _myBlockerUsersList = myBlockerUsersList,
         super._();
@@ -792,10 +807,12 @@ class _$AuthStateImpl extends _AuthState {
   final bool isLoading;
   @override
   final Option<Either<ApiFailure, dynamic>> apiFailureOrSuccessOption;
+  @override
+  final Option<Either<ApiFailure, dynamic>> logoutFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'AuthState(currentUser: $currentUser, blockedUsersList: $blockedUsersList, myBlockerUsersList: $myBlockerUsersList, isLoading: $isLoading, apiFailureOrSuccessOption: $apiFailureOrSuccessOption)';
+    return 'AuthState(currentUser: $currentUser, blockedUsersList: $blockedUsersList, myBlockerUsersList: $myBlockerUsersList, isLoading: $isLoading, apiFailureOrSuccessOption: $apiFailureOrSuccessOption, logoutFailureOrSuccessOption: $logoutFailureOrSuccessOption)';
   }
 
   @override
@@ -813,7 +830,11 @@ class _$AuthStateImpl extends _AuthState {
                 other.isLoading == isLoading) &&
             (identical(other.apiFailureOrSuccessOption,
                     apiFailureOrSuccessOption) ||
-                other.apiFailureOrSuccessOption == apiFailureOrSuccessOption));
+                other.apiFailureOrSuccessOption == apiFailureOrSuccessOption) &&
+            (identical(other.logoutFailureOrSuccessOption,
+                    logoutFailureOrSuccessOption) ||
+                other.logoutFailureOrSuccessOption ==
+                    logoutFailureOrSuccessOption));
   }
 
   @override
@@ -823,7 +844,8 @@ class _$AuthStateImpl extends _AuthState {
       const DeepCollectionEquality().hash(_blockedUsersList),
       const DeepCollectionEquality().hash(_myBlockerUsersList),
       isLoading,
-      apiFailureOrSuccessOption);
+      apiFailureOrSuccessOption,
+      logoutFailureOrSuccessOption);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -841,7 +863,9 @@ abstract class _AuthState extends AuthState {
       required final List<User> myBlockerUsersList,
       required final bool isLoading,
       required final Option<Either<ApiFailure, dynamic>>
-          apiFailureOrSuccessOption}) = _$AuthStateImpl;
+          apiFailureOrSuccessOption,
+      required final Option<Either<ApiFailure, dynamic>>
+          logoutFailureOrSuccessOption}) = _$AuthStateImpl;
   const _AuthState._() : super._();
 
   @override
@@ -854,6 +878,8 @@ abstract class _AuthState extends AuthState {
   bool get isLoading;
   @override
   Option<Either<ApiFailure, dynamic>> get apiFailureOrSuccessOption;
+  @override
+  Option<Either<ApiFailure, dynamic>> get logoutFailureOrSuccessOption;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.

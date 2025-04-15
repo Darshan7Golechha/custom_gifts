@@ -38,6 +38,22 @@ class ItemRepository implements IItemRepository {
   }
 
   @override
+  Future<Either<ApiFailure, List<Item>>> getUserItems(
+      {required String userID}) async {
+    try {
+      final itemDtoList = await itemRemoteDataSource.getUserItems(userID);
+      List<Item> items = [];
+      for (ItemDto itemDto in itemDtoList) {
+        final userDto = await userRemoteDataSource.getUser(itemDto.userID);
+        items.add(itemDto.toDomain(userDto.toDomain()));
+      }
+      return Right(items);
+    } catch (e) {
+      return Left(FailureHandler.handleFailure(e));
+    }
+  }
+
+  @override
   Future<Either<ApiFailure, Item>> getItem({required String itemID}) async {
     try {
       final item = await itemRemoteDataSource.getItem(itemID);

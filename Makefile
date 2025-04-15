@@ -6,6 +6,7 @@ analyze:
 	@fvm flutter analyze --fatal-infos --fatal-warnings
 build_runner:
 	dart run build_runner build --delete-conflicting-outputs
+	
 run_test:
 	$(MAKE) analyze
 	@fvm flutter test --coverage && genhtml coverage/lcov.info -o coverage/html && open coverage/html/index.html

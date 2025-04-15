@@ -3,8 +3,6 @@ import 'package:flutter_application_1/presentation/auth/login.dart';
 import 'package:flutter_application_1/presentation/home/home.dart';
 import 'package:flutter_application_1/presentation/item/create_item/widgets/add_edit_item.dart';
 import 'package:flutter_application_1/presentation/item/item_detail.dart';
-import 'package:flutter_application_1/presentation/message/chat.dart';
-import 'package:flutter_application_1/presentation/message/messages.dart';
 import 'package:flutter_application_1/presentation/messages/messages.dart';
 import 'package:flutter_application_1/presentation/messages/user_conversation.dart';
 import 'package:flutter_application_1/presentation/product/product_detail_page.dart';
@@ -46,7 +44,7 @@ class AppRouter {
   static const String addItem = '/addItem';
   static const String messages = '/messages';
   static const String conversation = '/conversation';
-  static const String itemDetail = '/itemDetail?itemID';
+  static const String itemDetail = '/itemDetail';
 
   static List<RouteBase> get routes => [
         GoRoute(
@@ -91,10 +89,7 @@ class AppRouter {
           path: profile,
           builder: (context, state) => const ProfileScreen(),
         ),
-        GoRoute(
-          path: message,
-          builder: (context, state) => const MessagesScreen(),
-        ),
+
         GoRoute(
           path: itemDetail,
           pageBuilder: (context, state) => buildWithCustomPageTransition<void>(
@@ -104,8 +99,6 @@ class AppRouter {
               itemID: state.uri.queryParameters['itemID']!,
             ),
           ),
-          redirect: (context, state) => redirect(
-              '$itemDetail?itemID=${state.uri.queryParameters['itemID']!}'),
         ),
         GoRoute(
           path: vendor,

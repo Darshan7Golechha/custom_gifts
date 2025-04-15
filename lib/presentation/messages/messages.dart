@@ -25,7 +25,12 @@ class _MessagesMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          'Messages',
+        ),
+        centerTitle: true,
+      ),
       body: const _MessagesList(),
     );
   }
@@ -53,7 +58,6 @@ class _MessagesListState extends State<_MessagesList> {
       builder: (context, state) {
         return ScrollList(
           padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-          header: const Text('Messages'),
           noRecordFoundWidget: const NoRecordFound(
               title:
                   'No messages to show.\nStart a conversation with someone from their profile'),
