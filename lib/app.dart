@@ -126,7 +126,7 @@ class MyApp extends StatelessWidget {
           return null;
         },
       ),
-      title: locator.get<Config>().appName,
+      // title: locator.get<Config>().appName,
       // theme: theme.myTheme,
     );
   }
